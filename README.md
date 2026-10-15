@@ -75,3 +75,40 @@ yarn smoke:devnet
 ```
 
 This script connects to Solana Devnet, verifies the merchant loyalty program, generates a fresh customer funded directly with a small SOL transfer from the merchant wallet (no airdrops required), awards loyalty points, redeems a reward, and prints Solana Explorer verification links for every transaction and on-chain receipt.
+
+---
+
+## Frontend (Next.js App)
+
+The web client is located in `app/`, built with Next.js (App Router), Tailwind CSS, and Solana Wallet Adapter.
+
+### Running Locally
+
+```bash
+# 1. Sync the latest Anchor IDL and TypeScript types from root
+yarn sync:idl
+
+# 2. Enter app directory and install dependencies
+cd app
+yarn install
+
+# 3. Start local development server
+yarn dev
+```
+
+### Environment Variables
+
+Configure `app/.env.local` (see `app/.env.example`):
+- `NEXT_PUBLIC_PROGRAM_ID`: Deployed PointPass program ID (defaults to `E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg`).
+- `NEXT_PUBLIC_RPC_URL`: Solana RPC endpoint (defaults to `https://api.devnet.solana.com`).
+
+### Client Devnet Verification
+
+To verify read-only program fetching, PDA derivations, and memcmp receipt filters without connecting a wallet:
+
+```bash
+cd app
+yarn check:devnet
+```
+
+> **Note on PDA Seeds**: The seed constants in `app/src/lib/pda.ts` (`"loyalty"`, `"mint"`, `"redemption"`) are duplicated client-side from the on-chain Rust constants (`programs/pointpass/src/constants.rs`). Any changes to on-chain PDA seeds must be manually synchronized in `app/src/lib/pda.ts`.

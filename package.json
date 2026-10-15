@@ -3,7 +3,8 @@
   "scripts": {
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
-    "smoke:devnet": "ts-node scripts/devnet-smoke.ts"
+    "smoke:devnet": "ts-node scripts/devnet-smoke.ts",
+    "sync:idl": "mkdir -p app/src/idl && cp target/idl/pointpass.json app/src/idl/pointpass.json && cp target/types/pointpass.ts app/src/idl/pointpass.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.31.1",

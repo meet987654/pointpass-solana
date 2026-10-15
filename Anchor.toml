@@ -9,6 +9,9 @@ skip-lint = false
 [programs.localnet]
 pointpass = "E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg"
 
+[programs.devnet]
+pointpass = "E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg"
+
 [registry]
 url = "https://api.apr.dev"
 

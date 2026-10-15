@@ -3,13 +3,15 @@
 Merchant-issued loyalty points as SPL tokens on Solana devnet, built with Anchor (Rust) and a Next.js wallet UI. Customers earn non-inflationary loyalty tokens and burn them for on-chain verifiable redemption receipts.
 
 Demo video: [Coming soon]
-Devnet Program ID: `[Pending deployment in Phase 4]`
+
+- **Devnet Program ID**: [`E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg`](https://explorer.solana.com/address/E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg?cluster=devnet)
+- **Solana Explorer**: [View on Solana Explorer (Devnet)](https://explorer.solana.com/address/E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg?cluster=devnet)
 
 ## Program Architecture
 
 - **`LoyaltyProgram` PDA**: Derived from `["loyalty", merchant_pubkey]`. Stores merchant authority, points SPL mint address, reward cost, name (up to 32 bytes UTF-8 payload), lifetime counters (`total_awarded`, `total_redeemed`, `redemption_count`), and canonical bump seeds.
 - **`PointsMint` PDA**: Zero-decimal SPL token mint derived from `["mint", loyalty_program_pda]`. Authority is the `LoyaltyProgram` PDA.
-- **`RedemptionReceipt` PDA**: Verifiable proof of burn derived from `["redemption", loyalty_program_pda, redemption_index]`.
+- **`RedemptionReceipt` PDA**: Verifiable proof of burn derived from `["redemption", loyalty_program_pda, customer_pubkey, redemption_count_le_bytes]`.
 
 ## Setup & Toolchain
 
@@ -60,4 +62,16 @@ anchor build
 anchor test
 ```
 
-> **Note on Program IDs**: `anchor keys sync` generates a local development keypair in `target/deploy/pointpass-keypair.json` (which is gitignored) and updates `declare_id!` in `programs/pointpass/src/lib.rs` and `Anchor.toml` to match. This ensures tests pass out of the box on any machine. Maintainers deploying canonical devnet releases keep their authoritative deployment keypair stored securely outside the repository (e.g. `~/.config/solana/pointpass-program-keypair.json`).
+> **Note on Program IDs**: A fresh clone runs `anchor keys sync` so anyone can build and run tests locally with their own ephemeral keypair without needing access to private keys. The canonical Devnet deployment ID (`E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg`) belongs to the project maintainer's secure keypair (`~/.config/solana/pointpass-program-keypair.json`), which is kept strictly outside the repository to ensure stable on-chain program address upgrades.
+
+---
+
+## Devnet Smoke Test
+
+To verify program instructions (`initialize_program`, `award_points`, `redeem`) against live Solana Devnet:
+
+```bash
+yarn smoke:devnet
+```
+
+This script connects to Solana Devnet, verifies the merchant loyalty program, generates a fresh customer funded directly with a small SOL transfer from the merchant wallet (no airdrops required), awards loyalty points, redeems a reward, and prints Solana Explorer verification links for every transaction and on-chain receipt.

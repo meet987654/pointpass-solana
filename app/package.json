@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:devnet": "ts-node -P tsconfig.scripts.json scripts/check-devnet.ts"
+    "check:devnet": "ts-node -P tsconfig.scripts.json scripts/check-devnet.ts",
+    "award:devnet": "ts-node -P tsconfig.scripts.json scripts/award-devnet.ts",
+    "check:redeem": "ts-node -P tsconfig.scripts.json scripts/check-redeem.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "0.31.1",

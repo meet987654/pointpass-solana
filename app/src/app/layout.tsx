@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SolanaProvider } from "@/components/SolanaProvider";
+import { ToastProvider } from "@/components/ToastProvider";
 import { Header } from "@/components/Header";
 
 const geistSans = Geist({
@@ -28,8 +29,10 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
         <SolanaProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
+          <ToastProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+          </ToastProvider>
         </SolanaProvider>
       </body>
     </html>

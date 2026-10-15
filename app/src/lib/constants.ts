@@ -2,6 +2,7 @@ import { PublicKey } from "@solana/web3.js";
 
 export const DEFAULT_PROGRAM_ID = "E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg";
 export const DEFAULT_RPC_URL = "https://api.devnet.solana.com";
+export const DEMO_MERCHANT = "9uLNjJt3aqNARjYz87NLL1EuYzrnD3hcqpEHnS6q2zy1";
 
 export const PROGRAM_ID: PublicKey = new PublicKey(
   process.env.NEXT_PUBLIC_PROGRAM_ID || DEFAULT_PROGRAM_ID

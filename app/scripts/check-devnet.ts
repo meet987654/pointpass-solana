@@ -52,7 +52,19 @@ async function main() {
     console.error(`FAIL: Expected reward_cost 10, got ${programAccount.rewardCost.toString()}`);
     process.exit(1);
   }
-  console.log("  ✔ LoyaltyProgram state matches expected values.");
+  if (programAccount.totalAwarded.toNumber() < 10) {
+    console.error(`FAIL: Expected total_awarded >= 10, got ${programAccount.totalAwarded.toString()}`);
+    process.exit(1);
+  }
+  if (programAccount.totalRedeemed.toNumber() < 10) {
+    console.error(`FAIL: Expected total_redeemed >= 10, got ${programAccount.totalRedeemed.toString()}`);
+    process.exit(1);
+  }
+  if (programAccount.redemptionCount.toNumber() < 1) {
+    console.error(`FAIL: Expected redemption_count >= 1, got ${programAccount.redemptionCount.toString()}`);
+    process.exit(1);
+  }
+  console.log("  ✔ LoyaltyProgram state matches expected values (counters >= initial values).");
 
   // (c) Fetch all RedemptionReceipt accounts for that program using memcmp filters
   // Account layout:

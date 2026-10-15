@@ -20,14 +20,20 @@ export function useReceipts(
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const merchantKey = merchant ? merchant.toBase58() : null;
+  const customerKey = customer ? customer.toBase58() : null;
+
   const fetchReceiptsData = useCallback(async () => {
-    if (!merchant || !customer) {
+    if (!merchantKey || !customerKey) {
       setData(null);
       setError(null);
+      setLoading(false);
       return;
     }
     try {
-      const [loyaltyProgramPda] = findLoyaltyProgramPda(merchant);
+      const merchantPubkey = new PublicKey(merchantKey);
+      const customerPubkey = new PublicKey(customerKey);
+      const [loyaltyProgramPda] = findLoyaltyProgramPda(merchantPubkey);
       const program = getProgram(connection);
 
       // Filter customer at byte offset 8, and loyalty_program at byte offset 40
@@ -35,7 +41,7 @@ export function useReceipts(
         {
           memcmp: {
             offset: 8,
-            bytes: customer.toBase58(),
+            bytes: customerPubkey.toBase58(),
           },
         },
         {
@@ -66,25 +72,23 @@ export function useReceipts(
       console.error("Error fetching redemption receipts:", err);
       setError(err instanceof Error ? err.message : String(err));
       setData([]);
+    } finally {
+      setLoading(false);
     }
-  }, [connection, merchant, customer]);
+  }, [connection, merchantKey, customerKey]);
 
   const refresh = useCallback(async () => {
     setLoading(true);
     await fetchReceiptsData();
-    setLoading(false);
   }, [fetchReceiptsData]);
 
   useEffect(() => {
     let ignore = false;
-    async function init() {
-      setLoading(true);
-      await fetchReceiptsData();
+    fetchReceiptsData().finally(() => {
       if (!ignore) {
         setLoading(false);
       }
-    }
-    init();
+    });
     return () => {
       ignore = true;
     };

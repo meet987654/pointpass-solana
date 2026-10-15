@@ -21,16 +21,22 @@ export function usePointsBalance(
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const merchantKey = merchant ? merchant.toBase58() : null;
+  const customerKey = customer ? customer.toBase58() : null;
+
   const fetchBalanceData = useCallback(async () => {
-    if (!merchant || !customer) {
+    if (!merchantKey || !customerKey) {
       setData(null);
       setError(null);
+      setLoading(false);
       return;
     }
     try {
-      const [loyaltyProgramPda] = findLoyaltyProgramPda(merchant);
+      const merchantPubkey = new PublicKey(merchantKey);
+      const customerPubkey = new PublicKey(customerKey);
+      const [loyaltyProgramPda] = findLoyaltyProgramPda(merchantPubkey);
       const [mintPda] = findPointsMintPda(loyaltyProgramPda);
-      const customerAta = findCustomerAta(mintPda, customer);
+      const customerAta = findCustomerAta(mintPda, customerPubkey);
 
       try {
         const tokenAccount = await getAccount(connection, customerAta);
@@ -58,25 +64,23 @@ export function usePointsBalance(
       console.error("Error fetching points balance:", err);
       setError(err instanceof Error ? err.message : String(err));
       setData(0);
+    } finally {
+      setLoading(false);
     }
-  }, [connection, merchant, customer]);
+  }, [connection, merchantKey, customerKey]);
 
   const refresh = useCallback(async () => {
     setLoading(true);
     await fetchBalanceData();
-    setLoading(false);
   }, [fetchBalanceData]);
 
   useEffect(() => {
     let ignore = false;
-    async function init() {
-      setLoading(true);
-      await fetchBalanceData();
+    fetchBalanceData().finally(() => {
       if (!ignore) {
         setLoading(false);
       }
-    }
-    init();
+    });
     return () => {
       ignore = true;
     };

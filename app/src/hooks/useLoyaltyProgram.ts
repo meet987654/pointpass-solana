@@ -20,14 +20,18 @@ export function useLoyaltyProgram(merchant: PublicKey | null) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const merchantKey = merchant ? merchant.toBase58() : null;
+
   const fetchProgramData = useCallback(async () => {
-    if (!merchant) {
+    if (!merchantKey) {
       setData(null);
       setError(null);
+      setLoading(false);
       return;
     }
     try {
-      const [loyaltyProgramPda] = findLoyaltyProgramPda(merchant);
+      const merchantPubkey = new PublicKey(merchantKey);
+      const [loyaltyProgramPda] = findLoyaltyProgramPda(merchantPubkey);
       const [mintPda] = findPointsMintPda(loyaltyProgramPda);
       const program = getProgram(connection);
 
@@ -53,25 +57,23 @@ export function useLoyaltyProgram(merchant: PublicKey | null) {
       console.error("Error fetching loyalty program:", err);
       setError(err instanceof Error ? err.message : String(err));
       setData(null);
+    } finally {
+      setLoading(false);
     }
-  }, [connection, merchant]);
+  }, [connection, merchantKey]);
 
   const refresh = useCallback(async () => {
     setLoading(true);
     await fetchProgramData();
-    setLoading(false);
   }, [fetchProgramData]);
 
   useEffect(() => {
     let ignore = false;
-    async function init() {
-      setLoading(true);
-      await fetchProgramData();
+    fetchProgramData().finally(() => {
       if (!ignore) {
         setLoading(false);
       }
-    }
-    init();
+    });
     return () => {
       ignore = true;
     };

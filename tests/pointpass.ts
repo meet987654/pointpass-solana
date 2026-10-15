@@ -388,6 +388,80 @@ describe("pointpass", () => {
         expect(err.error?.errorCode?.number).to.equal(6004);
       }
     });
+
+    it("Award points arithmetic overflow: awarding 1 after u64::MAX awarded and 1 burned fails with MathOverflow (6006)", async () => {
+      const merchant = await createFundedKeypair();
+      const rewardCost = new anchor.BN(1);
+      const { loyaltyProgramPda, pointsMintPda } = await initializeMerchantProgram(
+        merchant,
+        "Bean There Cafe",
+        rewardCost
+      );
+
+      const customer = await createFundedKeypair();
+      const customerTokenAccount = findCustomerTokenAccount(pointsMintPda, customer.publicKey);
+
+      // Award u64::MAX points
+      const maxU64 = new anchor.BN("18446744073709551615");
+      await program.methods
+        .awardPoints(maxU64)
+        .accountsStrict({
+          merchant: merchant.publicKey,
+          loyaltyProgram: loyaltyProgramPda,
+          pointsMint: pointsMintPda,
+          customer: customer.publicKey,
+          customerTokenAccount,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([merchant])
+        .rpc();
+
+      // Redeem 1 point (burns 1 token, dropping mint supply and customer balance to u64::MAX - 1)
+      const [receiptPda] = findRedemptionReceiptPda(
+        loyaltyProgramPda,
+        customer.publicKey,
+        0,
+        program.programId
+      );
+
+      await program.methods
+        .redeem()
+        .accountsStrict({
+          customer: customer.publicKey,
+          loyaltyProgram: loyaltyProgramPda,
+          pointsMint: pointsMintPda,
+          customerTokenAccount,
+          receipt: receiptPda,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+        })
+        .signers([customer])
+        .rpc();
+
+      // Award 1 point: minting 1 token succeeds, but total_awarded overflows u64::MAX
+      try {
+        await program.methods
+          .awardPoints(new anchor.BN(1))
+          .accountsStrict({
+            merchant: merchant.publicKey,
+            loyaltyProgram: loyaltyProgramPda,
+            pointsMint: pointsMintPda,
+            customer: customer.publicKey,
+            customerTokenAccount,
+            tokenProgram: TOKEN_PROGRAM_ID,
+            associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+            systemProgram: SystemProgram.programId,
+          })
+          .signers([merchant])
+          .rpc();
+        expect.fail("Should have failed with MathOverflow error");
+      } catch (err: any) {
+        expect(err.error?.errorCode?.code).to.equal("MathOverflow");
+        expect(err.error?.errorCode?.number).to.equal(6006);
+      }
+    });
   });
 
   describe("Phase 3: redeem", () => {

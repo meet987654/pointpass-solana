@@ -5,6 +5,12 @@ Merchant-issued loyalty points as SPL tokens on Solana devnet, built with Anchor
 Demo video: [Coming soon]
 Devnet Program ID: `[Pending deployment in Phase 4]`
 
+## Program Architecture
+
+- **`LoyaltyProgram` PDA**: Derived from `["loyalty", merchant_pubkey]`. Stores merchant authority, points SPL mint address, reward cost, name (up to 32 bytes UTF-8 payload), lifetime counters (`total_awarded`, `total_redeemed`, `redemption_count`), and canonical bump seeds.
+- **`PointsMint` PDA**: Zero-decimal SPL token mint derived from `["mint", loyalty_program_pda]`. Authority is the `LoyaltyProgram` PDA.
+- **`RedemptionReceipt` PDA**: Verifiable proof of burn derived from `["redemption", loyalty_program_pda, redemption_index]`.
+
 ## Setup & Toolchain
 
 ### Required Versions
@@ -55,5 +61,3 @@ anchor test
 ```
 
 > **Note on Program IDs**: `anchor keys sync` generates a local development keypair in `target/deploy/pointpass-keypair.json` (which is gitignored) and updates `declare_id!` in `programs/pointpass/src/lib.rs` and `Anchor.toml` to match. This ensures tests pass out of the box on any machine. Maintainers deploying canonical devnet releases keep their authoritative deployment keypair stored securely outside the repository (e.g. `~/.config/solana/pointpass-program-keypair.json`).
-
-

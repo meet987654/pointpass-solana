@@ -15,62 +15,105 @@ export default function Home() {
     <div className="relative text-[#ffffff]">
       
       {/* =========================================================================
-          SECTION 1: HERO (RESCUE PARTNERS ODDVAL TYPOGRAPHY & HORIZON ATMOSPHERE)
+          SECTION 1: HERO (EXACT RESCUE PARTNERS ODDVAL HORIZON SPECIMEN LAYOUT)
           ========================================================================= */}
-      <section className="relative min-h-[84vh] flex flex-col items-center justify-center text-center px-4 sm:px-8 pt-20 sm:pt-28 pb-20 max-w-5xl mx-auto">
+      <section className="relative w-full min-h-[88vh] bg-gradient-to-b from-[#05131c] via-[#0b273b] via-45% to-[#8eb9cb] px-6 sm:px-12 lg:px-20 py-16 sm:py-20 lg:py-24 flex flex-col justify-between border-b border-[#d3dde2]/20 overflow-hidden">
         
-        {/* Architectural Blueprint Tag */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0e2534] border border-[#d3dde2]/25 text-xs font-mono text-[#d3dde2] shadow-[0_4px_24px_rgba(0,0,0,0.5)] mb-8">
-          <span className="w-2 h-2 rounded-sm bg-[#3c9bc3] shadow-[0_0_8px_#3c9bc3]" />
-          <span className="font-semibold tracking-wider text-[#93c0d2]">POINTPASS PROTOCOL</span>
-          <span className="text-[#d3dde2]/30">|</span>
-          <span className="text-[#d3dde2]/90 font-light">Solana Loyalty Standard</span>
+        {/* Top Region: Giant Oddval Display Title + Dual Spec Columns */}
+        <div className="space-y-8 z-10 max-w-7xl">
+          
+          {/* Subtle Protocol & Font Specimen Tag */}
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-sm bg-[#3c9bc3] shadow-[0_0_8px_#3c9bc3]" />
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#93c0d2]">
+              SPECIMEN // ODDVAL GROTESQUE // SOLANA INFRASTRUCTURE
+            </span>
+          </div>
+
+          {/* Giant Title: Exact Oddval Aesthetic from Slide 7 */}
+          <div>
+            <h1 className="font-display text-7xl sm:text-8xl md:text-9xl lg:text-[132px] font-medium tracking-[-0.035em] leading-[0.95] select-none">
+              <span className="bg-gradient-to-r from-[#256c8d] via-[#3a8ab0] to-[#88bdd3] bg-clip-text text-transparent">
+                Point
+              </span>
+              <span className="text-white drop-shadow-sm">
+                Pass
+              </span>
+            </h1>
+          </div>
+
+          {/* Dual Specimen Columns directly underneath the title */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl pt-2">
+            
+            {/* Column 1: Latin Character Set & Token Standard */}
+            <div className="font-mono text-xs text-[#d3dde2]/80 leading-relaxed space-y-1.5">
+              <p className="tracking-wide text-white/90">
+                Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo
+              </p>
+              <p className="tracking-wide text-white/90">
+                Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 01 23 45 67 89
+              </p>
+              <p className="text-[11px] text-[#93c0d2] pt-1">
+                SPL STANDARD // 0-DECIMALS // NON-CUSTODIAL
+              </p>
+            </div>
+
+            {/* Column 2: Cyrillic Glyphs & Deterministic Solana Seeds */}
+            <div className="font-mono text-xs text-[#d3dde2]/80 leading-relaxed space-y-1.5">
+              <p className="tracking-wide text-white/90">
+                Аа Бб Вв Гг Дд Ее Жж Зз Ии Йй Кк Лл Мм Нн Оо
+              </p>
+              <p className="tracking-wide text-white/90">
+                Пп Рр Сс Тт Уу Фф Хх Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ
+              </p>
+              <p className="text-[11px] text-[#93c0d2] pt-1">
+                DETERMINISTIC PDAS // ED25519 // PROOF-OF-BURN
+              </p>
+            </div>
+
+          </div>
+
         </div>
 
-        {/* Hero Headline: Bold Oddval Display Grotesque */}
-        <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white leading-[1.04] max-w-4xl">
-          Sovereign Loyalty <br />
-          <span className="font-extrabold bg-gradient-to-b from-white via-[#d3dde2] to-[#8eb9cb] bg-clip-text text-transparent">
-            Built on Solana
-          </span>
-        </h1>
+        {/* Bottom Region: Outline Button Box on Left + Multi-line Architectural Paragraph on Right */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 pt-12 z-10 mt-12">
+          
+          {/* Bottom Left: Rectangular Outline Button Box (matching [ ОСНОВНОЙ ШРИФТ ]) */}
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href={`/customer?merchant=${DEMO_MERCHANT}`}
+              className="px-6 py-3 border border-white/40 bg-white/[0.06] hover:bg-white hover:text-[#05131c] hover:border-white text-xs font-mono uppercase tracking-widest text-white transition-all duration-200 cursor-pointer rounded-sm shadow-sm"
+            >
+              Launch Protocol &gt;
+            </Link>
 
-        {/* Subtitle in Google Sans */}
-        <p className="mt-6 text-base sm:text-xl font-normal text-[#d3dde2]/85 leading-relaxed max-w-2xl">
-          A non-custodial loyalty token standard on Solana. Zero-decimal SPL tokens, deterministic PDA pipelines, and immutable proof-of-burn receipts.
-        </p>
+            <Link
+              href="/merchant"
+              className="px-6 py-3 border border-white/25 bg-transparent hover:bg-white/10 text-xs font-mono uppercase tracking-widest text-white/85 hover:text-white transition-all duration-200 cursor-pointer rounded-sm"
+            >
+              Merchant Terminal
+            </Link>
 
-        {/* Rescue Partners Action Buttons: Crisp White Pill + Ash Secondary */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-9">
-          <Link
-            href={`/customer?merchant=${DEMO_MERCHANT}`}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-medium text-sm bg-white text-[#07131b] hover:bg-[#d3dde2] transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 cursor-pointer"
-          >
-            Launch Customer Demo
-          </Link>
+            <Link
+              href="/docs"
+              className="px-6 py-3 border border-white/25 bg-transparent hover:bg-white/10 text-xs font-mono uppercase tracking-widest text-white/85 hover:text-white transition-all duration-200 cursor-pointer rounded-sm"
+            >
+              Docs
+            </Link>
+          </div>
 
-          <Link
-            href="/merchant"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-normal text-sm bg-white/[0.08] text-white hover:bg-white/[0.14] border border-[#d3dde2]/25 hover:border-[#d3dde2]/45 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
-          >
-            Merchant Terminal
-          </Link>
+          {/* Bottom Right: Architectural Narrative Paragraph over Horizon Glow */}
+          <div className="max-w-md space-y-2 text-left">
+            <p className="font-sans text-xs sm:text-[13px] text-white/95 leading-[1.65] font-normal">
+              PointPass — sovereign loyalty token standard on Solana. Zero-decimal SPL tokens, deterministic PDA pipelines, and immutable proof-of-burn receipts eliminate database lock-in, vendor counterparty risk, and fractional point liabilities.
+            </p>
+            <p className="font-mono text-[11px] text-[#05131c] font-semibold pt-1">
+              Solana Sealevel Runtime // 400ms Finality // &lt; $0.0001 Gas
+            </p>
+          </div>
 
-          <Link
-            href="/docs"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-normal text-sm bg-white/[0.08] text-white hover:bg-white/[0.14] border border-[#d3dde2]/25 hover:border-[#d3dde2]/45 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
-          >
-            Architecture Specs
-          </Link>
         </div>
 
-        {/* Quick Technical Invariant Specs */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-[11px] font-mono text-[#d3dde2]/60">
-          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ SPEC: SPL 0-DECIMALS ]</span>
-          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ SEED: DETERMINISTIC PDAS ]</span>
-          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ AUDIT: PROOF-OF-BURN ]</span>
-          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ RUNTIME: SEALEVEL PARALLEL ]</span>
-        </div>
       </section>
 
       {/* =========================================================================

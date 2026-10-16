@@ -13,6 +13,28 @@ import {
   findReceiptPda,
 } from "./pda";
 
+export async function initializeProgram(
+  program: Program<Pointpass>,
+  merchant: PublicKey,
+  name: string,
+  rewardCost: number | bigint | anchor.BN
+): Promise<string> {
+  const [loyaltyProgramPda] = findLoyaltyProgramPda(merchant, program.programId);
+  const [pointsMintPda] = findPointsMintPda(loyaltyProgramPda, program.programId);
+  const bnRewardCost = new anchor.BN(rewardCost.toString());
+
+  return await program.methods
+    .initializeProgram(name, bnRewardCost)
+    .accountsStrict({
+      merchant,
+      loyaltyProgram: loyaltyProgramPda,
+      pointsMint: pointsMintPda,
+      tokenProgram: TOKEN_PROGRAM_ID,
+      systemProgram: SystemProgram.programId,
+    })
+    .rpc();
+}
+
 export async function awardPoints(
   program: Program<Pointpass>,
   merchant: PublicKey,

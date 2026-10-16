@@ -38,6 +38,16 @@ export function Header() {
             >
               Customer
             </Link>
+            <Link
+              href="/merchant"
+              className={`px-3 py-1.5 rounded-lg transition-colors ${
+                pathname.startsWith("/merchant")
+                  ? "bg-neutral-200/70 dark:bg-neutral-800 text-neutral-900 dark:text-white"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+            >
+              Merchant
+            </Link>
           </nav>
 
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 border border-amber-300 dark:border-amber-700">

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import * as anchor from "@coral-xyz/anchor";
 import { PublicKey } from "@solana/web3.js";
 import { useConnection } from "@solana/wallet-adapter-react";
 import { getProgram } from "@/lib/program";
@@ -6,6 +7,7 @@ import { findLoyaltyProgramPda } from "@/lib/pda";
 
 export interface ReceiptItem {
   pubkey: PublicKey;
+  customer: PublicKey;
   receiptNumber: number;
   pointsBurned: number;
   timestamp: number;
@@ -13,7 +15,7 @@ export interface ReceiptItem {
 
 export function useReceipts(
   merchant: PublicKey | null,
-  customer: PublicKey | null
+  customer?: PublicKey | null
 ) {
   const { connection } = useConnection();
   const [data, setData] = useState<ReceiptItem[] | null>(null);
@@ -24,7 +26,7 @@ export function useReceipts(
   const customerKey = customer ? customer.toBase58() : null;
 
   const fetchReceiptsData = useCallback(async () => {
-    if (!merchantKey || !customerKey) {
+    if (!merchantKey) {
       setData(null);
       setError(null);
       setLoading(false);
@@ -32,25 +34,30 @@ export function useReceipts(
     }
     try {
       const merchantPubkey = new PublicKey(merchantKey);
-      const customerPubkey = new PublicKey(customerKey);
       const [loyaltyProgramPda] = findLoyaltyProgramPda(merchantPubkey);
       const program = getProgram(connection);
 
-      // Filter customer at byte offset 8, and loyalty_program at byte offset 40
-      const accounts = await program.account.redemptionReceipt.all([
-        {
-          memcmp: {
-            offset: 8,
-            bytes: customerPubkey.toBase58(),
-          },
-        },
+      // Loyalty Program filter at byte offset 40
+      const filters: anchor.web3.GetProgramAccountsFilter[] = [
         {
           memcmp: {
             offset: 40,
             bytes: loyaltyProgramPda.toBase58(),
           },
         },
-      ]);
+      ];
+
+      // Optional Customer filter at byte offset 8
+      if (customerKey) {
+        filters.push({
+          memcmp: {
+            offset: 8,
+            bytes: customerKey,
+          },
+        });
+      }
+
+      const accounts = await program.account.redemptionReceipt.all(filters);
 
       // Sort newest first
       accounts.sort(
@@ -61,6 +68,7 @@ export function useReceipts(
 
       const items: ReceiptItem[] = accounts.map((acc) => ({
         pubkey: acc.publicKey,
+        customer: acc.account.customer,
         receiptNumber: acc.account.receiptNumber.toNumber(),
         pointsBurned: acc.account.pointsBurned.toNumber(),
         timestamp: acc.account.timestamp.toNumber(),

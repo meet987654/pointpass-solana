@@ -527,76 +527,96 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Column: 2x2 Grid with 3 Dark Horizon Cards + 1 Light Ash Card */}
+          {/* Right Column: 2x2 Grid with 3 VIBRANT HORIZON GRADIENT CARDS + 1 LIGHT ASH CARD */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            {/* Card 1: Top-Left Dark Horizon Card */}
-            <div className="rounded-[22px] border border-[#d3dde2]/15 bg-gradient-to-b from-[#0b1f2b] via-[#0d2737] to-[#12364c] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] group hover:border-[#3c9bc3]/40 transition-all duration-300">
-              <span className="text-xs font-mono text-[#d3dde2]/70 block font-normal">
+            {/* Card 1: Top-Left Card with VISIBLE Horizon Gradient (matching reference image) */}
+            <div
+              className="rounded-[22px] border border-[#d3dde2]/25 p-6 sm:p-7 flex flex-col justify-between min-h-[225px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.85)] group hover:border-white/40 transition-all duration-300 relative overflow-hidden"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(142, 194, 218, 0.45) 0%, transparent 60%), linear-gradient(180deg, #071622 0%, #0c273a 35%, #184e6e 65%, #347c9d 85%, #6ea8bf 100%)",
+              }}
+            >
+              <span className="text-xs font-mono text-[#d3dde2]/85 block font-normal z-10">
                 01 // Program Init
               </span>
-              <div className="space-y-1.5 pt-6">
-                <div className="font-display text-3xl sm:text-4xl font-medium text-white tracking-tight">
+              <div className="space-y-1.5 pt-6 z-10">
+                <div className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight drop-shadow-sm">
                   1 PDA
                 </div>
-                <p className="text-xs font-mono text-[#93c0d2] leading-snug">
+                <p className="text-xs font-mono text-white font-medium leading-snug drop-shadow-sm">
                   initialize_loyalty_program
                 </p>
-                <p className="text-[11px] text-[#d3dde2]/60 font-sans leading-normal">
+                <p className="text-[11px] text-white/85 font-sans leading-normal">
                   Merchant configuration and zero-decimal SPL mint genesis
                 </p>
               </div>
             </div>
 
-            {/* Card 2: Top-Right Dark Horizon Card */}
-            <div className="rounded-[22px] border border-[#d3dde2]/15 bg-gradient-to-b from-[#0b1f2b] via-[#0d2737] to-[#12364c] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] group hover:border-[#3c9bc3]/40 transition-all duration-300">
-              <span className="text-xs font-mono text-[#d3dde2]/70 block font-normal">
+            {/* Card 2: Top-Right Card with VISIBLE Horizon Gradient (matching reference image) */}
+            <div
+              className="rounded-[22px] border border-[#d3dde2]/25 p-6 sm:p-7 flex flex-col justify-between min-h-[225px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.85)] group hover:border-white/40 transition-all duration-300 relative overflow-hidden"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(142, 194, 218, 0.45) 0%, transparent 60%), linear-gradient(180deg, #071622 0%, #0c273a 35%, #184e6e 65%, #347c9d 85%, #6ea8bf 100%)",
+              }}
+            >
+              <span className="text-xs font-mono text-[#d3dde2]/85 block font-normal z-10">
                 02 // Pass Derivation
               </span>
-              <div className="space-y-1.5 pt-6">
-                <div className="font-display text-3xl sm:text-4xl font-medium text-white tracking-tight">
+              <div className="space-y-1.5 pt-6 z-10">
+                <div className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight drop-shadow-sm">
                   0 Rent
                 </div>
-                <p className="text-xs font-mono text-[#93c0d2] leading-snug">
+                <p className="text-xs font-mono text-white font-medium leading-snug drop-shadow-sm">
                   get_or_create_ata
                 </p>
-                <p className="text-[11px] text-[#d3dde2]/60 font-sans leading-normal">
+                <p className="text-[11px] text-white/85 font-sans leading-normal">
                   Customer pass derived deterministically; zero custodial liability
                 </p>
               </div>
             </div>
 
-            {/* Card 3: Bottom-Left Dark Horizon Card */}
-            <div className="rounded-[22px] border border-[#d3dde2]/15 bg-gradient-to-b from-[#0b1f2b] via-[#0d2737] to-[#12364c] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] group hover:border-[#3c9bc3]/40 transition-all duration-300">
-              <span className="text-xs font-mono text-[#d3dde2]/70 block font-normal">
+            {/* Card 3: Bottom-Left Card with VISIBLE Horizon Gradient (matching reference image) */}
+            <div
+              className="rounded-[22px] border border-[#d3dde2]/25 p-6 sm:p-7 flex flex-col justify-between min-h-[225px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.85)] group hover:border-white/40 transition-all duration-300 relative overflow-hidden"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(142, 194, 218, 0.45) 0%, transparent 60%), linear-gradient(180deg, #071622 0%, #0c273a 35%, #184e6e 65%, #347c9d 85%, #6ea8bf 100%)",
+              }}
+            >
+              <span className="text-xs font-mono text-[#d3dde2]/85 block font-normal z-10">
                 03 // Point Accrual
               </span>
-              <div className="space-y-1.5 pt-6">
-                <div className="font-display text-3xl sm:text-4xl font-medium text-white tracking-tight">
+              <div className="space-y-1.5 pt-6 z-10">
+                <div className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight drop-shadow-sm">
                   ~400ms
                 </div>
-                <p className="text-xs font-mono text-[#93c0d2] leading-snug">
+                <p className="text-xs font-mono text-white font-medium leading-snug drop-shadow-sm">
                   award_points (CPI)
                 </p>
-                <p className="text-[11px] text-[#d3dde2]/60 font-sans leading-normal">
+                <p className="text-[11px] text-white/85 font-sans leading-normal">
                   Program signer mints integer tokens to customer ATA atomically
                 </p>
               </div>
             </div>
 
             {/* Card 4: Bottom-Right HIGH-CONTRAST LIGHT CARD (Exact match to Card 4 in reference) */}
-            <div className="rounded-[22px] border border-white/40 bg-[#e5ecef] text-[#07131b] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_16px_40px_-8px_rgba(0,0,0,0.5)] group hover:bg-[#d9e4e8] transition-all duration-300">
-              <span className="text-xs font-mono text-[#07131b]/70 font-medium block">
+            <div
+              className="rounded-[22px] border border-white/60 p-6 sm:p-7 flex flex-col justify-between min-h-[225px] shadow-[0_16px_40px_-8px_rgba(0,0,0,0.5)] group hover:bg-[#d9e4e8] transition-all duration-300 relative overflow-hidden"
+              style={{
+                background: "linear-gradient(180deg, #f2f6f8 0%, #e3ecf0 60%, #cee0e7 100%)",
+              }}
+            >
+              <span className="text-xs font-mono text-[#071622]/70 font-semibold block z-10">
                 04 // Proof-of-Burn
               </span>
-              <div className="space-y-1.5 pt-6">
-                <div className="font-display text-3xl sm:text-4xl font-bold text-[#07131b] tracking-tight">
+              <div className="space-y-1.5 pt-6 z-10">
+                <div className="font-display text-3xl sm:text-4xl font-extrabold text-[#071622] tracking-tight">
                   100%
                 </div>
-                <p className="text-xs font-mono text-[#07131b] font-medium leading-snug">
+                <p className="text-xs font-mono text-[#071622] font-semibold leading-snug">
                   redeem (Receipt PDA)
                 </p>
-                <p className="text-[11px] text-[#07131b]/75 font-sans leading-normal">
+                <p className="text-[11px] text-[#071622]/75 font-sans leading-normal">
                   Tokens burned permanently; Clock timestamp audit receipt stamped
                 </p>
               </div>

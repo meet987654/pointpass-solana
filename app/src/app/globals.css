@@ -12,61 +12,68 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
 
 body {
   background-color: #050814;
   color: #fafafa;
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.012em;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Premium Multi-Layer Frosted Glassmorphism matching reference images */
+/* Headings thin style rule */
+h1, h2, h3, h4 {
+  font-weight: 300;
+  letter-spacing: -0.025em;
+}
+
+/* Premium Multi-Layer Frosted Glassmorphism */
 .glass-card {
-  background: rgba(14, 25, 55, 0.42);
+  background: rgba(14, 25, 55, 0.45);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 16px 40px -10px rgba(0, 8, 32, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
-  border-radius: 24px;
+  border-radius: 28px;
 }
 
 .glass-card:hover {
-  border-color: rgba(103, 186, 244, 0.3);
-  box-shadow: 0 20px 48px -10px rgba(29, 78, 216, 0.25), inset 0 1px 2px 0 rgba(255, 255, 255, 0.25);
+  border-color: rgba(103, 186, 244, 0.35);
+  box-shadow: 0 20px 48px -10px rgba(29, 78, 216, 0.3), inset 0 1px 2px 0 rgba(255, 255, 255, 0.28);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card-subtle {
-  background: rgba(10, 18, 42, 0.32);
+  background: rgba(10, 18, 42, 0.35);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 9999px;
 }
 
-/* Buttons matching reference images */
+/* Thin Elegant Glass Buttons */
 .btn-glass-primary {
   background-color: #ffffff;
   color: #050814;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.875rem;
-  padding: 0.625rem 1.5rem;
+  letter-spacing: -0.01em;
+  padding: 0.625rem 1.6rem;
   border-radius: 9999px;
-  box-shadow: 0 0 28px rgba(103, 186, 244, 0.4);
+  box-shadow: 0 0 28px rgba(103, 186, 244, 0.45);
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -75,20 +82,21 @@ body {
 }
 .btn-glass-primary:hover {
   background-color: #f0f7ff;
-  box-shadow: 0 0 36px rgba(103, 186, 244, 0.6);
+  box-shadow: 0 0 36px rgba(103, 186, 244, 0.65);
   transform: translateY(-1px);
 }
 
 .btn-glass-secondary {
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 300;
   font-size: 0.875rem;
-  padding: 0.625rem 1.5rem;
+  letter-spacing: -0.01em;
+  padding: 0.625rem 1.6rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -96,30 +104,21 @@ body {
   text-decoration: none;
 }
 .btn-glass-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
-}
-
-/* Luminous Gradients & Halos */
-.glow-cobalt-orb {
-  background: radial-gradient(circle, rgba(29, 78, 216, 0.5) 0%, rgba(30, 64, 175, 0.25) 45%, transparent 70%);
-}
-
-.glow-ice-horizon {
-  background: radial-gradient(ellipse at 50% 0%, rgba(103, 186, 244, 0.22) 0%, rgba(29, 78, 216, 0.08) 50%, transparent 80%);
 }
 
 /* Solana Wallet Adapter Button override to Glass Pill (ZERO ICONS) */
 .wallet-adapter-button {
   background-color: #ffffff !important;
   color: #050814 !important;
-  font-family: var(--font-inter), sans-serif !important;
+  font-family: var(--font-sans), sans-serif !important;
   font-size: 0.875rem !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   height: 38px !important;
   line-height: 38px !important;
-  padding: 0 20px !important;
+  padding: 0 22px !important;
   border-radius: 9999px !important;
   border: none !important;
   box-shadow: 0 0 22px rgba(103, 186, 244, 0.35) !important;
@@ -133,6 +132,66 @@ body {
 .wallet-adapter-button-end-icon,
 .wallet-adapter-button svg {
   display: none !important;
+}
+
+/* Backward compatibility aliases */
+.render-card {
+  background: rgba(14, 25, 55, 0.45);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 40px -10px rgba(0, 8, 32, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+  border-radius: 28px;
+}
+
+.render-card-subtle {
+  background: rgba(10, 18, 42, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #050814;
+  font-weight: 400;
+  font-size: 0.875rem;
+  padding: 0.625rem 1.6rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 28px rgba(103, 186, 244, 0.45);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background-color: #f0f7ff;
+  box-shadow: 0 0 36px rgba(103, 186, 244, 0.65);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 0.875rem;
+  padding: 0.625rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
 }
 
 /* Custom scrollbars */
@@ -149,64 +208,4 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #2563eb;
-}
-
-/* Backward compatibility aliases mapping to glassmorphism */
-.render-card {
-  background: rgba(14, 25, 55, 0.42);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 16px 40px -10px rgba(0, 8, 32, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
-  border-radius: 24px;
-}
-
-.render-card-subtle {
-  background: rgba(10, 18, 42, 0.32);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-}
-
-.btn-primary {
-  background-color: #ffffff;
-  color: #050814;
-  font-weight: 500;
-  font-size: 0.875rem;
-  padding: 0.625rem 1.5rem;
-  border-radius: 9999px;
-  box-shadow: 0 0 28px rgba(103, 186, 244, 0.4);
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-.btn-primary:hover {
-  background-color: #f0f7ff;
-  box-shadow: 0 0 36px rgba(103, 186, 244, 0.6);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 0.875rem;
-  padding: 0.625rem 1.5rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-1px);
 }

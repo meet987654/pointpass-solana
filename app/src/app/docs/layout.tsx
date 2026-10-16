@@ -59,7 +59,7 @@ export default function DocsLayout({
           <div className="sticky top-28 space-y-7 glass-card p-6">
             {navSections.map((sec) => (
               <div key={sec.title} className="space-y-2.5">
-                <h3 className="text-[11px] font-mono font-semibold tracking-wider text-[#67baf4]">
+                <h3 className="text-[11px] font-mono font-light tracking-wider text-[#67baf4]">
                   {sec.title}
                 </h3>
                 <ul className="space-y-1.5">

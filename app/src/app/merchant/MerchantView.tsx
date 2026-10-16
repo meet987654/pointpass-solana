@@ -135,7 +135,7 @@ export function MerchantView() {
           <div className="inline-block px-4 py-1.5 rounded-full glass-pill text-xs font-mono text-[#67baf4]">
             MERCHANT CONSOLE
           </div>
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">Merchant Authority Terminal</h1>
+          <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-white">Merchant Authority Terminal</h1>
           <p className="text-xs text-blue-100/70 leading-relaxed font-normal">
             Connect your merchant wallet to initialize your on-chain store loyalty program, issue zero-decimal SPL loyalty tokens to customers, and audit redemption receipts.
           </p>
@@ -184,7 +184,7 @@ export function MerchantView() {
             <span className="text-xs font-mono uppercase tracking-widest text-blue-200/60 font-semibold block">
               STATUS: UNINITIALIZED
             </span>
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-light tracking-tight text-white">
               Initialize Your Store Loyalty Program
             </h2>
             <p className="text-xs text-blue-100/70 max-w-xl font-normal">
@@ -244,7 +244,7 @@ export function MerchantView() {
                 <span className="text-xs font-mono uppercase tracking-wider text-blue-200/60 block mb-1">
                   REGISTERED LOYALTY PROGRAM
                 </span>
-                <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+                <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
                   {programData.name}
                 </h1>
               </div>
@@ -312,7 +312,7 @@ export function MerchantView() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-semibold block mb-1">
                 ISSUE REWARDS
               </span>
-              <h2 className="text-xl font-semibold tracking-tight text-white">
+              <h2 className="text-xl font-light tracking-tight text-white">
                 Award Points to Customer
               </h2>
               <p className="text-xs text-blue-100/70 mt-1 font-mono">
@@ -374,7 +374,7 @@ export function MerchantView() {
                 <span className="text-xs font-mono uppercase tracking-widest text-blue-200/60 block mb-1">
                   ON-CHAIN AUDIT LOG
                 </span>
-                <h2 className="text-xl font-semibold tracking-tight text-white">
+                <h2 className="text-xl font-light tracking-tight text-white">
                   Customer Redemption Receipts
                 </h2>
               </div>

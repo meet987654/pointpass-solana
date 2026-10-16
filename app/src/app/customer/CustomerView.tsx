@@ -115,7 +115,7 @@ export function CustomerView() {
           <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-semibold block mb-1">
             CUSTOMER TERMINAL
           </span>
-          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+          <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
             Loyalty Pass &amp; Rewards
           </h1>
         </div>
@@ -215,7 +215,7 @@ export function CustomerView() {
         ) : (
           <div className="space-y-5">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-white">
+              <h2 className="text-2xl font-light tracking-tight text-white">
                 {programData.name}
               </h2>
               <p className="text-xs text-blue-200/70 font-mono mt-1">

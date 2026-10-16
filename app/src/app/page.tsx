@@ -70,19 +70,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 1B: SHOWCASE GLASS CARDS (EXACT REFERENCE LAYOUT & DESIGNING) */}
-      <section className="relative py-16 max-w-7xl mx-auto px-4 sm:px-8 mb-16 overflow-hidden rounded-[44px]">
-        {/* Swirling Silky Blue Ribbon Background Layer */}
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden rounded-[44px]">
+      {/* SECTION 1B: SHOWCASE GLASS CARDS (FULL-SCREEN EDGE-TO-EDGE BACKGROUND) */}
+      <section className="relative w-full py-24 border-y border-white/[0.08] overflow-hidden my-8">
+        {/* Full-Screen Edge-to-Edge Silky Blue Ribbon Background Layer */}
+        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-85 scale-105"
             style={{ backgroundImage: `url('/blue-ribbon-vortex-bg.jpg')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/30 via-[#050814]/10 to-[#050814]/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/40 via-transparent to-[#050814]/50" />
+          <div className="absolute inset-0 backdrop-blur-[1px]" />
         </div>
 
-        {/* 3-Column Exact Reference Glassmorphic Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+          {/* 3-Column Exact Reference Glassmorphic Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           
           {/* Card 1: Reference Design Master Card */}
           <div className="glass-card-reference p-7 sm:p-9 flex flex-col justify-between min-h-[480px] relative group">
@@ -207,6 +209,7 @@ export default function Home() {
             </div>
           </div>
 
+        </div>
         </div>
       </section>
 
@@ -475,15 +478,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 4: HOW IT WORKS / 4-STEP TIMELINE (EXACT LUMINOUS GRADIENT CARD DESIGN) */}
-      <section className="relative py-24 max-w-7xl mx-auto px-4 sm:px-8 my-16 overflow-hidden rounded-[44px]">
-        {/* Luminous Gradient Aurora Curtains Background Layer */}
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden rounded-[44px]">
+      {/* SECTION 4: HOW IT WORKS / 4-STEP TIMELINE (FULL-SCREEN EDGE-TO-EDGE BACKGROUND) */}
+      <section className="relative w-full py-28 border-y border-white/[0.08] overflow-hidden my-8">
+        {/* Full-Screen Edge-to-Edge Luminous Silky Drapery Background */}
+        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-85 scale-105"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90 scale-105"
             style={{ backgroundImage: `url('/luminous-gradient-bg.jpg')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/35 via-transparent to-[#050814]/45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/40 via-transparent to-[#050814]/50" />
+          <div className="absolute inset-0 backdrop-blur-[1px]" />
         </div>
 
         <div className="space-y-12 relative z-10">

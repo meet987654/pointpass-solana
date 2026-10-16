@@ -41,38 +41,6 @@ export default function Home() {
               </span>
             </h1>
           </div>
-
-          {/* Dual Specimen Columns directly underneath the title */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl pt-2">
-            
-            {/* Column 1: Latin Character Set & Token Standard */}
-            <div className="font-mono text-xs text-[#d3dde2]/80 leading-relaxed space-y-1.5">
-              <p className="tracking-wide text-white/90">
-                Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo
-              </p>
-              <p className="tracking-wide text-white/90">
-                Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 01 23 45 67 89
-              </p>
-              <p className="text-[11px] text-[#93c0d2] pt-1">
-                SPL STANDARD // 0-DECIMALS // NON-CUSTODIAL
-              </p>
-            </div>
-
-            {/* Column 2: Cyrillic Glyphs & Deterministic Solana Seeds */}
-            <div className="font-mono text-xs text-[#d3dde2]/80 leading-relaxed space-y-1.5">
-              <p className="tracking-wide text-white/90">
-                Аа Бб Вв Гг Дд Ее Жж Зз Ии Йй Кк Лл Мм Нн Оо
-              </p>
-              <p className="tracking-wide text-white/90">
-                Пп Рр Сс Тт Уу Фф Хх Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ
-              </p>
-              <p className="text-[11px] text-[#93c0d2] pt-1">
-                DETERMINISTIC PDAS // ED25519 // PROOF-OF-BURN
-              </p>
-            </div>
-
-          </div>
-
         </div>
 
         {/* Bottom Region: Outline Button Box on Left + Multi-line Architectural Paragraph on Right */}

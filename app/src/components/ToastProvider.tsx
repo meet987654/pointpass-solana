@@ -42,22 +42,22 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`pointer-events-auto rounded-xl p-4 shadow-lg border text-sm flex flex-col gap-1 transition-all animate-in slide-in-from-bottom-2 ${
+            className={`pointer-events-auto rounded-[4px] p-4 text-xs font-mono shadow-2xl border flex flex-col gap-1.5 transition-all animate-in slide-in-from-bottom-2 ${
               toast.type === "success"
-                ? "bg-green-950/95 border-green-800 text-green-100"
+                ? "bg-[#0d1510] border-emerald-900/80 text-emerald-300"
                 : toast.type === "error"
-                ? "bg-rose-950/95 border-rose-800 text-rose-100"
-                : "bg-neutral-900/95 border-neutral-700 text-neutral-100"
+                ? "bg-[#180d0d] border-rose-900/80 text-rose-300"
+                : "bg-[#111114] border-[#27272a] text-neutral-200"
             }`}
           >
-            <div className="flex items-start justify-between gap-2">
-              <span className="font-medium leading-snug">{toast.message}</span>
+            <div className="flex items-start justify-between gap-3 font-sans">
+              <span className="font-medium text-xs leading-snug">{toast.message}</span>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="text-xs opacity-60 hover:opacity-100 px-1"
+                className="text-[11px] font-mono text-neutral-400 hover:text-white px-1 cursor-pointer"
                 aria-label="Close notification"
               >
-                ✕
+                [x]
               </button>
             </div>
             {toast.txSignature && (
@@ -65,9 +65,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                 href={getExplorerTxUrl(toast.txSignature, "devnet")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs underline underline-offset-2 opacity-90 hover:opacity-100 mt-1 inline-flex items-center gap-1 text-emerald-300"
+                className="text-[11px] font-mono underline underline-offset-2 opacity-90 hover:opacity-100 text-purple-400"
               >
-                Open in Solana Explorer (devnet) ↗
+                Open in Solana Explorer (devnet) -&gt;
               </a>
             )}
           </div>

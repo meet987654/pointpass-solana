@@ -4,71 +4,55 @@ import Link from "next/link";
 
 export default function DocsSdkPage() {
   return (
-    <div className="space-y-8">
-      <div className="border-b border-white/[0.08] pb-6">
-        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400 block mb-2">
-          Developer Reference
+    <div className="space-y-8 text-neutral-200">
+      <div className="border-b border-[#1c1c22] pb-6 space-y-2">
+        <span className="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 block">
+          TOOLING
         </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-          TypeScript Client SDK Reference
+        <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-white">
+          TypeScript Client SDK
         </h1>
-        <p className="text-base text-neutral-400 leading-relaxed">
-          The PointPass client library (<code className="text-emerald-400">@/lib/actions</code>) exposes pure functions taking Anchor <code className="text-neutral-200">Program</code> instances, allowing seamless execution across both browser wallets and headless CLI automation.
+        <p className="text-sm text-[#a1a1aa] leading-relaxed max-w-2xl">
+          PointPass ships with client helper functions that resolve PDA seeds, find Associated Token Accounts, and construct Anchor transactions.
         </p>
       </div>
 
       <div className="space-y-6">
-        <div className="space-y-3">
-          <h2 className="text-xl font-bold text-white font-mono">awardPoints(...)</h2>
-          <p className="text-sm text-neutral-400">
-            Awards zero-decimal SPL loyalty tokens from a merchant to a customer. Automatically provisions the customer ATA if necessary.
-          </p>
-          <pre className="p-4 rounded-2xl bg-black/60 border border-white/[0.08] text-xs font-mono text-emerald-300 overflow-x-auto">
-{`const txSignature = await awardPoints(
+        <div className="render-card p-5 space-y-3">
+          <span className="text-xs font-mono text-purple-400 font-semibold block">AWARD POINTS CPI</span>
+          <pre className="p-3.5 rounded-[4px] bg-[#0c0c0e] border border-[#1c1c22] text-xs font-mono text-[#d4d4d8] overflow-x-auto leading-relaxed">
+{`import { awardPoints, getProgram } from "@/lib";
+
+const txSig = await awardPoints(
   program,
-  merchantPublicKey,
-  customerPublicKey,
-  10 // Amount of points
+  merchantWallet.publicKey,
+  customerPubkey,
+  50 // 50 loyalty points
 );`}
           </pre>
         </div>
 
-        <div className="space-y-3">
-          <h2 className="text-xl font-bold text-white font-mono">redeemPoints(...)</h2>
-          <p className="text-sm text-neutral-400">
-            Burns reward points from the customer token account and creates a cryptographic RedemptionReceipt PDA. Includes automatic retry on sequence race conditions.
-          </p>
-          <pre className="p-4 rounded-2xl bg-black/60 border border-white/[0.08] text-xs font-mono text-purple-300 overflow-x-auto">
-{`const txSignature = await redeemPoints(
-  program,
-  customerPublicKey,
-  merchantPublicKey
-);`}
-          </pre>
-        </div>
+        <div className="render-card p-5 space-y-3">
+          <span className="text-xs font-mono text-purple-400 font-semibold block">REDEEM POINTS &amp; RECEIPT PDA</span>
+          <pre className="p-3.5 rounded-[4px] bg-[#0c0c0e] border border-[#1c1c22] text-xs font-mono text-[#d4d4d8] overflow-x-auto leading-relaxed">
+{`import { redeemPoints } from "@/lib";
 
-        <div className="space-y-3">
-          <h2 className="text-xl font-bold text-white font-mono">initializeProgram(...)</h2>
-          <p className="text-sm text-neutral-400">
-            Initializes a new on-chain loyalty program and dedicated points mint for a merchant.
-          </p>
-          <pre className="p-4 rounded-2xl bg-black/60 border border-white/[0.08] text-xs font-mono text-cyan-300 overflow-x-auto">
-{`const txSignature = await initializeProgram(
+const txSig = await redeemPoints(
   program,
-  merchantPublicKey,
-  "Bean There Cafe", // Store name (max 32 bytes)
-  10                 // Reward cost threshold
+  customerWallet.publicKey,
+  merchantPubkey
 );`}
           </pre>
         </div>
       </div>
 
-      <div className="flex justify-between items-center pt-6 border-t border-white/[0.08]">
-        <Link href="/docs/security" className="text-sm text-neutral-400 hover:text-white">
-          ← Security &amp; Invariants
-        </Link>
-        <Link href="/" className="text-sm text-emerald-400 font-semibold hover:underline">
-          Return to Overview →
+      <div className="render-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-2 border-l-purple-500">
+        <div>
+          <span className="text-xs font-mono uppercase tracking-wider text-purple-400 block mb-1">TERMINAL</span>
+          <h3 className="text-base font-normal text-white">Test Customer Loyalty Pass</h3>
+        </div>
+        <Link href="/customer" className="btn-primary text-xs py-2 px-4 shrink-0 text-center">
+          Open Customer Portal &gt;
         </Link>
       </div>
     </div>

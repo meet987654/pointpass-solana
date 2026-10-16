@@ -6,13 +6,13 @@ import { useState } from "react";
 
 const navSections = [
   {
-    title: "Getting Started",
+    title: "GETTING STARTED",
     links: [
       { href: "/docs", label: "Protocol Overview" },
     ],
   },
   {
-    title: "Solana Architecture",
+    title: "SOLANA ARCHITECTURE",
     links: [
       { href: "/docs/pda", label: "PDA Seed Derivation" },
       { href: "/docs/cpi", label: "CPI & Token Minting" },
@@ -21,7 +21,7 @@ const navSections = [
     ],
   },
   {
-    title: "Developer Reference",
+    title: "DEVELOPER REFERENCE",
     links: [
       { href: "/docs/sdk", label: "TypeScript Client SDK" },
     ],
@@ -37,29 +37,29 @@ export default function DocsLayout({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10 bg-[#09090b]">
       {/* Mobile Nav Toggle */}
-      <div className="md:hidden mb-6 flex items-center justify-between p-4 rounded-xl glass-panel">
-        <span className="text-sm font-semibold text-neutral-300">Documentation Menu</span>
+      <div className="md:hidden mb-6 flex items-center justify-between p-3.5 rounded-[4px] render-card border border-[#222228]">
+        <span className="text-xs font-mono uppercase tracking-wider text-[#a1a1aa]">Documentation</span>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="px-3 py-1.5 rounded-lg bg-white/[0.08] text-xs font-semibold text-white"
+          className="px-3 py-1 rounded-[4px] bg-white text-black text-xs font-medium cursor-pointer"
         >
-          {mobileMenuOpen ? "Close Menu" : "Browse Docs"}
+          {mobileMenuOpen ? "Close" : "Menu"}
         </button>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-10">
+      <div className="flex flex-col md:flex-row gap-12">
         {/* Sidebar */}
         <aside
-          className={`w-full md:w-64 shrink-0 ${
+          className={`w-full md:w-60 shrink-0 ${
             mobileMenuOpen ? "block" : "hidden md:block"
           }`}
         >
-          <div className="sticky top-24 space-y-8">
+          <div className="sticky top-24 space-y-7">
             {navSections.map((sec) => (
               <div key={sec.title} className="space-y-2">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500 font-mono">
+                <h3 className="text-[11px] font-mono font-semibold tracking-wider text-[#71717a]">
                   {sec.title}
                 </h3>
                 <ul className="space-y-1">
@@ -70,10 +70,10 @@ export default function DocsLayout({
                         <Link
                           href={link.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`block px-3 py-2 rounded-xl text-sm transition-all ${
+                          className={`block px-2.5 py-1.5 rounded-[4px] text-xs font-normal transition-colors ${
                             isActive
-                              ? "bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20"
-                              : "text-neutral-400 hover:text-white hover:bg-white/[0.04]"
+                              ? "bg-[#18181b] text-white font-medium border-l-2 border-purple-500"
+                              : "text-[#a1a1aa] hover:text-white"
                           }`}
                         >
                           {link.label}
@@ -85,9 +85,9 @@ export default function DocsLayout({
               </div>
             ))}
 
-            <div className="p-4 rounded-2xl glass-panel border border-white/[0.08] space-y-2">
-              <span className="text-xs font-bold text-white block">Canonical Devnet ID</span>
-              <code className="text-[11px] font-mono text-emerald-400 block break-all">
+            <div className="p-3.5 render-card-subtle space-y-1.5">
+              <span className="text-[11px] font-mono uppercase text-[#71717a] block">Program ID</span>
+              <code className="text-[11px] font-mono text-purple-300 block break-all">
                 E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg
               </code>
             </div>
@@ -95,7 +95,7 @@ export default function DocsLayout({
         </aside>
 
         {/* Main Doc Content */}
-        <article className="flex-1 min-w-0 max-w-4xl">{children}</article>
+        <article className="flex-1 min-w-0 max-w-3xl">{children}</article>
       </div>
     </div>
   );

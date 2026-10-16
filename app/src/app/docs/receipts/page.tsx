@@ -4,58 +4,41 @@ import Link from "next/link";
 
 export default function DocsReceiptsPage() {
   return (
-    <div className="space-y-8">
-      <div className="border-b border-white/[0.08] pb-6">
-        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400 block mb-2">
-          Architecture Deep Dive
+    <div className="space-y-8 text-neutral-200">
+      <div className="border-b border-[#1c1c22] pb-6 space-y-2">
+        <span className="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 block">
+          ARCHITECTURE
         </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-          Proof-of-Burn Redemption Receipts
+        <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-white">
+          Proof-of-Burn Receipts
         </h1>
-        <p className="text-base text-neutral-400 leading-relaxed">
-          Traditional loyalty programs hide reward redemptions in private databases. PointPass generates an immutable on-chain cryptographic receipt on Solana Devnet whenever loyalty tokens are burned.
+        <p className="text-sm text-[#a1a1aa] leading-relaxed max-w-2xl">
+          PointPass ensures that reward redemptions cannot be forged or double-spent by burning SPL tokens and recording a permanent on-chain receipt PDA.
         </p>
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-white tracking-tight">Account Structure</h2>
-        <p className="text-sm text-neutral-400 leading-relaxed">
-          Each receipt is stored as a dedicated on-chain account with a fixed byte footprint:
-        </p>
-
-        <pre className="p-4 rounded-2xl bg-black/60 border border-white/[0.08] text-xs font-mono text-purple-300 overflow-x-auto">
+        <h2 className="text-xl font-normal text-white tracking-tight">Receipt PDA Layout</h2>
+        <pre className="p-4 rounded-[4px] bg-[#0c0c0e] border border-[#1c1c22] text-xs font-mono text-[#d4d4d8] overflow-x-auto leading-relaxed">
 {`#[account]
 pub struct RedemptionReceipt {
-    pub customer: Pubkey,         // 32 bytes (offset 8)
-    pub loyalty_program: Pubkey,  // 32 bytes (offset 40)
-    pub receipt_number: u64,      // 8 bytes (offset 72)
-    pub points_burned: u64,       // 8 bytes (offset 80)
-    pub timestamp: i64,           // 8 bytes (offset 88)
-    pub bump: u8,                 // 1 byte  (offset 96)
+    pub customer: Pubkey,         // 32 bytes (customer who burned)
+    pub loyalty_program: Pubkey,  // 32 bytes (issuing store)
+    pub receipt_number: u64,      // 8 bytes (monotonic counter)
+    pub points_burned: u64,       // 8 bytes (points burned)
+    pub timestamp: i64,           // 8 bytes (Solana Clock unix timestamp)
+    pub bump: u8,                 // 1 byte (canonical PDA bump)
 }`}
         </pre>
       </div>
 
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-white tracking-tight">Querying with memcmp Compound Filters</h2>
-        <p className="text-sm text-neutral-400 leading-relaxed">
-          Because the customer address is fixed at byte offset 8 and the loyalty program at byte offset 40, clients query Solana RPC nodes with memory comparison filters (<code className="text-neutral-200">memcmp</code>) for sub-second indexed receipt lookups without indexing servers:
-        </p>
-
-        <pre className="p-4 rounded-2xl bg-black/60 border border-white/[0.08] text-xs font-mono text-emerald-300 overflow-x-auto">
-{`const receipts = await program.account.redemptionReceipt.all([
-  { memcmp: { offset: 8, bytes: customerPublicKey.toBase58() } },
-  { memcmp: { offset: 40, bytes: loyaltyProgramPda.toBase58() } },
-]);`}
-        </pre>
-      </div>
-
-      <div className="flex justify-between items-center pt-6 border-t border-white/[0.08]">
-        <Link href="/docs/cpi" className="text-sm text-neutral-400 hover:text-white">
-          ← CPI &amp; Token Minting
-        </Link>
-        <Link href="/docs/security" className="text-sm text-emerald-400 font-semibold hover:underline">
-          Security &amp; Invariants →
+      <div className="render-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-2 border-l-purple-500">
+        <div>
+          <span className="text-xs font-mono uppercase tracking-wider text-purple-400 block mb-1">NEXT SECTION</span>
+          <h3 className="text-base font-normal text-white">Security &amp; Invariants</h3>
+        </div>
+        <Link href="/docs/security" className="btn-primary text-xs py-2 px-4 shrink-0 text-center">
+          Read Security Guide &gt;
         </Link>
       </div>
     </div>

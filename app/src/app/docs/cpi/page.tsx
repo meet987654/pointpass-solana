@@ -4,32 +4,31 @@ import Link from "next/link";
 
 export default function DocsCpiPage() {
   return (
-    <div className="space-y-8">
-      <div className="border-b border-white/[0.08] pb-6">
-        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-emerald-400 block mb-2">
-          Architecture Deep Dive
+    <div className="space-y-8 text-neutral-200">
+      <div className="border-b border-[#1c1c22] pb-6 space-y-2">
+        <span className="text-xs font-mono font-semibold uppercase tracking-widest text-purple-400 block">
+          ARCHITECTURE
         </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
+        <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-white">
           Cross-Program Invocations (CPI)
         </h1>
-        <p className="text-base text-neutral-400 leading-relaxed">
-          Cross-Program Invocations allow PointPass to securely execute instructions on the official Solana SPL Token Program without human private key intervention.
+        <p className="text-sm text-[#a1a1aa] leading-relaxed max-w-2xl">
+          PointPass delegates token minting and burning to the Solana SPL Token program using Cross-Program Invocations signed with PDA seeds.
         </p>
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-white tracking-tight">How Points Are Minted via PDA Signer</h2>
-        <p className="text-sm text-neutral-400 leading-relaxed">
-          The <code className="text-emerald-400">PointsMint</code> SPL token mint authority belongs exclusively to the <code className="text-emerald-400">LoyaltyProgram</code> PDA. During <code className="text-white font-mono">award_points</code>, PointPass calls the SPL Token Program using <code className="text-neutral-200 font-mono">token::mint_to</code> signed with the PDA seeds and bump.
+        <h2 className="text-xl font-normal text-white tracking-tight">Signing with PDA Seeds (CpiContext::new_with_signer)</h2>
+        <p className="text-xs text-[#a1a1aa] leading-relaxed">
+          Because the mint authority is the LoyaltyProgram PDA, the program signs the SPL token instruction without a private key:
         </p>
-
-        <pre className="p-4 rounded-2xl bg-black/60 border border-white/[0.08] text-xs font-mono text-emerald-300 overflow-x-auto">
-{`let loyalty_seeds: &[&[u8]] = &[
-    LOYALTY_PROGRAM_SEED,
+        <pre className="p-4 rounded-[4px] bg-[#0c0c0e] border border-[#1c1c22] text-xs font-mono text-[#d4d4d8] overflow-x-auto leading-relaxed">
+{`let seeds: &[&[u8]] = &[
+    b"loyalty",
     merchant_key.as_ref(),
-    &[ctx.accounts.loyalty_program.bump],
+    &[loyalty_program.bump],
 ];
-let signer_seeds = &[&loyalty_seeds[..]];
+let signer_seeds = &[seeds];
 
 token::mint_to(
     CpiContext::new_with_signer(
@@ -41,24 +40,18 @@ token::mint_to(
         },
         signer_seeds,
     ),
-    amount,
+    points,
 )?;`}
         </pre>
       </div>
 
-      <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-white tracking-tight">Why Redeem Does Not Require PDA Signing</h2>
-        <p className="text-sm text-neutral-400 leading-relaxed">
-          In <code className="text-white font-mono">redeem</code>, tokens are burned directly from the customer&apos;s Associated Token Account (ATA). Because the customer is the authority of their own ATA and is a direct transaction signer, the CPI call uses standard <code className="text-neutral-200 font-mono">CpiContext::new</code> without PDA signing seeds.
-        </p>
-      </div>
-
-      <div className="flex justify-between items-center pt-6 border-t border-white/[0.08]">
-        <Link href="/docs/pda" className="text-sm text-neutral-400 hover:text-white">
-          ← PDA Seed Derivation
-        </Link>
-        <Link href="/docs/receipts" className="text-sm text-emerald-400 font-semibold hover:underline">
-          Proof-of-Burn Receipts →
+      <div className="render-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-l-2 border-l-purple-500">
+        <div>
+          <span className="text-xs font-mono uppercase tracking-wider text-purple-400 block mb-1">NEXT SECTION</span>
+          <h3 className="text-base font-normal text-white">Proof-of-Burn Receipts</h3>
+        </div>
+        <Link href="/docs/receipts" className="btn-primary text-xs py-2 px-4 shrink-0 text-center">
+          Read Receipts Guide &gt;
         </Link>
       </div>
     </div>

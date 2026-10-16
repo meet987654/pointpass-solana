@@ -135,15 +135,15 @@ export function MerchantView() {
   if (!connected || !publicKey) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="glass-panel rounded-3xl border border-white/[0.08] p-10 text-center max-w-lg mx-auto shadow-sm">
-          <div className="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-950 flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl font-bold mx-auto mb-5">
-            🏪
+        <div className="render-card p-8 sm:p-12 text-center max-w-lg mx-auto space-y-6">
+          <div className="inline-block px-3 py-1 rounded-[4px] bg-[#18181b] border border-[#27272a] text-xs font-mono text-purple-400">
+            MERCHANT CONSOLE
           </div>
-          <h1 className="text-2xl font-bold mb-3">Merchant Dashboard</h1>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
-            Connect your merchant wallet to initialize your store loyalty program, issue zero-decimal SPL loyalty tokens to customers, and audit on-chain redemption receipts.
+          <h1 className="text-2xl font-normal tracking-tight text-white">Merchant Authority Terminal</h1>
+          <p className="text-xs text-[#a1a1aa] leading-relaxed">
+            Connect your merchant wallet to initialize your on-chain store loyalty program, issue zero-decimal SPL loyalty tokens to customers, and audit redemption receipts.
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center pt-2">
             <WalletMultiButtonDynamic />
           </div>
         </div>
@@ -152,51 +152,53 @@ export function MerchantView() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
+    <div className="max-w-5xl mx-auto px-4 sm:px-8 py-10 space-y-6">
       {/* Merchant Header Bar */}
-      <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <span className="text-xs uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold block mb-1">
-            Connected Merchant Wallet
+      <div className="render-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <span className="text-xs font-mono uppercase tracking-widest text-purple-400 font-semibold block">
+            CONNECTED MERCHANT WALLET
           </span>
-          <span className="text-sm font-mono font-medium text-neutral-900 dark:text-white break-all">
+          <span className="text-xs font-mono text-neutral-200 break-all">
             {publicKey.toBase58()}
           </span>
         </div>
         <button
           onClick={handleRefreshAll}
-          className="px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs font-semibold text-neutral-700 dark:text-neutral-300 transition-colors self-start sm:self-auto cursor-pointer"
+          className="btn-secondary text-xs py-1.5 px-3 self-start sm:self-auto cursor-pointer"
         >
-          ↻ Refresh
+          Refresh State
         </button>
       </div>
 
       {programLoading ? (
-        <div className="glass-panel rounded-2xl border border-white/[0.08] p-8 animate-pulse space-y-4">
-          <div className="h-6 bg-neutral-200 dark:bg-neutral-800 rounded w-1/3" />
-          <div className="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-1/2" />
+        <div className="render-card p-8 animate-pulse space-y-3">
+          <div className="h-5 bg-[#18181b] rounded w-1/4" />
+          <div className="h-4 bg-[#18181b] rounded w-1/2" />
         </div>
       ) : programError ? (
-        <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-2xl p-6 text-sm text-red-700 dark:text-red-300">
-          <p className="font-semibold mb-1">Error loading loyalty program:</p>
-          <p className="font-mono text-xs">{programError}</p>
+        <div className="render-card p-6 bg-rose-950/20 border-rose-900/80 text-xs font-mono text-rose-300">
+          <p className="font-semibold mb-1">Error querying program:</p>
+          <p>{programError}</p>
         </div>
       ) : !programData ? (
         /* Uninitialized State: Initialize Form */
-        <div className="glass-panel rounded-2xl border border-white/[0.08] p-8 shadow-sm space-y-6">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-1">
-              No Program Initialized Yet
+        <div className="render-card p-6 sm:p-8 space-y-6">
+          <div className="space-y-1">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#71717a] font-semibold block">
+              STATUS: UNINITIALIZED
             </span>
-            <h2 className="text-2xl font-bold tracking-tight">Initialize Your Loyalty Program</h2>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
-              Deploy your on-chain LoyaltyProgram PDA and custom Points SPL Mint. Once created, you can issue loyalty points to any Solana address.
+            <h2 className="text-2xl font-normal tracking-tight text-white">
+              Initialize Your Store Loyalty Program
+            </h2>
+            <p className="text-xs text-[#a1a1aa] max-w-xl">
+              Deploys your on-chain LoyaltyProgram PDA and custom Points SPL Mint on Solana Devnet.
             </p>
           </div>
 
           <form onSubmit={handleInitialize} className="space-y-4 max-w-lg">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
+              <label className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-1.5">
                 Business / Store Name
               </label>
               <input
@@ -205,14 +207,14 @@ export function MerchantView() {
                 maxLength={32}
                 onChange={(e) => setInitName(e.target.value)}
                 placeholder="e.g. Bean There Cafe"
-                className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3.5 py-2 text-xs rounded-[4px] border border-[#27272a] bg-[#0c0c0e] text-neutral-100 font-mono focus:outline-none focus:border-neutral-400"
                 required
               />
-              <span className="text-xs text-neutral-400 mt-1 block">Maximum 32 bytes UTF-8 payload.</span>
+              <span className="text-[11px] font-mono text-[#71717a] mt-1 block">Maximum 32 bytes UTF-8 string.</span>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
+              <label className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-1.5">
                 Reward Threshold (Points to Burn)
               </label>
               <input
@@ -222,16 +224,16 @@ export function MerchantView() {
                 value={initRewardCost}
                 onChange={(e) => setInitRewardCost(e.target.value)}
                 placeholder="10"
-                className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3.5 py-2 text-xs rounded-[4px] border border-[#27272a] bg-[#0c0c0e] text-neutral-100 font-mono focus:outline-none focus:border-neutral-400"
                 required
               />
-              <span className="text-xs text-neutral-400 mt-1 block">Number of points required for a customer to redeem 1 reward.</span>
+              <span className="text-[11px] font-mono text-[#71717a] mt-1 block">Number of points required for customer to claim a reward.</span>
             </div>
 
             <button
               type="submit"
               disabled={isInitializing}
-              className="px-6 py-2.5 rounded-xl font-semibold text-sm bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-wait"
+              className="btn-primary text-xs py-2 px-6 cursor-pointer disabled:opacity-50"
             >
               {isInitializing ? "Initializing On-Chain..." : "Initialize Loyalty Program"}
             </button>
@@ -241,85 +243,92 @@ export function MerchantView() {
         /* Initialized State: Program Stats & Award Points Form */
         <>
           {/* Program Overview Card */}
-          <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 sm:p-8 shadow-sm space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 dark:border-neutral-800 pb-4">
+          <div className="render-card p-6 sm:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1c1c22] pb-4">
               <div>
-                <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">
-                  Active Loyalty Program
+                <span className="text-xs font-mono uppercase tracking-wider text-[#71717a] block mb-1">
+                  REGISTERED LOYALTY PROGRAM
                 </span>
-                <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+                <h1 className="text-2xl sm:text-3xl font-normal tracking-tight text-white">
                   {programData.name}
                 </h1>
               </div>
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 self-start sm:self-auto">
-                Reward Cost: {programData.rewardCost} Points
+              <span className="px-2.5 py-1 rounded-[3px] text-xs font-mono bg-purple-950/60 border border-purple-800 text-purple-300 self-start sm:self-auto">
+                Threshold: {programData.rewardCost} Points
               </span>
             </div>
 
             {/* Stat Counters Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="rounded-xl p-4 bg-white/[0.02] border border-white/[0.06]">
-                <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">Total Points Awarded</span>
-                <span className="text-2xl font-bold font-mono text-neutral-900 dark:text-white">
-                  {programData.totalAwarded}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="render-card-subtle p-3.5 space-y-1">
+                <span className="text-[11px] font-mono text-[#71717a] uppercase tracking-wider block">
+                  Total Points Awarded
+                </span>
+                <span className="text-xl font-mono font-medium text-white">
+                  {programData.totalAwarded} pts
                 </span>
               </div>
-              <div className="rounded-xl p-4 bg-white/[0.02] border border-white/[0.06]">
-                <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">Total Points Redeemed</span>
-                <span className="text-2xl font-bold font-mono text-neutral-900 dark:text-white">
-                  {programData.totalRedeemed}
+              <div className="render-card-subtle p-3.5 space-y-1">
+                <span className="text-[11px] font-mono text-[#71717a] uppercase tracking-wider block">
+                  Total Points Burned
+                </span>
+                <span className="text-xl font-mono font-medium text-white">
+                  {programData.totalRedeemed} pts
                 </span>
               </div>
-              <div className="rounded-xl p-4 bg-white/[0.02] border border-white/[0.06]">
-                <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">Redemption Receipts</span>
-                <span className="text-2xl font-bold font-mono text-neutral-900 dark:text-white">
+              <div className="render-card-subtle p-3.5 space-y-1">
+                <span className="text-[11px] font-mono text-[#71717a] uppercase tracking-wider block">
+                  Redemption Receipts
+                </span>
+                <span className="text-xl font-mono font-medium text-white">
                   {programData.redemptionCount}
                 </span>
               </div>
             </div>
 
-            {/* PDA Links */}
-            <div className="pt-2 flex flex-col sm:flex-row gap-4 text-xs font-mono">
+            <div className="flex flex-col sm:flex-row gap-4 text-xs font-mono text-[#71717a] border-t border-[#1c1c22] pt-4">
               <div className="flex-1 truncate">
-                <span className="text-neutral-500 font-sans block mb-1">Loyalty Program PDA:</span>
+                <span className="text-[#71717a] block mb-0.5">Program PDA:</span>
                 <a
                   href={getExplorerAddressUrl(programData.programPda, "devnet")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-600 dark:text-purple-400 hover:underline"
+                  className="text-purple-400 hover:text-purple-300"
                 >
-                  {programData.programPda.toBase58()}
+                  {programData.programPda.toBase58()} [Explorer]
                 </a>
               </div>
               <div className="flex-1 truncate">
-                <span className="text-neutral-500 font-sans block mb-1">Points Mint PDA:</span>
+                <span className="text-[#71717a] block mb-0.5">Points Mint PDA:</span>
                 <a
                   href={getExplorerAddressUrl(programData.mintPda, "devnet")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-600 dark:text-purple-400 hover:underline"
+                  className="text-purple-400 hover:text-purple-300"
                 >
-                  {programData.mintPda.toBase58()}
+                  {programData.mintPda.toBase58()} [Explorer]
                 </a>
               </div>
             </div>
           </div>
 
           {/* Award Points Form */}
-          <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="render-card p-6 sm:p-8 space-y-6">
             <div>
-              <span className="text-xs uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold block mb-1">
-                Issue Rewards
+              <span className="text-xs font-mono uppercase tracking-widest text-purple-400 font-semibold block mb-1">
+                ISSUE REWARDS
               </span>
-              <h2 className="text-xl font-bold tracking-tight">Award Points to Customer</h2>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                Enter the customer&apos;s Solana wallet address and the number of points to mint into their token account.
+              <h2 className="text-xl font-normal tracking-tight text-white">
+                Award Points to Customer
+              </h2>
+              <p className="text-xs text-[#a1a1aa] mt-1 font-mono">
+                Mints zero-decimal SPL tokens directly into the customer&apos;s associated token account.
               </p>
             </div>
 
             <form onSubmit={handleAward} className="space-y-4 max-w-lg">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-1.5">
                   Customer Wallet Address
                 </label>
                 <input
@@ -329,17 +338,17 @@ export function MerchantView() {
                     setAwardCustomer(e.target.value);
                     if (awardAddressError) setAwardAddressError(null);
                   }}
-                  placeholder="e.g. 82NNe4itWTu8QeC3wf6FRoBrjSujkv48u1hAYYyeTgQ9"
-                  className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-transparent text-sm font-mono focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="Paste customer public key..."
+                  className="w-full px-3.5 py-2 text-xs rounded-[4px] border border-[#27272a] bg-[#0c0c0e] text-neutral-100 font-mono focus:outline-none focus:border-neutral-400"
                   required
                 />
                 {awardAddressError && (
-                  <span className="text-xs text-red-500 mt-1 block">{awardAddressError}</span>
+                  <span className="text-xs font-mono text-rose-400 mt-1 block">{awardAddressError}</span>
                 )}
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#a1a1aa] mb-1.5">
                   Points Amount
                 </label>
                 <input
@@ -349,7 +358,7 @@ export function MerchantView() {
                   value={awardAmount}
                   onChange={(e) => setAwardAmount(e.target.value)}
                   placeholder="10"
-                  className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3.5 py-2 text-xs rounded-[4px] border border-[#27272a] bg-[#0c0c0e] text-neutral-100 font-mono focus:outline-none focus:border-neutral-400"
                   required
                 />
               </div>
@@ -357,61 +366,57 @@ export function MerchantView() {
               <button
                 type="submit"
                 disabled={isAwarding}
-                className="px-6 py-2.5 rounded-xl font-semibold text-sm bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-wait"
+                className="btn-primary text-xs py-2 px-6 cursor-pointer disabled:opacity-50"
               >
-                {isAwarding ? "Awarding Points..." : "Award Points"}
+                {isAwarding ? "Minting Points on Solana..." : "Award Points"}
               </button>
             </form>
           </div>
 
           {/* Store Redemption Audit History */}
-          <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 sm:p-8 shadow-sm space-y-4">
-            <div className="flex items-center justify-between">
+          <div className="render-card p-6 sm:p-8 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#1c1c22] pb-4">
               <div>
-                <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">
-                  On-Chain Proof of Burn
+                <span className="text-xs font-mono uppercase tracking-widest text-[#71717a] block mb-1">
+                  ON-CHAIN AUDIT LOG
                 </span>
-                <h2 className="text-xl font-bold tracking-tight">Customer Redemption Receipts</h2>
+                <h2 className="text-xl font-normal tracking-tight text-white">
+                  Customer Redemption Receipts
+                </h2>
               </div>
-              <span className="text-xs font-medium text-neutral-500">
+              <span className="text-xs font-mono text-[#71717a]">
                 {receipts ? `${receipts.length} total` : "Loading..."}
               </span>
             </div>
 
             {receiptsLoading ? (
-              <div className="py-8 text-center text-sm text-neutral-500 animate-pulse">
-                Fetching on-chain receipts...
+              <div className="py-6 text-center text-xs font-mono text-[#71717a] animate-pulse">
+                Auditing on-chain receipts...
               </div>
             ) : receiptsError ? (
-              <div className="py-6 text-center text-sm text-red-500">
+              <div className="py-6 text-center text-xs font-mono text-rose-400">
                 Error loading receipts: {receiptsError}
               </div>
             ) : !receipts || receipts.length === 0 ? (
-              <div className="py-10 text-center rounded-xl rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                <span className="text-2xl block mb-2">🧾</span>
-                <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 block">
-                  No redemptions recorded yet for this store.
-                </span>
-                <span className="text-xs text-neutral-400 mt-1 block">
-                  When customers burn points at your store, permanent cryptographic receipts will appear here.
-                </span>
+              <div className="py-8 text-center rounded-[4px] bg-[#0c0c0e] border border-dashed border-[#222228] text-xs font-mono text-[#71717a]">
+                No redemptions recorded yet for this store.
               </div>
             ) : (
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
+                <table className="w-full text-left text-xs font-mono">
                   <thead>
-                    <tr className="border-b border-neutral-200 dark:border-neutral-800 text-xs uppercase tracking-wider text-neutral-500">
-                      <th className="py-3 px-3">#</th>
-                      <th className="py-3 px-3">Customer</th>
-                      <th className="py-3 px-3">Points Burned</th>
-                      <th className="py-3 px-3">Date & Time</th>
-                      <th className="py-3 px-3 text-right">Receipt PDA</th>
+                    <tr className="border-b border-[#222228] text-[#71717a] uppercase bg-[#141418]">
+                      <th className="py-2.5 px-3">#</th>
+                      <th className="py-2.5 px-3">Customer</th>
+                      <th className="py-2.5 px-3">Burned</th>
+                      <th className="py-2.5 px-3">Timestamp</th>
+                      <th className="py-2.5 px-3 text-right">Receipt PDA</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-neutral-100 dark:divide-neutral-800 font-mono text-xs">
+                  <tbody className="divide-y divide-[#1c1c22]">
                     {receipts.map((r) => (
-                      <tr key={r.pubkey.toBase58()} className="hover:bg-neutral-50 dark:hover:bg-neutral-800/50">
-                        <td className="py-3 px-3 font-semibold text-neutral-900 dark:text-white">
+                      <tr key={r.pubkey.toBase58()} className="hover:bg-[#141418]/60 transition-colors">
+                        <td className="py-3 px-3 text-white">
                           #{r.receiptNumber}
                         </td>
                         <td className="py-3 px-3">
@@ -419,15 +424,15 @@ export function MerchantView() {
                             href={getExplorerAddressUrl(r.customer, "devnet")}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-purple-600 dark:text-purple-400 hover:underline"
+                            className="text-purple-400 hover:text-purple-300"
                           >
                             {r.customer.toBase58().slice(0, 4)}...{r.customer.toBase58().slice(-4)}
                           </a>
                         </td>
-                        <td className="py-3 px-3 font-semibold text-emerald-600 dark:text-emerald-400">
+                        <td className="py-3 px-3 text-emerald-400">
                           {r.pointsBurned} pts
                         </td>
-                        <td className="py-3 px-3 text-neutral-600 dark:text-neutral-400 font-sans">
+                        <td className="py-3 px-3 text-[#a1a1aa] font-sans">
                           {new Date(r.timestamp * 1000).toLocaleString()}
                         </td>
                         <td className="py-3 px-3 text-right">
@@ -435,10 +440,9 @@ export function MerchantView() {
                             href={getExplorerAddressUrl(r.pubkey, "devnet")}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-purple-600 dark:text-purple-400 hover:underline inline-flex items-center gap-1"
+                            className="text-purple-400 hover:text-purple-300 underline"
                           >
-                            <span>{r.pubkey.toBase58().slice(0, 4)}...{r.pubkey.toBase58().slice(-4)}</span>
-                            <span className="text-[10px]">↗</span>
+                            {r.pubkey.toBase58().slice(0, 6)}...{r.pubkey.toBase58().slice(-4)}
                           </a>
                         </td>
                       </tr>

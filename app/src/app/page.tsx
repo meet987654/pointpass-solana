@@ -70,146 +70,130 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 1B: SHOWCASE GLASS CARDS (FULL-SCREEN EDGE-TO-EDGE BACKGROUND) */}
-      <section className="relative w-full py-24 border-y border-white/[0.08] overflow-hidden my-8">
-        {/* Full-Screen Edge-to-Edge Silky Blue Ribbon Background Layer */}
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-85 scale-105"
-            style={{ backgroundImage: `url('/blue-ribbon-vortex-bg.jpg')` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/40 via-transparent to-[#050814]/50" />
-          <div className="absolute inset-0 backdrop-blur-[1px]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-          {/* 3-Column Exact Reference Glassmorphic Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+      {/* SECTION 1B: SHOWCASE GLASS CARDS (EXACT REFERENCE 2: BLACK CONTAINER + INNER GLASS FRACTAL) */}
+      <section className="relative w-full py-20 bg-[#050814] border-y border-white/[0.08] my-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
           
-          {/* Card 1: Reference Design Master Card */}
-          <div className="glass-card-reference p-7 sm:p-9 flex flex-col justify-between min-h-[480px] relative group">
-            {/* Top Row: Description + Bracketed Tag */}
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                High-end aesthetics—featuring fully editable layers to optimize workflow and enhance visual quality by 100%.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [4K resolution]
-              </span>
-            </div>
+          {/* 3-Column Glass Fractal Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            
+            {/* Card 1: Exact Masterpiece Reference Card */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[480px] group relative">
+              {/* Inner Glass Fractal Background Layer */}
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
 
-            {/* Middle: Prominent 3-line statement + italic subtitle */}
-            <div className="my-auto py-8 space-y-2.5">
-              <h3 className="text-3xl sm:text-4xl font-normal text-white tracking-tight leading-[1.12]">
-                Design deep,<br />
-                build better,<br />
-                refine quicker.
-              </h3>
-              <p className="text-sm sm:text-base text-blue-100/90 italic font-light">
-                Modern glassmorphism style.
-              </p>
-            </div>
-
-            {/* Bottom Row: Pill with arrow + 2-line metadata + asterisk starburst */}
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light">
-                  →
+              {/* Card Content with relative z-10 */}
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row: Oval Pill on Left + Brand Tag on Right */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    Premium Glass Style
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    StudioCore
+                  </span>
                 </div>
-                <div className="text-[10px] sm:text-[11px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>SOCIAL MEDIA USE</div>
-                  <div className="text-white/60">2500×3200</div>
+
+                {/* Middle Headline: 3-line light sans font */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[38px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    A Masterpiece<br />
+                    of crisp textures<br />
+                    4K Quality
+                  </h3>
                 </div>
-              </div>
-              <span className="text-3xl sm:text-4xl text-white font-light select-none leading-none">
-                ✱
-              </span>
-            </div>
-          </div>
 
-          {/* Card 2: Sovereign Loyalty Token Standard */}
-          <div className="glass-card-reference p-7 sm:p-9 flex flex-col justify-between min-h-[480px] relative group">
-            {/* Top Row */}
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Non-custodial loyalty—featuring deterministic PDA pipelines to eliminate state lock-in and guarantee sovereign custody.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [SPL STANDARD]
-              </span>
-            </div>
-
-            {/* Middle */}
-            <div className="my-auto py-8 space-y-2.5">
-              <h3 className="text-3xl sm:text-4xl font-normal text-white tracking-tight leading-[1.12]">
-                Mint freely,<br />
-                custody truly,<br />
-                redeem instantly.
-              </h3>
-              <p className="text-sm sm:text-base text-blue-100/90 italic font-light">
-                Deterministic PDA seed architecture.
-              </p>
-            </div>
-
-            {/* Bottom Row */}
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <Link href="/merchant" className="w-11 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light hover:bg-white/20 transition-colors">
-                  →
-                </Link>
-                <div className="text-[10px] sm:text-[11px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>TOTAL AWARDED: {programLoading ? "..." : `${programData?.totalAwarded ?? 55} PTS`}</div>
-                  <div className="text-white/60">ZERO-DECIMAL MINT</div>
+                {/* Bottom Row: Caption on Left + Horizontal Line on Right */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Optimized for social media use
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
                 </div>
               </div>
-              <span className="text-3xl sm:text-4xl text-white font-light select-none leading-none">
-                ✱
-              </span>
-            </div>
-          </div>
-
-          {/* Card 3: Cryptographic Proof-of-Burn Receipts */}
-          <div className="glass-card-reference p-7 sm:p-9 flex flex-col justify-between min-h-[480px] relative group">
-            {/* Top Row */}
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Cryptographic proof-of-burn—featuring permanent on-chain receipts stamped with Unix timestamps and customer public keys.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [0.0004 SOL]
-              </span>
             </div>
 
-            {/* Middle */}
-            <div className="my-auto py-8 space-y-2.5">
-              <h3 className="text-3xl sm:text-4xl font-normal text-white tracking-tight leading-[1.12]">
-                Burn cleanly,<br />
-                verify openly,<br />
-                scale infinitely.
-              </h3>
-              <p className="text-sm sm:text-base text-blue-100/90 italic font-light">
-                Immutable on-chain receipts.
-              </p>
-            </div>
+            {/* Card 2: Sovereign Loyalty Token Standard */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[480px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
 
-            {/* Bottom Row */}
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <Link href="/docs/receipts" className="w-11 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light hover:bg-white/20 transition-colors">
-                  →
-                </Link>
-                <div className="text-[10px] sm:text-[11px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>PROOF-OF-BURN PDA</div>
-                  <div className="text-white/60">SOLANA DEVNET</div>
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    Zero-Decimal SPL
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    Solana Devnet
+                  </span>
+                </div>
+
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[38px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Mint freely,<br />
+                    custody truly,<br />
+                    redeem instantly.
+                  </h3>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Optimized for retail scale • {programLoading ? "..." : `${programData?.totalAwarded ?? 55} pts`}
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
                 </div>
               </div>
-              <span className="text-3xl sm:text-4xl text-white font-light select-none leading-none">
-                ✱
-              </span>
             </div>
-          </div>
 
-        </div>
+            {/* Card 3: Cryptographic Proof-of-Burn Receipts */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[480px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    Cryptographic Audit
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    PointPass Protocol
+                  </span>
+                </div>
+
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[38px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Burn cleanly,<br />
+                    verify openly,<br />
+                    scale infinitely.
+                  </h3>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Permanent on-chain receipt PDAs
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -257,240 +241,260 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 3: CORE CAPABILITIES (6 EXACT REFERENCE GLASS CARDS) */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-        <div className="space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
-            CORE CAPABILITIES
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
-            Engineered for high-throughput merchant scale
-          </h2>
-          <p className="text-sm sm:text-base text-blue-100/70 max-w-2xl font-light">
-            Designed from mathematical foundations to eliminate the vulnerabilities and database lock-in of legacy loyalty programs.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {/* Capability Card 1 */}
-          <div className="glass-card-reference p-8 sm:p-9 flex flex-col justify-between min-h-[440px] relative group">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Sovereign wallet custody—minted as standard SPL tokens with integer units and deterministic accounts.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [01 / SPL]
-              </span>
-            </div>
-            <div className="my-auto py-6 space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight leading-[1.15]">
-                Zero decimals,<br />
-                zero slippage,<br />
-                true ownership.
-              </h3>
-              <p className="text-xs sm:text-sm text-blue-100/85 italic font-light">
-                Pure integer arithmetic standard.
-              </p>
-            </div>
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light">
-                  →
-                </div>
-                <div className="text-[10px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>TOKEN PIPELINE</div>
-                  <div className="text-white/60">SPL STANDARD</div>
-                </div>
-              </div>
-              <span className="text-3xl text-white font-light select-none leading-none">✱</span>
-            </div>
+      {/* SECTION 3: CORE CAPABILITIES (BLACK CONTAINER + EXACT IMAGE 2 GLASS FRACTAL CARDS) */}
+      <section className="relative w-full py-24 bg-[#050814] border-y border-white/[0.08] my-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+          
+          <div className="space-y-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
+              CORE CAPABILITIES
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
+              Engineered for high-throughput merchant scale
+            </h2>
+            <p className="text-sm sm:text-base text-blue-100/70 max-w-2xl font-light">
+              Designed from mathematical foundations to eliminate the vulnerabilities and database lock-in of legacy loyalty programs.
+            </p>
           </div>
 
-          {/* Capability Card 2 */}
-          <div className="glass-card-reference p-8 sm:p-9 flex flex-col justify-between min-h-[440px] relative group">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Verified authority control—only authorized merchant wallet signers can trigger reward minting.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [02 / PDA]
-              </span>
-            </div>
-            <div className="my-auto py-6 space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight leading-[1.15]">
-                Non-custodial,<br />
-                signer-gated,<br />
-                sovereign state.
-              </h3>
-              <p className="text-xs sm:text-sm text-blue-100/85 italic font-light">
-                Cryptographic signer verification.
-              </p>
-            </div>
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light">
-                  →
-                </div>
-                <div className="text-[10px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>AUTHORITY CONTROL</div>
-                  <div className="text-white/60">PROGRAM SIGNER</div>
-                </div>
-              </div>
-              <span className="text-3xl text-white font-light select-none leading-none">✱</span>
-            </div>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            
+            {/* Capability Card 1 */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
 
-          {/* Capability Card 3 */}
-          <div className="glass-card-reference p-8 sm:p-9 flex flex-col justify-between min-h-[440px] relative group">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Cryptographic proof-of-burn—redemption executes an SPL burn and stamps an immutable on-chain receipt PDA.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [03 / BURN]
-              </span>
-            </div>
-            <div className="my-auto py-6 space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight leading-[1.15]">
-                Proof-of-burn,<br />
-                atomic execution,<br />
-                zero fraud.
-              </h3>
-              <p className="text-xs sm:text-sm text-blue-100/85 italic font-light">
-                Deterministic receipt stamps.
-              </p>
-            </div>
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light">
-                  →
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    01 / Token Architecture
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    SPL Standard
+                  </span>
                 </div>
-                <div className="text-[10px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>RECEIPT PDA</div>
-                  <div className="text-white/60">ON-CHAIN AUDIT</div>
-                </div>
-              </div>
-              <span className="text-3xl text-white font-light select-none leading-none">✱</span>
-            </div>
-          </div>
 
-          {/* Capability Card 4 */}
-          <div className="glass-card-reference p-8 sm:p-9 flex flex-col justify-between min-h-[440px] relative group">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Rust checked arithmetic—math overflow triggers immediate transaction reversion across counters.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [04 / MATH]
-              </span>
-            </div>
-            <div className="my-auto py-6 space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight leading-[1.15]">
-                Checked math,<br />
-                safe counters,<br />
-                provable state.
-              </h3>
-              <p className="text-xs sm:text-sm text-blue-100/85 italic font-light">
-                PointPassError invariant guarantees.
-              </p>
-            </div>
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light">
-                  →
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Zero decimals,<br />
+                    zero slippage,<br />
+                    true ownership.
+                  </h3>
                 </div>
-                <div className="text-[10px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>SAFETY INVARIANT</div>
-                  <div className="text-white/60">ANCHOR REVERSION</div>
-                </div>
-              </div>
-              <span className="text-3xl text-white font-light select-none leading-none">✱</span>
-            </div>
-          </div>
 
-          {/* Capability Card 5 */}
-          <div className="glass-card-reference p-8 sm:p-9 flex flex-col justify-between min-h-[440px] relative group">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Deterministic multi-tenancy—thousands of stores run simultaneously on isolated PDA seed trees.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [05 / MULTI]
-              </span>
-            </div>
-            <div className="my-auto py-6 space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight leading-[1.15]">
-                Isolated state,<br />
-                merchant seeds,<br />
-                infinite scale.
-              </h3>
-              <p className="text-xs sm:text-sm text-blue-100/85 italic font-light">
-                Zero cross-program state contention.
-              </p>
-            </div>
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light">
-                  →
-                </div>
-                <div className="text-[10px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>PDA ISOLATION</div>
-                  <div className="text-white/60">PER-STORE TREE</div>
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Pure integer arithmetic standard
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
                 </div>
               </div>
-              <span className="text-3xl text-white font-light select-none leading-none">✱</span>
             </div>
-          </div>
 
-          {/* Capability Card 6 */}
-          <div className="glass-card-reference p-8 sm:p-9 flex flex-col justify-between min-h-[440px] relative group">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-xs text-white/85 font-light leading-relaxed max-w-[210px]">
-                Open Solana composability—all accounts, tokens, and receipts are standard Solana primitives.
-              </p>
-              <span className="text-xs font-mono text-white/75 tracking-wider font-light shrink-0">
-                [06 / CPI]
-              </span>
-            </div>
-            <div className="my-auto py-6 space-y-2">
-              <h3 className="text-2xl sm:text-3xl font-normal text-white tracking-tight leading-[1.15]">
-                Composable dApps,<br />
-                wallet native,<br />
-                ecosystem wide.
-              </h3>
-              <p className="text-xs sm:text-sm text-blue-100/85 italic font-light">
-                Instant wallet & explorer indexing.
-              </p>
-            </div>
-            <div className="flex items-center justify-between pt-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-6 rounded-full border border-white/60 bg-white/10 backdrop-blur-md flex items-center justify-center text-white text-xs font-light">
-                  →
+            {/* Capability Card 2 */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    02 / Authority Control
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    Program Signer
+                  </span>
                 </div>
-                <div className="text-[10px] font-mono tracking-wider text-white/85 uppercase leading-tight font-light">
-                  <div>COMPOSABILITY</div>
-                  <div className="text-white/60">SOLANA ECOSYSTEM</div>
+
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Non-custodial,<br />
+                    signer-gated,<br />
+                    sovereign state.
+                  </h3>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Cryptographic signer verification
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
                 </div>
               </div>
-              <span className="text-3xl text-white font-light select-none leading-none">✱</span>
             </div>
+
+            {/* Capability Card 3 */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    03 / Fraud Protection
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    Proof-of-Burn
+                  </span>
+                </div>
+
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Proof-of-burn,<br />
+                    atomic execution,<br />
+                    zero fraud.
+                  </h3>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Deterministic receipt stamps
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
+                </div>
+              </div>
+            </div>
+
+            {/* Capability Card 4 */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    04 / Arithmetic Invariants
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    Checked Math
+                  </span>
+                </div>
+
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Checked math,<br />
+                    safe counters,<br />
+                    provable state.
+                  </h3>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    PointPassError invariant guarantees
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
+                </div>
+              </div>
+            </div>
+
+            {/* Capability Card 5 */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    05 / Multi-Tenancy
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    Isolated Seeds
+                  </span>
+                </div>
+
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Isolated state,<br />
+                    merchant seeds,<br />
+                    infinite scale.
+                  </h3>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Zero cross-program state contention
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
+                </div>
+              </div>
+            </div>
+
+            {/* Capability Card 6 */}
+            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
+              <div 
+                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+                {/* Top Row */}
+                <div className="flex items-center justify-between">
+                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
+                    06 / Ecosystem CPI
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
+                    Solana Primitives
+                  </span>
+                </div>
+
+                {/* Middle Headline */}
+                <div className="my-auto py-8">
+                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
+                    Composable dApps,<br />
+                    wallet native,<br />
+                    ecosystem wide.
+                  </h3>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="flex items-center justify-between pt-6 border-t border-transparent">
+                  <span className="text-xs sm:text-[13px] font-light text-white/70">
+                    Instant wallet & explorer indexing
+                  </span>
+                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: HOW IT WORKS / 4-STEP TIMELINE (FULL-SCREEN EDGE-TO-EDGE BACKGROUND) */}
-      <section className="relative w-full py-28 border-y border-white/[0.08] overflow-hidden my-8">
-        {/* Full-Screen Edge-to-Edge Luminous Silky Drapery Background */}
-        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90 scale-105"
-            style={{ backgroundImage: `url('/luminous-gradient-bg.jpg')` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050814]/40 via-transparent to-[#050814]/50" />
-          <div className="absolute inset-0 backdrop-blur-[1px]" />
-        </div>
-
-        <div className="space-y-12 relative z-10">
+      {/* SECTION 4: HOW IT WORKS / 4-STEP TIMELINE (BLACK CONTAINER + INNER GLASS FRACTAL CARDS) */}
+      <section className="relative w-full py-24 bg-[#050814] border-y border-white/[0.08] my-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+          
           <div className="space-y-3">
             <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
               WORKFLOW
@@ -506,174 +510,142 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Step 1 Card: Initialize */}
-            <div className="glass-card-reference p-6 sm:p-7 flex flex-col justify-between min-h-[420px] relative group">
-              {/* Top Row: Oval Pill with 2-line uppercase text + Starburst */}
-              <div className="flex items-start justify-between gap-3">
-                <div className="px-4 py-1.5 rounded-full border border-white/50 bg-white/[0.08] backdrop-blur-md text-center inline-flex flex-col items-center justify-center">
-                  <span className="text-[9px] font-mono tracking-widest text-white/90 uppercase font-light leading-tight">
-                    01 / LIFECYCLE
-                  </span>
-                  <span className="text-[9px] font-mono tracking-widest text-[#67baf4] uppercase font-light leading-tight">
-                    INITIALIZE
-                  </span>
-                </div>
-                <span className="text-3xl text-white font-light select-none leading-none">
-                  ✱
+            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
+              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+
+              {/* Top Row */}
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
+                  01 / Initialize
+                </span>
+                <span className="text-[11px] font-normal text-white/70">
+                  Merchant Seed
                 </span>
               </div>
 
-              {/* Middle: Pill badge cluster */}
-              <div className="space-y-2 pt-10 pb-3">
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    MERCHANT SEED
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    DEVNET
-                  </span>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    ZERO DECIMALS
-                  </span>
-                </div>
+              {/* Middle Headline */}
+              <div className="my-auto py-6">
+                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
+                  Deploy store<br />
+                  PDA points mint<br />
+                  Zero Decimals
+                </h3>
               </div>
 
-              {/* Bottom: Huge bold uppercase title */}
-              <div className="pt-2">
-                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white uppercase leading-[1.08]">
-                  DEPLOY STORE<br />
-                  PDA MINT
-                </h3>
+              {/* Bottom Row */}
+              <div className="flex items-center justify-between pt-4 border-t border-transparent">
+                <span className="text-[11px] font-light text-white/65">
+                  Deterministic seeds
+                </span>
+                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
+              </div>
               </div>
             </div>
 
             {/* Step 2 Card: Award */}
-            <div className="glass-card-reference p-6 sm:p-7 flex flex-col justify-between min-h-[420px] relative group">
+            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
+              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+
               {/* Top Row */}
-              <div className="flex items-start justify-between gap-3">
-                <div className="px-4 py-1.5 rounded-full border border-white/50 bg-white/[0.08] backdrop-blur-md text-center inline-flex flex-col items-center justify-center">
-                  <span className="text-[9px] font-mono tracking-widest text-white/90 uppercase font-light leading-tight">
-                    02 / LIFECYCLE
-                  </span>
-                  <span className="text-[9px] font-mono tracking-widest text-[#67baf4] uppercase font-light leading-tight">
-                    AWARD POINTS
-                  </span>
-                </div>
-                <span className="text-3xl text-white font-light select-none leading-none">
-                  ✱
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
+                  02 / Award Points
+                </span>
+                <span className="text-[11px] font-normal text-white/70">
+                  Signer Gated
                 </span>
               </div>
 
-              {/* Middle */}
-              <div className="space-y-2 pt-10 pb-3">
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    SIGNER GATED
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    CPI INSTRUCTION
-                  </span>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    SOVEREIGN
-                  </span>
-                </div>
+              {/* Middle Headline */}
+              <div className="my-auto py-6">
+                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
+                  Mint points<br />
+                  via program CPI<br />
+                  Direct to Wallet
+                </h3>
               </div>
 
-              {/* Bottom */}
-              <div className="pt-2">
-                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white uppercase leading-[1.08]">
-                  MINT POINTS<br />
-                  VIA CPI
-                </h3>
+              {/* Bottom Row */}
+              <div className="flex items-center justify-between pt-4 border-t border-transparent">
+                <span className="text-[11px] font-light text-white/65">
+                  Customer custody
+                </span>
+                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
+              </div>
               </div>
             </div>
 
             {/* Step 3 Card: Redeem */}
-            <div className="glass-card-reference p-6 sm:p-7 flex flex-col justify-between min-h-[420px] relative group">
+            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
+              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+
               {/* Top Row */}
-              <div className="flex items-start justify-between gap-3">
-                <div className="px-4 py-1.5 rounded-full border border-white/50 bg-white/[0.08] backdrop-blur-md text-center inline-flex flex-col items-center justify-center">
-                  <span className="text-[9px] font-mono tracking-widest text-white/90 uppercase font-light leading-tight">
-                    03 / LIFECYCLE
-                  </span>
-                  <span className="text-[9px] font-mono tracking-widest text-[#67baf4] uppercase font-light leading-tight">
-                    REDEEM REWARD
-                  </span>
-                </div>
-                <span className="text-3xl text-white font-light select-none leading-none">
-                  ✱
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
+                  03 / Redeem Reward
+                </span>
+                <span className="text-[11px] font-normal text-white/70">
+                  Atomic Burn
                 </span>
               </div>
 
-              {/* Middle */}
-              <div className="space-y-2 pt-10 pb-3">
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    ATOMIC BURN
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    SPL TOKEN ENGINE
-                  </span>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    NON-FRACTIONAL
-                  </span>
-                </div>
+              {/* Middle Headline */}
+              <div className="my-auto py-6">
+                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
+                  Burn tokens<br />
+                  for store rewards<br />
+                  Zero Fraud
+                </h3>
               </div>
 
-              {/* Bottom */}
-              <div className="pt-2">
-                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white uppercase leading-[1.08]">
-                  BURN TOKENS<br />
-                  FOR REWARDS
-                </h3>
+              {/* Bottom Row */}
+              <div className="flex items-center justify-between pt-4 border-t border-transparent">
+                <span className="text-[11px] font-light text-white/65">
+                  Atomic instruction
+                </span>
+                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
+              </div>
               </div>
             </div>
 
             {/* Step 4 Card: Stamp Receipt */}
-            <div className="glass-card-reference p-6 sm:p-7 flex flex-col justify-between min-h-[420px] relative group">
+            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
+              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
+
               {/* Top Row */}
-              <div className="flex items-start justify-between gap-3">
-                <div className="px-4 py-1.5 rounded-full border border-white/50 bg-white/[0.08] backdrop-blur-md text-center inline-flex flex-col items-center justify-center">
-                  <span className="text-[9px] font-mono tracking-widest text-white/90 uppercase font-light leading-tight">
-                    04 / LIFECYCLE
-                  </span>
-                  <span className="text-[9px] font-mono tracking-widest text-emerald-300 uppercase font-light leading-tight">
-                    STAMP RECEIPT
-                  </span>
-                </div>
-                <span className="text-3xl text-white font-light select-none leading-none">
-                  ✱
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
+                  04 / Stamp Receipt
+                </span>
+                <span className="text-[11px] font-normal text-white/70">
+                  Clock Time
                 </span>
               </div>
 
-              {/* Middle */}
-              <div className="space-y-2 pt-10 pb-3">
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    IMMUTABLE PROOF
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    CLOCK TIMESTAMP
-                  </span>
-                  <span className="inline-block px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[10px] font-mono tracking-wider text-white/90 uppercase font-light">
-                    PERMANENT PDA
-                  </span>
-                </div>
+              {/* Middle Headline */}
+              <div className="my-auto py-6">
+                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
+                  Immutable<br />
+                  receipt PDA stamp<br />
+                  Proof-of-Burn
+                </h3>
               </div>
 
-              {/* Bottom */}
-              <div className="pt-2">
-                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white uppercase leading-[1.08]">
-                  IMMUTABLE<br />
-                  RECEIPT PDA
-                </h3>
+              {/* Bottom Row */}
+              <div className="flex items-center justify-between pt-4 border-t border-transparent">
+                <span className="text-[11px] font-light text-white/65">
+                  Permanent audit
+                </span>
+                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
+              </div>
               </div>
             </div>
 

@@ -7,45 +7,203 @@
   --color-light-blue: #67baf4;
   --color-soft-white: #fafafa;
   --color-jet-black: #050814;
+  --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-google-sans: "Google Sans", sans-serif;
+  --font-stack-sans: "Stack Sans Notch", sans-serif;
+  --font-elms-sans: "Elms Sans", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-mono);
 }
 
 body {
   background-color: #050814;
   color: #fafafa;
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -0.015em;
+  font-family: "Google Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "GRAD" 0;
+  letter-spacing: -0.012em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Headings thin style rule */
-h1, h2, h3, h4 {
+/* Typography Classes & Variable Styles */
+.google-sans,
+.font-google-sans {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+.google-sans-thin,
+.google-sans-400 {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+.google-sans-medium,
+.google-sans-500 {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+.google-sans-semibold,
+.google-sans-600 {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+.google-sans-bold,
+.google-sans-700 {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+.stack-sans-notch,
+.font-stack-sans {
+  font-family: "Stack Sans Notch", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.stack-sans-notch-extralight,
+.stack-sans-notch-200 {
+  font-family: "Stack Sans Notch", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.stack-sans-notch-light,
+.stack-sans-notch-300 {
+  font-family: "Stack Sans Notch", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 300;
+  font-style: normal;
+}
+
+.stack-sans-notch-regular,
+.stack-sans-notch-400 {
+  font-family: "Stack Sans Notch", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.stack-sans-notch-medium,
+.stack-sans-notch-500 {
+  font-family: "Stack Sans Notch", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.stack-sans-notch-bold,
+.stack-sans-notch-700 {
+  font-family: "Stack Sans Notch", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.elms-sans,
+.font-elms-sans {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.elms-sans-thin,
+.elms-sans-100 {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.elms-sans-light,
+.elms-sans-300 {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.elms-sans-regular,
+.elms-sans-400 {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.elms-sans-bold,
+.elms-sans-700 {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.elms-sans-black,
+.elms-sans-900 {
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Headings style rule */
+h1, h2, h3, h4 {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "GRAD" 0;
+  font-weight: 400;
   letter-spacing: -0.025em;
 }
 
 /* Premium Multi-Layer Frosted Glassmorphism */
-.glass-card {
-  background: rgba(14, 25, 55, 0.45);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 16px 40px -10px rgba(0, 8, 32, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
-  border-radius: 28px;
+.glass-card,
+.glass-card-reference {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(103, 186, 244, 0.08) 100%), rgba(7, 16, 40, 0.55);
+  backdrop-filter: blur(40px) saturate(190%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 28px 65px -12px rgba(0, 5, 25, 0.8),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 0 24px 0 rgba(255, 255, 255, 0.06);
+  border-radius: 36px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card:hover {
-  border-color: rgba(103, 186, 244, 0.35);
-  box-shadow: 0 20px 48px -10px rgba(29, 78, 216, 0.3), inset 0 1px 2px 0 rgba(255, 255, 255, 0.28);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.glass-card:hover,
+.glass-card-reference:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.07) 45%, rgba(103, 186, 244, 0.12) 100%), rgba(10, 22, 55, 0.65);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 36px 85px -15px rgba(29, 78, 216, 0.45),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.8),
+    inset 0 0 30px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
 }
 
 .glass-card-subtle {
@@ -64,11 +222,12 @@ h1, h2, h3, h4 {
   border-radius: 9999px;
 }
 
-/* Thin Elegant Glass Buttons */
+/* Glass Buttons with Google Sans */
 .btn-glass-primary {
+  font-family: "Google Sans", sans-serif;
   background-color: #ffffff;
   color: #050814;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.875rem;
   letter-spacing: -0.01em;
   padding: 0.625rem 1.6rem;
@@ -87,9 +246,10 @@ h1, h2, h3, h4 {
 }
 
 .btn-glass-secondary {
+  font-family: "Google Sans", sans-serif;
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.875rem;
   letter-spacing: -0.01em;
   padding: 0.625rem 1.6rem;
@@ -113,9 +273,9 @@ h1, h2, h3, h4 {
 .wallet-adapter-button {
   background-color: #ffffff !important;
   color: #050814 !important;
-  font-family: var(--font-sans), sans-serif !important;
+  font-family: "Google Sans", sans-serif !important;
   font-size: 0.875rem !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   height: 38px !important;
   line-height: 38px !important;
   padding: 0 22px !important;
@@ -153,9 +313,10 @@ h1, h2, h3, h4 {
 }
 
 .btn-primary {
+  font-family: "Google Sans", sans-serif;
   background-color: #ffffff;
   color: #050814;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.875rem;
   padding: 0.625rem 1.6rem;
   border-radius: 9999px;
@@ -173,9 +334,10 @@ h1, h2, h3, h4 {
 }
 
 .btn-secondary {
+  font-family: "Google Sans", sans-serif;
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.875rem;
   padding: 0.625rem 1.6rem;
   border-radius: 9999px;

@@ -36,25 +36,25 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     <ToastContext.Provider value={{ showToast }}>
       {children}
       <div
-        className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"
+        className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none px-4 sm:px-0"
         aria-live="polite"
       >
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`pointer-events-auto rounded-[4px] p-4 text-xs font-mono shadow-2xl border flex flex-col gap-1.5 transition-all animate-in slide-in-from-bottom-2 ${
+            className={`pointer-events-auto rounded-2xl p-4 text-xs font-mono shadow-2xl border flex flex-col gap-1.5 transition-all animate-in slide-in-from-bottom-2 backdrop-blur-2xl ${
               toast.type === "success"
-                ? "bg-[#0d1510] border-emerald-900/80 text-emerald-300"
+                ? "bg-[#0b1f14]/85 border-emerald-500/30 text-emerald-200 shadow-[0_10px_30px_rgba(16,185,129,0.2)]"
                 : toast.type === "error"
-                ? "bg-[#180d0d] border-rose-900/80 text-rose-300"
-                : "bg-[#111114] border-[#27272a] text-neutral-200"
+                ? "bg-[#250d12]/85 border-rose-500/30 text-rose-200 shadow-[0_10px_30px_rgba(244,63,94,0.2)]"
+                : "bg-[#0a142e]/85 border-blue-400/30 text-blue-100 shadow-[0_10px_30px_rgba(37,99,235,0.25)]"
             }`}
           >
             <div className="flex items-start justify-between gap-3 font-sans">
               <span className="font-medium text-xs leading-snug">{toast.message}</span>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="text-[11px] font-mono text-neutral-400 hover:text-white px-1 cursor-pointer"
+                className="text-[11px] font-mono text-white/60 hover:text-white px-1 cursor-pointer"
                 aria-label="Close notification"
               >
                 [x]
@@ -65,7 +65,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                 href={getExplorerTxUrl(toast.txSignature, "devnet")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] font-mono underline underline-offset-2 opacity-90 hover:opacity-100 text-purple-400"
+                className="text-[11px] font-mono underline underline-offset-2 opacity-90 hover:opacity-100 text-blue-300"
               >
                 Open in Solana Explorer (devnet) -&gt;
               </a>

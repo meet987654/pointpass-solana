@@ -37,13 +37,13 @@ export default function DocsLayout({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10 bg-[#09090b]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10 bg-[#050814]">
       {/* Mobile Nav Toggle */}
-      <div className="md:hidden mb-6 flex items-center justify-between p-3.5 rounded-[4px] render-card border border-[#222228]">
-        <span className="text-xs font-mono uppercase tracking-wider text-[#a1a1aa]">Documentation</span>
+      <div className="md:hidden mb-6 flex items-center justify-between p-4 rounded-2xl glass-card">
+        <span className="text-xs font-mono uppercase tracking-wider text-blue-200/80">Documentation</span>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="px-3 py-1 rounded-[4px] bg-white text-black text-xs font-medium cursor-pointer"
+          className="btn-glass-primary text-xs py-1.5 px-4 cursor-pointer"
         >
           {mobileMenuOpen ? "Close" : "Menu"}
         </button>
@@ -52,17 +52,17 @@ export default function DocsLayout({
       <div className="flex flex-col md:flex-row gap-12">
         {/* Sidebar */}
         <aside
-          className={`w-full md:w-60 shrink-0 ${
+          className={`w-full md:w-64 shrink-0 ${
             mobileMenuOpen ? "block" : "hidden md:block"
           }`}
         >
-          <div className="sticky top-24 space-y-7">
+          <div className="sticky top-28 space-y-7 glass-card p-6">
             {navSections.map((sec) => (
-              <div key={sec.title} className="space-y-2">
-                <h3 className="text-[11px] font-mono font-semibold tracking-wider text-[#71717a]">
+              <div key={sec.title} className="space-y-2.5">
+                <h3 className="text-[11px] font-mono font-semibold tracking-wider text-[#67baf4]">
                   {sec.title}
                 </h3>
-                <ul className="space-y-1">
+                <ul className="space-y-1.5">
                   {sec.links.map((link) => {
                     const isActive = pathname === link.href;
                     return (
@@ -70,10 +70,10 @@ export default function DocsLayout({
                         <Link
                           href={link.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`block px-2.5 py-1.5 rounded-[4px] text-xs font-normal transition-colors ${
+                          className={`block px-3 py-1.5 rounded-full text-xs font-normal transition-all ${
                             isActive
-                              ? "bg-[#18181b] text-white font-medium border-l-2 border-purple-500"
-                              : "text-[#a1a1aa] hover:text-white"
+                              ? "bg-white text-[#050814] font-medium shadow-[0_0_16px_rgba(103,186,244,0.4)]"
+                              : "text-blue-100/70 hover:text-white hover:bg-white/5"
                           }`}
                         >
                           {link.label}
@@ -85,9 +85,9 @@ export default function DocsLayout({
               </div>
             ))}
 
-            <div className="p-3.5 render-card-subtle space-y-1.5">
-              <span className="text-[11px] font-mono uppercase text-[#71717a] block">Program ID</span>
-              <code className="text-[11px] font-mono text-purple-300 block break-all">
+            <div className="p-4 rounded-xl bg-[#08122a]/50 border border-white/10 space-y-1.5 font-mono text-[11px]">
+              <span className="uppercase text-blue-200/60 block">Program ID</span>
+              <code className="text-[#67baf4] block break-all font-medium">
                 E46pY2xe8ZHeVjuxiHac4Mctey7rwLP8ZAWasMU7ykUg
               </code>
             </div>
@@ -95,7 +95,7 @@ export default function DocsLayout({
         </aside>
 
         {/* Main Doc Content */}
-        <article className="flex-1 min-w-0 max-w-3xl">{children}</article>
+        <article className="flex-1 min-w-0 max-w-3xl glass-card p-8 sm:p-10">{children}</article>
       </div>
     </div>
   );

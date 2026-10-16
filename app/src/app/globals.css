@@ -211,3 +211,105 @@ h1, h2, h3, h4 {
 ::-webkit-scrollbar-thumb:hover {
   background: #2d7a9c;
 }
+
+/* ═══════════════════════════════════════════
+   HERO ICE MOUNTAIN CONTAINER
+   ═══════════════════════════════════════════ */
+.hero-ice-container {
+  position: relative;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-image: 
+    linear-gradient(180deg, rgba(7, 19, 27, 0.4) 0%, rgba(7, 19, 27, 0.15) 30%, rgba(7, 19, 27, 0.7) 100%),
+    url('/digital-ice-mountain.png');
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  box-shadow: 0 30px 100px -20px rgba(0, 0, 0, 0.95), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.hero-ice-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 55% at 50% 48%, rgba(45, 122, 180, 0.38) 0%, rgba(10, 30, 50, 0.15) 55%, transparent 85%);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   FRACTAL GLASSMORPHIC CARD (Exact Reference)
+   ═══════════════════════════════════════════ */
+.card-fractal-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 37, 52, 0.5) 0%,
+    rgba(20, 60, 90, 0.35) 50%,
+    rgba(14, 37, 52, 0.5) 100%
+  );
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-fractal-glass:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 28px 70px -15px rgba(45, 122, 156, 0.4), inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.card-fractal-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(60, 155, 195, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.card-fractal-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(142, 185, 203, 0.5) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   HORIZON GRADIENT CARDS WITH RIPPLE GRADIENT
+   ═══════════════════════════════════════════ */
+.horizon-gradient-card {
+  background: linear-gradient(180deg, #092231 0%, #164b66 45%, #7faec4 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.85), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.horizon-gradient-card:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 32px 80px -12px rgba(45, 122, 156, 0.45);
+  transform: translateY(-4px);
+}
+
+/* ═══════════════════════════════════════════
+   SLIDABLE CAROUSEL UTILITIES
+   ═══════════════════════════════════════════ */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

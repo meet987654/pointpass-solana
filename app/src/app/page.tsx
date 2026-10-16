@@ -1,87 +1,102 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { useLoyaltyProgram } from "@/hooks/useLoyaltyProgram";
 import { PROGRAM_ID, DEMO_MERCHANT } from "@/lib/constants";
 import { PublicKey } from "@solana/web3.js";
+
+function AsteriskIcon({ size = 26 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <line x1="12" y1="2" x2="12" y2="22" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+      <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
+    </svg>
+  );
+}
+
+function ArrowCircle() {
+  return (
+    <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/80 group-hover:border-white/50 group-hover:text-white transition-all">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M1 7h12M8 3l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
 
 export default function Home() {
   const demoMerchantPubkey = new PublicKey(DEMO_MERCHANT);
   const { data: programData, loading: programLoading } = useLoyaltyProgram(demoMerchantPubkey);
   const [activeCodeTab, setActiveCodeTab] = useState<"anchor" | "sdk" | "cli">("anchor");
 
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+  const handleMouseUp = () => setIsDragging(false);
+
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (!carouselRef.current) return;
+    const offset = direction === "left" ? -460 : 460;
+    carouselRef.current.scrollBy({ left: offset, behavior: "smooth" });
+  };
+
   return (
     <div className="relative text-[#ffffff]">
       
       {/* =========================================================================
-          SECTION 1: HERO (EXACT RESCUE PARTNERS ODDVAL HORIZON SPECIMEN LAYOUT)
+          SECTION 1: HERO (FULL SCREEN DIGITAL ICE MOUNTAIN + POINTPASS ONLY)
           ========================================================================= */}
-      <section className="relative w-full min-h-[88vh] bg-gradient-to-b from-[#05131c] via-[#0b273b] via-45% to-[#8eb9cb] px-6 sm:px-12 lg:px-20 py-16 sm:py-20 lg:py-24 flex flex-col justify-between border-b border-[#d3dde2]/20 overflow-hidden">
-        
-        {/* Top Region: Giant Oddval Display Title + Dual Spec Columns */}
-        <div className="space-y-8 z-10 max-w-7xl">
-          
-          {/* Subtle Protocol & Font Specimen Tag */}
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-sm bg-[#3c9bc3] shadow-[0_0_8px_#3c9bc3]" />
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#93c0d2]">
-              SPECIMEN // ODDVAL GROTESQUE // SOLANA INFRASTRUCTURE
-            </span>
-          </div>
+      <section className="relative w-full h-screen min-h-[650px] flex items-center justify-center overflow-hidden select-none border-b border-white/[0.08]">
+        {/* Full Screen Background Digital Ice Mountain */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/digital-ice-mountain.png"
+          alt="Digital Ice Mountain"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0"
+        />
 
-          {/* Giant Title: Exact Oddval Aesthetic from Slide 7 */}
-          <div>
-            <h1 className="font-display text-7xl sm:text-8xl md:text-9xl lg:text-[132px] font-medium tracking-[-0.035em] leading-[0.95] select-none">
-              <span className="bg-gradient-to-r from-[#256c8d] via-[#3a8ab0] to-[#88bdd3] bg-clip-text text-transparent">
-                Point
-              </span>
-              <span className="text-white drop-shadow-sm">
-                Pass
-              </span>
-            </h1>
-          </div>
-        </div>
+        {/* Atmospheric Vignette & Contrast Overlay */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#07131b]/50 via-transparent to-[#07131b]/80 z-0" />
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(45,122,180,0.22)_0%,transparent_75%)] z-0" />
 
-        {/* Bottom Region: Outline Button Box on Left + Multi-line Architectural Paragraph on Right */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 pt-12 z-10 mt-12">
-          
-          {/* Bottom Left: Rectangular Outline Button Box (matching [ ОСНОВНОЙ ШРИФТ ]) */}
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href={`/customer?merchant=${DEMO_MERCHANT}`}
-              className="px-6 py-3 border border-white/40 bg-white/[0.06] hover:bg-white hover:text-[#05131c] hover:border-white text-xs font-mono uppercase tracking-widest text-white transition-all duration-200 cursor-pointer rounded-sm shadow-sm"
+        {/* Only Text: PointPass with 8-ray asterisk logo replacing letter 'o' */}
+        <h1 className="relative z-10 font-display text-8xl sm:text-[130px] md:text-[180px] lg:text-[220px] xl:text-[250px] font-light text-white tracking-[-0.035em] leading-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] text-center px-4 select-none inline-flex items-center justify-center">
+          <span>P</span>
+          <span className="inline-flex items-center justify-center mx-[0.03em] relative top-[0.03em]">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3.2"
+              strokeLinecap="square"
+              className="w-[0.54em] h-[0.54em] text-white drop-shadow-[0_0_24px_rgba(142,185,203,0.95)] transition-transform duration-700 hover:rotate-90 hover:scale-110 cursor-pointer"
             >
-              Launch Protocol &gt;
-            </Link>
-
-            <Link
-              href="/merchant"
-              className="px-6 py-3 border border-white/25 bg-transparent hover:bg-white/10 text-xs font-mono uppercase tracking-widest text-white/85 hover:text-white transition-all duration-200 cursor-pointer rounded-sm"
-            >
-              Merchant Terminal
-            </Link>
-
-            <Link
-              href="/docs"
-              className="px-6 py-3 border border-white/25 bg-transparent hover:bg-white/10 text-xs font-mono uppercase tracking-widest text-white/85 hover:text-white transition-all duration-200 cursor-pointer rounded-sm"
-            >
-              Docs
-            </Link>
-          </div>
-
-          {/* Bottom Right: Architectural Narrative Paragraph over Horizon Glow */}
-          <div className="max-w-md space-y-2 text-left">
-            <p className="font-sans text-xs sm:text-[13px] text-white/95 leading-[1.65] font-normal">
-              PointPass — sovereign loyalty token standard on Solana. Zero-decimal SPL tokens, deterministic PDA pipelines, and immutable proof-of-burn receipts eliminate database lock-in, vendor counterparty risk, and fractional point liabilities.
-            </p>
-            <p className="font-mono text-[11px] text-[#05131c] font-semibold pt-1">
-              Solana Sealevel Runtime // 400ms Finality // &lt; $0.0001 Gas
-            </p>
-          </div>
-
-        </div>
-
+              <line x1="12" y1="2" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+              <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
+            </svg>
+          </span>
+          <span>intPass</span>
+        </h1>
       </section>
 
       {/* =========================================================================
@@ -104,37 +119,42 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             
-            {/* Card 1: Signature Horizon Gradient Card (Slide 1 & Slide 10 in sheet) */}
-            <div className="rounded-[28px] border border-[#d3dde2]/25 bg-gradient-to-b from-[#092231] via-[#164b66] to-[#7faec4] p-8 sm:p-9 flex flex-col justify-between min-h-[480px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300">
-              {/* Top Row: Pill on Left + Brand Tag on Right */}
-              <div className="flex items-center justify-between z-10">
-                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/25 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
-                  01 / HORIZON GRADIENT
-                </span>
-                <span className="text-xs font-mono text-white/80 tracking-wider">
-                  RESCUE PALETTE
+            {/* Card 1: Exact Fractal Glassmorphic Card (Reference Image Design) */}
+            <div className="card-fractal-glass p-8 sm:p-9 flex flex-col justify-between min-h-[480px] relative overflow-hidden group">
+              {/* Top Row: Description + Tag */}
+              <div className="flex items-start justify-between z-10">
+                <p className="text-[11px] font-sans text-white/75 max-w-[210px] leading-relaxed">
+                  High-end aesthetics—featuring fully editable layers to optimize workflow and enhance visual quality by 100%.
+                </p>
+                <span className="text-[11px] font-mono text-white/60 tracking-wider">
+                  [4K resolution]
                 </span>
               </div>
 
-              {/* Middle Headline: Oddval Bold Grotesque Display */}
-              <div className="my-auto py-8 z-10">
-                <span className="text-xs font-mono text-[#d3dde2] uppercase tracking-wider block mb-2 font-medium">
-                  Sovereign Standard
-                </span>
-                <h3 className="font-display text-3xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
-                  Deterministic<br />
-                  by design.<br />
-                  Sovereign in state.
+              {/* Middle Headline */}
+              <div className="my-auto py-8 z-10 space-y-2">
+                <h3 className="font-display text-3xl sm:text-4xl lg:text-[40px] font-semibold text-white tracking-tight leading-[1.1] drop-shadow-sm">
+                  Design deep,<br />
+                  build better,<br />
+                  refine quicker.
                 </h3>
-                <p className="mt-4 text-xs sm:text-sm text-white/90 font-normal max-w-xs leading-relaxed">
-                  Pure integer loyalty standard with zero decimals, zero fractional rounding, and self-custodied customer balances.
+                <p className="text-sm font-sans italic text-[#93c0d2]">
+                  Modern glassmorphism style.
                 </p>
               </div>
 
-              {/* Bottom Row: Specs + Hairline */}
-              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10 text-xs font-mono text-[#07131b] font-medium">
-                <span>Solana Mainnet Ready</span>
-                <span className="font-bold text-[#07131b]">0-Decimals</span>
+              {/* Bottom Row */}
+              <div className="flex items-center justify-between pt-6 border-t border-white/10 z-10">
+                <div className="flex items-center gap-3">
+                  <ArrowCircle />
+                  <div>
+                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">SOCIAL MEDIA USE</span>
+                    <span className="text-[10px] font-mono text-white/60 block">2500×3200</span>
+                  </div>
+                </div>
+                <div className="text-white/80 group-hover:text-white transition-colors">
+                  <AsteriskIcon size={28} />
+                </div>
               </div>
             </div>
 
@@ -306,184 +326,321 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          SECTION 5: CORE PROTOCOL CAPABILITIES (6 ARCHITECTURAL DARK SLATE CARDS)
+          SECTION 5: CORE PROTOCOL CAPABILITIES (SMOOTH SLIDABLE CAROUSEL)
           ========================================================================= */}
-      <section className="relative w-full py-24 bg-[#07131b] border-y border-[#d3dde2]/10 my-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+      <section className="relative w-full py-24 bg-[#07131b] border-y border-[#d3dde2]/10 my-8 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
           
-          <div className="space-y-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
-              CORE PROTOCOL CAPABILITIES
-            </span>
-            <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
-              Engineered for high-throughput retail commerce
-            </h2>
-            <p className="text-sm sm:text-base text-[#d3dde2]/80 max-w-2xl font-normal">
-              Eliminating centralized database vulnerabilities, locked-in vendor silos, and fractional rounding discrepancies.
-            </p>
+          {/* Header Row with Navigation Arrows */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-3">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
+                CORE PROTOCOL CAPABILITIES
+              </span>
+              <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+                Engineered for high-throughput retail commerce
+              </h2>
+              <p className="text-sm sm:text-base text-[#d3dde2]/80 max-w-2xl font-normal">
+                Eliminating centralized database vulnerabilities, locked-in vendor silos, and fractional rounding discrepancies.
+              </p>
+            </div>
+
+            {/* Carousel Navigation Buttons */}
+            <div className="flex items-center gap-3 self-start md:self-end">
+              <button
+                type="button"
+                onClick={() => scrollCarousel("left")}
+                className="w-11 h-11 rounded-full border border-white/20 bg-white/5 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
+                aria-label="Scroll left"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollCarousel("right")}
+                className="w-11 h-11 rounded-full border border-white/20 bg-white/5 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
+                aria-label="Scroll right"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            
-            {/* Capability Card 1 */}
-            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  CAP-01 // TOKEN
+          {/* Smooth Slidable Carousel Track */}
+          <div
+            ref={carouselRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            className="flex gap-6 overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing pb-6 pt-2 select-none"
+            style={{ scrollBehavior: isDragging ? "auto" : "smooth" }}
+          >
+            {/* Capability Card 1: SPL STANDARD */}
+            <div
+              className="min-w-[340px] sm:min-w-[410px] max-w-[410px] flex-shrink-0 rounded-[28px] border border-white/20 p-8 sm:p-9 flex flex-col justify-between min-h-[460px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(142, 194, 218, 0.45) 0%, transparent 60%), linear-gradient(180deg, #071622 0%, #0c273a 35%, #184e6e 65%, #347c9d 85%, #6ea8bf 100%)",
+              }}
+            >
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
+                  01 / SPL STANDARD
                 </span>
-                <span className="text-xs font-mono text-[#d3dde2]/50">
-                  SPL STANDARD
+                <span className="text-xs font-mono text-white/80 tracking-wider">
+                  TOKEN PIPELINE
                 </span>
               </div>
 
-              <div className="my-auto py-6">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+              <div className="my-auto py-6 z-10 space-y-3">
+                <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
                   Zero decimals,<br />
                   zero slippage,<br />
-                  pure integers.
+                  true ownership.
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
-                  1 point is strictly 1 token. Zero decimals prevents floating point truncation, sub-unit rounding exploits, and ledger discrepancies.
+                <p className="text-xs font-mono text-[#d3dde2] italic">
+                  Pure integer arithmetic standard.
+                </p>
+                <p className="text-xs sm:text-sm text-white/90 font-normal leading-relaxed">
+                  Sovereign wallet custody—minted as standard SPL tokens with integer units and deterministic accounts.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
-                Non-divisible integer tokens
+              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10">
+                <div className="flex items-center gap-3">
+                  <ArrowCircle />
+                  <div>
+                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">TOKEN PIPELINE</span>
+                    <span className="text-[10px] font-mono text-white/70 block">SPL STANDARD</span>
+                  </div>
+                </div>
+                <div className="text-white/80 group-hover:text-white transition-colors">
+                  <AsteriskIcon size={26} />
+                </div>
               </div>
             </div>
 
-            {/* Capability Card 2 */}
-            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  CAP-02 // AUTHORITY
+            {/* Capability Card 2: PDA AUTHORITY */}
+            <div
+              className="min-w-[340px] sm:min-w-[410px] max-w-[410px] flex-shrink-0 rounded-[28px] border border-white/20 p-8 sm:p-9 flex flex-col justify-between min-h-[460px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(91, 189, 229, 0.45) 0%, transparent 60%), linear-gradient(180deg, #06141e 0%, #0a2334 35%, #154663 65%, #2e7394 85%, #629cb6 100%)",
+              }}
+            >
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
+                  02 / PDA SEEDS
                 </span>
-                <span className="text-xs font-mono text-[#d3dde2]/50">
+                <span className="text-xs font-mono text-white/80 tracking-wider">
                   PROGRAM SIGNER
                 </span>
               </div>
 
-              <div className="my-auto py-6">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+              <div className="my-auto py-6 z-10 space-y-3">
+                <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
                   Non-custodial,<br />
                   signer-gated,<br />
-                  deterministic state.
+                  sovereign state.
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
-                  Mint authority is controlled strictly by the LoyaltyProgram PDA. The merchant cannot unilaterally siphon or confiscate customer tokens.
+                <p className="text-xs font-mono text-[#d3dde2] italic">
+                  Cryptographic signer verification.
+                </p>
+                <p className="text-xs sm:text-sm text-white/90 font-normal leading-relaxed">
+                  Verified authority control—only authorized merchant wallet signers can trigger reward minting via PDA derivation.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
-                Cross-program signer authorization
+              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10">
+                <div className="flex items-center gap-3">
+                  <ArrowCircle />
+                  <div>
+                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">AUTHORITY CONTROL</span>
+                    <span className="text-[10px] font-mono text-white/70 block">PROGRAM SIGNER</span>
+                  </div>
+                </div>
+                <div className="text-white/80 group-hover:text-white transition-colors">
+                  <AsteriskIcon size={26} />
+                </div>
               </div>
             </div>
 
-            {/* Capability Card 3 */}
-            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  CAP-03 // AUDIT
+            {/* Capability Card 3: PROOF-OF-BURN */}
+            <div
+              className="min-w-[340px] sm:min-w-[410px] max-w-[410px] flex-shrink-0 rounded-[28px] border border-white/20 p-8 sm:p-9 flex flex-col justify-between min-h-[460px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(142, 185, 203, 0.45) 0%, transparent 60%), linear-gradient(180deg, #071622 0%, #0d293d 35%, #195272 65%, #3882a5 85%, #76b1c8 100%)",
+              }}
+            >
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
+                  03 / PROOF-OF-BURN
                 </span>
-                <span className="text-xs font-mono text-[#d3dde2]/50">
-                  PROOF-OF-BURN
+                <span className="text-xs font-mono text-white/80 tracking-wider">
+                  RECEIPT PDA
                 </span>
               </div>
 
-              <div className="my-auto py-6">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-                  Cryptographic burn,<br />
-                  immutable receipts,<br />
-                  permanent audit.
+              <div className="my-auto py-6 z-10 space-y-3">
+                <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
+                  Proof-of-burn,<br />
+                  atomic execution,<br />
+                  zero fraud.
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
-                  Redeeming rewards invokes atomic SPL burn instruction. Points are eradicated permanently while an on-chain receipt PDA is minted.
+                <p className="text-xs font-mono text-[#d3dde2] italic">
+                  Deterministic receipt stamps.
+                </p>
+                <p className="text-xs sm:text-sm text-white/90 font-normal leading-relaxed">
+                  Cryptographic proof-of-burn—redemption executes an SPL burn and stamps an immutable on-chain receipt PDA with clock timestamp.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
-                Solana Clock timestamp verification
+              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10">
+                <div className="flex items-center gap-3">
+                  <ArrowCircle />
+                  <div>
+                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">RECEIPT PDA</span>
+                    <span className="text-[10px] font-mono text-white/70 block">ON-CHAIN AUDIT</span>
+                  </div>
+                </div>
+                <div className="text-white/80 group-hover:text-white transition-colors">
+                  <AsteriskIcon size={26} />
+                </div>
               </div>
             </div>
 
-            {/* Capability Card 4 */}
-            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  CAP-04 // THROUGHPUT
+            {/* Capability Card 4: CHECKED MATH */}
+            <div
+              className="min-w-[340px] sm:min-w-[410px] max-w-[410px] flex-shrink-0 rounded-[28px] border border-white/20 p-8 sm:p-9 flex flex-col justify-between min-h-[460px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(91, 189, 229, 0.4) 0%, transparent 60%), linear-gradient(180deg, #05121b 0%, #092030 35%, #13425f 65%, #2a6f90 85%, #5995b0 100%)",
+              }}
+            >
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
+                  04 // CHECKED MATH
                 </span>
-                <span className="text-xs font-mono text-[#d3dde2]/50">
-                  SEALEVEL RUNTIME
+                <span className="text-xs font-mono text-white/80 tracking-wider">
+                  SAFETY INVARIANT
                 </span>
               </div>
 
-              <div className="my-auto py-6">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-                  Parallel execution,<br />
-                  sub-second speed,<br />
-                  scale to millions.
+              <div className="my-auto py-6 z-10 space-y-3">
+                <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
+                  Checked math,<br />
+                  safe counters,<br />
+                  provable state.
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
-                  Because merchant programs reside in independent PDA addresses, transactions execute across parallel Sealevel cores without contention.
+                <p className="text-xs font-mono text-[#d3dde2] italic">
+                  PointPassError invariant guarantees.
+                </p>
+                <p className="text-xs sm:text-sm text-white/90 font-normal leading-relaxed">
+                  Rust checked arithmetic—math overflow triggers immediate transaction reversion across reward counters and circulation limits.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
-                ~400ms finality confirmation
+              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10">
+                <div className="flex items-center gap-3">
+                  <ArrowCircle />
+                  <div>
+                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">SAFETY INVARIANT</span>
+                    <span className="text-[10px] font-mono text-white/70 block">ANCHOR REVERSION</span>
+                  </div>
+                </div>
+                <div className="text-white/80 group-hover:text-white transition-colors">
+                  <AsteriskIcon size={26} />
+                </div>
               </div>
             </div>
 
-            {/* Capability Card 5 */}
-            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  CAP-05 // WALLET
+            {/* Capability Card 5: MULTI-TENANCY */}
+            <div
+              className="min-w-[340px] sm:min-w-[410px] max-w-[410px] flex-shrink-0 rounded-[28px] border border-white/20 p-8 sm:p-9 flex flex-col justify-between min-h-[460px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(142, 194, 218, 0.45) 0%, transparent 60%), linear-gradient(180deg, #071622 0%, #0c273a 35%, #184e6e 65%, #347c9d 85%, #6ea8bf 100%)",
+              }}
+            >
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
+                  05 // MULTI-TENANCY
                 </span>
-                <span className="text-xs font-mono text-[#d3dde2]/50">
-                  ECOSYSTEM READY
+                <span className="text-xs font-mono text-white/80 tracking-wider">
+                  PDA ISOLATION
                 </span>
               </div>
 
-              <div className="my-auto py-6">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-                  Phantom &amp; Solflare,<br />
-                  native display,<br />
-                  zero mobile app.
+              <div className="my-auto py-6 z-10 space-y-3">
+                <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
+                  Isolated state,<br />
+                  merchant seeds,<br />
+                  infinite scale.
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
-                  Customers hold their loyalty passes directly in Phantom, Solflare, or Backpack wallets. No proprietary app store download required.
+                <p className="text-xs font-mono text-[#d3dde2] italic">
+                  Zero cross-program state contention.
+                </p>
+                <p className="text-xs sm:text-sm text-white/90 font-normal leading-relaxed">
+                  Deterministic multi-tenancy—thousands of stores run simultaneously on isolated PDA seed trees with parallel Sealevel runtime.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
-                Universal SPL wallet compatibility
+              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10">
+                <div className="flex items-center gap-3">
+                  <ArrowCircle />
+                  <div>
+                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">PDA ISOLATION</span>
+                    <span className="text-[10px] font-mono text-white/70 block">PER-STORE TREE</span>
+                  </div>
+                </div>
+                <div className="text-white/80 group-hover:text-white transition-colors">
+                  <AsteriskIcon size={26} />
+                </div>
               </div>
             </div>
 
-            {/* Capability Card 6 */}
-            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  CAP-06 // ECONOMY
+            {/* Capability Card 6: CPI COMPOSABILITY */}
+            <div
+              className="min-w-[340px] sm:min-w-[410px] max-w-[410px] flex-shrink-0 rounded-[28px] border border-white/20 p-8 sm:p-9 flex flex-col justify-between min-h-[460px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300"
+              style={{
+                background: "radial-gradient(circle at 85% 90%, rgba(91, 189, 229, 0.45) 0%, transparent 60%), linear-gradient(180deg, #06141e 0%, #0a2334 35%, #154663 65%, #2e7394 85%, #629cb6 100%)",
+              }}
+            >
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/30 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
+                  06 // COMPOSABILITY
                 </span>
-                <span className="text-xs font-mono text-[#d3dde2]/50">
-                  CIRCULATION CAP
+                <span className="text-xs font-mono text-white/80 tracking-wider">
+                  SOLANA ECOSYSTEM
                 </span>
               </div>
 
-              <div className="my-auto py-6">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-                  Bounded liabilities,<br />
-                  predictable costs,<br />
-                  zero inflation.
+              <div className="my-auto py-6 z-10 space-y-3">
+                <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
+                  Composable dApps,<br />
+                  wallet native,<br />
+                  ecosystem wide.
                 </h3>
-                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
-                  Merchants set explicit maximum token caps and reward ratios. Mathematical safeguards protect businesses against runaway point liabilities.
+                <p className="text-xs font-mono text-[#d3dde2] italic">
+                  Instant wallet &amp; explorer indexing.
+                </p>
+                <p className="text-xs sm:text-sm text-white/90 font-normal leading-relaxed">
+                  Open Solana composability—all accounts, tokens, and receipts are standard Solana primitives, immediately visible in Phantom and Solflare.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
-                Checked arithmetic math invariants
+              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10">
+                <div className="flex items-center gap-3">
+                  <ArrowCircle />
+                  <div>
+                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">COMPOSABILITY</span>
+                    <span className="text-[10px] font-mono text-white/70 block">SOLANA ECOSYSTEM</span>
+                  </div>
+                </div>
+                <div className="text-white/80 group-hover:text-white transition-colors">
+                  <AsteriskIcon size={26} />
+                </div>
               </div>
             </div>
 
@@ -843,7 +1000,22 @@ $ anchor test --skip-build
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12 border-b border-[#d3dde2]/10 text-xs">
             <div className="space-y-3">
-              <span className="font-display font-bold text-white text-base block">POINTPASS</span>
+              <div className="flex items-center gap-2">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3.0"
+                  strokeLinecap="square"
+                  className="w-4 h-4 text-white drop-shadow-[0_0_8px_rgba(142,185,203,0.8)]"
+                >
+                  <line x1="12" y1="2" x2="12" y2="22" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+                  <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
+                </svg>
+                <span className="font-display font-bold text-white text-base">PointPass</span>
+              </div>
               <p className="text-[#d3dde2]/70 font-normal leading-relaxed">
                 Non-custodial loyalty token infrastructure for the Solana ecosystem.
               </p>

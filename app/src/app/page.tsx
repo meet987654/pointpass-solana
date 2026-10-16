@@ -12,184 +12,232 @@ export default function Home() {
   const [activeCodeTab, setActiveCodeTab] = useState<"anchor" | "sdk" | "cli">("anchor");
 
   return (
-    <div className="relative text-[#fafafa]">
+    <div className="relative text-[#ffffff]">
       
-      {/* SECTION 1: FULL-SCREEN SEAMLESS HERO (MATCHING "CONTENT NEEDS STRATEGY" IMAGE) */}
-      <section className="relative min-h-[82vh] flex flex-col items-center justify-center text-center px-4 sm:px-8 pt-16 sm:pt-24 pb-20 max-w-5xl mx-auto">
+      {/* =========================================================================
+          SECTION 1: HERO (RESCUE PARTNERS ODDVAL TYPOGRAPHY & HORIZON ATMOSPHERE)
+          ========================================================================= */}
+      <section className="relative min-h-[84vh] flex flex-col items-center justify-center text-center px-4 sm:px-8 pt-20 sm:pt-28 pb-20 max-w-5xl mx-auto">
         
-        {/* Top Brand Pill (matching plexisocial badge) */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill border border-white/20 text-xs font-mono text-white/90 shadow-[0_4px_24px_rgba(0,0,0,0.3)] mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#67baf4] shadow-[0_0_12px_#67baf4]" />
-          <span className="font-normal tracking-wider text-[#67baf4]">POINTPASS</span>
-          <span className="text-white/30">|</span>
-          <span className="text-white/80 font-light">Solana Loyalty Protocol</span>
+        {/* Architectural Blueprint Tag */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0e2534] border border-[#d3dde2]/25 text-xs font-mono text-[#d3dde2] shadow-[0_4px_24px_rgba(0,0,0,0.5)] mb-8">
+          <span className="w-2 h-2 rounded-sm bg-[#3c9bc3] shadow-[0_0_8px_#3c9bc3]" />
+          <span className="font-semibold tracking-wider text-[#93c0d2]">POINTPASS PROTOCOL</span>
+          <span className="text-[#d3dde2]/30">|</span>
+          <span className="text-[#d3dde2]/90 font-light">Solana Loyalty Standard</span>
         </div>
 
-        {/* Hero Headline: Thin, Elegant Sans Typography (matching "Content Needs Strategy") */}
-        <h1 className="text-5xl sm:text-7xl md:text-8xl font-extralight tracking-tight text-white leading-[1.04] drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
-          Loyalty Needs <br />
-          <span className="font-light bg-gradient-to-r from-white via-blue-100 to-[#93c5fd] bg-clip-text text-transparent">
-            Strategy
+        {/* Hero Headline: Bold Oddval Display Grotesque */}
+        <h1 className="font-display text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white leading-[1.04] max-w-4xl">
+          Sovereign Loyalty <br />
+          <span className="font-extrabold bg-gradient-to-b from-white via-[#d3dde2] to-[#8eb9cb] bg-clip-text text-transparent">
+            Built on Solana
           </span>
         </h1>
 
-        {/* Subtitle echoing "Strategy Turns Ideas Into Growth" */}
-        <p className="mt-6 text-base sm:text-xl font-light text-blue-100/80 leading-relaxed max-w-xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
-          Strategy Turns Customer Visits Into Sovereign SPL Tokens.
+        {/* Subtitle in Google Sans */}
+        <p className="mt-6 text-base sm:text-xl font-normal text-[#d3dde2]/85 leading-relaxed max-w-2xl">
+          A non-custodial loyalty token standard on Solana. Zero-decimal SPL tokens, deterministic PDA pipelines, and immutable proof-of-burn receipts.
         </p>
 
-        {/* Frosted Glass Pill Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+        {/* Rescue Partners Action Buttons: Crisp White Pill + Ash Secondary */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-9">
           <Link
             href={`/customer?merchant=${DEMO_MERCHANT}`}
-            className="btn-glass-primary font-normal"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-medium text-sm bg-white text-[#07131b] hover:bg-[#d3dde2] transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 cursor-pointer"
           >
-            Launch Protocol &gt;
+            Launch Customer Demo
           </Link>
 
           <Link
             href="/merchant"
-            className="btn-glass-secondary font-light"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-normal text-sm bg-white/[0.08] text-white hover:bg-white/[0.14] border border-[#d3dde2]/25 hover:border-[#d3dde2]/45 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
           >
             Merchant Terminal
           </Link>
 
           <Link
             href="/docs"
-            className="btn-glass-secondary font-light"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-normal text-sm bg-white/[0.08] text-white hover:bg-white/[0.14] border border-[#d3dde2]/25 hover:border-[#d3dde2]/45 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
           >
-            Learn Strategy
+            Architecture Specs
           </Link>
         </div>
 
-        {/* Quick Metadata Tags */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-[11px] font-mono text-blue-200/60">
-          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">[ ZERO DECIMALS ]</span>
-          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">[ NON-CUSTODIAL PDAS ]</span>
-          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">[ PROOF-OF-BURN ]</span>
+        {/* Quick Technical Invariant Specs */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-[11px] font-mono text-[#d3dde2]/60">
+          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ SPEC: SPL 0-DECIMALS ]</span>
+          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ SEED: DETERMINISTIC PDAS ]</span>
+          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ AUDIT: PROOF-OF-BURN ]</span>
+          <span className="px-3 py-1 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/20">[ RUNTIME: SEALEVEL PARALLEL ]</span>
         </div>
       </section>
 
-      {/* SECTION 1B: SHOWCASE GLASS CARDS (EXACT REFERENCE 2: BLACK CONTAINER + INNER GLASS FRACTAL) */}
-      <section className="relative w-full py-20 bg-[#050814] border-y border-white/[0.08] my-8">
+      {/* =========================================================================
+          SECTION 2: SIGNATURE CARDS SHOWCASE (RESCUE PARTNERS BRAND GUIDELINES)
+          Card 1: Horizon Gradient Card
+          Card 2: Architectural Blueprint Construction Card
+          Card 3: Typographic Spec Matrix Card
+          ========================================================================= */}
+      <section className="relative w-full py-20 bg-[#07131b] border-y border-[#d3dde2]/10 my-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           
-          {/* 3-Column Glass Fractal Cards Grid */}
+          <div className="mb-12 space-y-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
+              DESIGN SYSTEM SPECIFICATION // IDENTITY ARCHETYPE
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Architectural Card Formats
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             
-            {/* Card 1: Exact Masterpiece Reference Card */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[480px] group relative">
-              {/* Inner Glass Fractal Background Layer */}
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            {/* Card 1: Signature Horizon Gradient Card (Slide 1 & Slide 10 in sheet) */}
+            <div className="rounded-[28px] border border-[#d3dde2]/25 bg-gradient-to-b from-[#092231] via-[#164b66] to-[#7faec4] p-8 sm:p-9 flex flex-col justify-between min-h-[480px] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.85)] relative overflow-hidden group hover:border-white/40 transition-all duration-300">
+              {/* Top Row: Pill on Left + Brand Tag on Right */}
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-white/30 bg-black/25 backdrop-blur-md text-xs font-mono text-white/95 font-medium">
+                  01 / HORIZON GRADIENT
+                </span>
+                <span className="text-xs font-mono text-white/80 tracking-wider">
+                  RESCUE PALETTE
+                </span>
+              </div>
 
-              {/* Card Content with relative z-10 */}
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row: Oval Pill on Left + Brand Tag on Right */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    Premium Glass Style
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    StudioCore
-                  </span>
-                </div>
+              {/* Middle Headline: Oddval Bold Grotesque Display */}
+              <div className="my-auto py-8 z-10">
+                <span className="text-xs font-mono text-[#d3dde2] uppercase tracking-wider block mb-2 font-medium">
+                  Sovereign Standard
+                </span>
+                <h3 className="font-display text-3xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-[1.12] drop-shadow-sm">
+                  Deterministic<br />
+                  by design.<br />
+                  Sovereign in state.
+                </h3>
+                <p className="mt-4 text-xs sm:text-sm text-white/90 font-normal max-w-xs leading-relaxed">
+                  Pure integer loyalty standard with zero decimals, zero fractional rounding, and self-custodied customer balances.
+                </p>
+              </div>
 
-                {/* Middle Headline: 3-line light sans font */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[38px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    A Masterpiece<br />
-                    of crisp textures<br />
-                    4K Quality
-                  </h3>
-                </div>
-
-                {/* Bottom Row: Caption on Left + Horizontal Line on Right */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Optimized for social media use
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              {/* Bottom Row: Specs + Hairline */}
+              <div className="flex items-center justify-between pt-6 border-t border-black/20 z-10 text-xs font-mono text-[#07131b] font-medium">
+                <span>Solana Mainnet Ready</span>
+                <span className="font-bold text-[#07131b]">0-Decimals</span>
               </div>
             </div>
 
-            {/* Card 2: Sovereign Loyalty Token Standard */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[480px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            {/* Card 2: Architectural Blueprint Construction Card (Slide 4 in sheet) */}
+            <div className="rounded-[24px] border border-[#d3dde2]/20 bg-[#081824] p-8 sm:p-9 flex flex-col justify-between min-h-[480px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] relative overflow-hidden transition-all duration-300 hover:border-[#3c9bc3]/45 bg-[radial-gradient(rgba(211,221,226,0.1)_1px,transparent_1px)] [background-size:24px_24px] group">
+              {/* Top Row */}
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  02 / BLUEPRINT MATRIX
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/60 tracking-wider">
+                  PDA GEOMETRY
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    Zero-Decimal SPL
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    Solana Devnet
-                  </span>
+              {/* Center: Blueprint Construction Grid Representation */}
+              <div className="my-auto py-6 z-10 space-y-4">
+                <div className="border border-dashed border-[#3c9bc3]/40 p-4 rounded-xl bg-[#07131b]/80 font-mono text-xs space-y-2.5">
+                  <div className="flex items-center justify-between text-[#d3dde2]/50 text-[10px]">
+                    <span>{"// DETERMINISTIC SEEDS"}</span>
+                    <span className="text-[#3c9bc3]">SEALEVEL PDA</span>
+                  </div>
+                  <div className="text-white font-mono text-[11px] bg-black/40 p-2 rounded border border-white/5">
+                    <span className="text-[#3c9bc3]">seeds</span> = [&quot;loyalty&quot;, merchant_pubkey]
+                  </div>
+                  <div className="text-white font-mono text-[11px] bg-black/40 p-2 rounded border border-white/5">
+                    <span className="text-[#3c9bc3]">seeds</span> = [&quot;mint&quot;, loyalty_pda]
+                  </div>
+                  <div className="text-white font-mono text-[11px] bg-black/40 p-2 rounded border border-white/5">
+                    <span className="text-[#3c9bc3]">seeds</span> = [&quot;receipt&quot;, customer, seq]
+                  </div>
                 </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[38px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Mint freely,<br />
-                    custody truly,<br />
-                    redeem instantly.
-                  </h3>
-                </div>
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                  Cryptographic Authority Lockup
+                </h3>
+                <p className="text-xs text-[#d3dde2]/70 font-normal leading-relaxed">
+                  No private keys exist in the mint or burn pipelines. PDA seeds derive authority on-chain deterministically.
+                </p>
+              </div>
 
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Optimized for retail scale • {programLoading ? "..." : `${programData?.totalAwarded ?? 55} pts`}
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              {/* Bottom Row */}
+              <div className="flex items-center justify-between pt-6 border-t border-[#d3dde2]/10 z-10 text-xs font-mono text-[#d3dde2]/70">
+                <span>Ed25519 Signer Validation</span>
+                <span className="text-[#3c9bc3]">Non-Custodial</span>
               </div>
             </div>
 
-            {/* Card 3: Cryptographic Proof-of-Burn Receipts */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[480px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            {/* Card 3: Typographic Hierarchy Spec Table Card (Slide 8 in sheet) */}
+            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[480px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] relative overflow-hidden transition-all duration-300 hover:border-[#3c9bc3]/40 group">
+              {/* Top Row */}
+              <div className="flex items-center justify-between z-10">
+                <span className="px-3.5 py-1.5 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  03 / TYPOGRAPHIC SPEC
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/60 tracking-wider">
+                  ODDVAL HIERARCHY
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    Cryptographic Audit
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    PointPass Protocol
-                  </span>
+              {/* Middle: Typographic Spec Table matching Slide 8 */}
+              <div className="my-auto py-6 z-10 space-y-4">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  Rigorous Typographic Standards
+                </h3>
+                
+                <div className="overflow-hidden rounded-lg border border-[#d3dde2]/15 bg-[#07131b]/90">
+                  <table className="w-full text-left text-[11px] font-mono">
+                    <thead>
+                      <tr className="border-b border-[#d3dde2]/10 text-[#93c0d2] bg-white/[0.02]">
+                        <th className="py-2 px-3">Level</th>
+                        <th className="py-2 px-3">Typeface</th>
+                        <th className="py-2 px-3">Weight</th>
+                        <th className="py-2 px-3">Tracking</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#d3dde2]/5 text-[#d3dde2]/80">
+                      <tr>
+                        <td className="py-2 px-3 font-bold text-white">Заголовок 1</td>
+                        <td className="py-2 px-3 font-display">Oddval / Bricolage</td>
+                        <td className="py-2 px-3">Bold 700</td>
+                        <td className="py-2 px-3 text-[#3c9bc3]">-0.035em</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 px-3 font-semibold text-white">Заголовок 2</td>
+                        <td className="py-2 px-3 font-display">Oddval / Bricolage</td>
+                        <td className="py-2 px-3">SemiBold 600</td>
+                        <td className="py-2 px-3 text-[#3c9bc3]">-0.025em</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 px-3 text-white">Body Copy</td>
+                        <td className="py-2 px-3">Google Sans</td>
+                        <td className="py-2 px-3">Regular 400</td>
+                        <td className="py-2 px-3">-0.012em</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 px-3 text-white">Monospace</td>
+                        <td className="py-2 px-3">JetBrains Mono</td>
+                        <td className="py-2 px-3">Medium 500</td>
+                        <td className="py-2 px-3">0.000em</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[38px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Burn cleanly,<br />
-                    verify openly,<br />
-                    scale infinitely.
-                  </h3>
-                </div>
+                <p className="text-xs text-[#d3dde2]/70 font-normal leading-relaxed">
+                  Geometric ink traps and display weights inspired directly by Swiss corporate identity manuals.
+                </p>
+              </div>
 
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Permanent on-chain receipt PDAs
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              {/* Bottom Row */}
+              <div className="flex items-center justify-between pt-6 border-t border-[#d3dde2]/10 z-10 text-xs font-mono text-[#d3dde2]/70">
+                <span>Specimen Verified</span>
+                <span className="text-[#93c0d2]">{programLoading ? "..." : `${programData?.totalAwarded ?? 55} pts issued`}</span>
               </div>
             </div>
 
@@ -197,293 +245,308 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: PROTOCOL TELEMETRY RIBBON (Frosted Glass Horizon) */}
-      <section className="py-12 border-y border-white/[0.08] bg-[#070e24]/40 backdrop-blur-xl">
+      {/* =========================================================================
+          SECTION 3: RESCUE PARTNERS COLOR PALETTE SWATCHES (SLIDE 5 & 6)
+          ========================================================================= */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-8 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
+              BRAND COLOR PALETTE // SWATCH SPECIFICATION
+            </span>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">
+              Rescue Identity Color Palette
+            </h2>
+          </div>
+          <span className="text-xs font-mono text-[#d3dde2]/50">
+            EXACT MATCH TO BRAND IDENTITY GUIDELINES
+          </span>
+        </div>
+
+        {/* 5-Column Swatch Matrix matching Slide 5 in user image */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-2">
+          
+          {/* Swatch 1: Deep Petrol Dark Slate */}
+          <div className="rounded-2xl border border-[#d3dde2]/15 overflow-hidden bg-[#0b1f2b] p-4 flex flex-col justify-between min-h-[190px] shadow-[0_12px_28px_-8px_rgba(0,0,0,0.6)]">
+            <div className="w-full h-16 rounded-xl bg-[#07131b] border border-white/10 shadow-inner mb-3" />
+            <div className="font-mono text-xs space-y-1">
+              <span className="font-bold text-white block">Deep Petrol</span>
+              <span className="text-[#93c0d2] block text-[11px]">#07131B</span>
+              <span className="text-[#d3dde2]/50 text-[10px] block">Foundation / Base</span>
+            </div>
+          </div>
+
+          {/* Swatch 2: Corporate Navy Slate */}
+          <div className="rounded-2xl border border-[#d3dde2]/15 overflow-hidden bg-[#0b1f2b] p-4 flex flex-col justify-between min-h-[190px] shadow-[0_12px_28px_-8px_rgba(0,0,0,0.6)]">
+            <div className="w-full h-16 rounded-xl bg-[#0e2534] border border-white/10 shadow-inner mb-3" />
+            <div className="font-mono text-xs space-y-1">
+              <span className="font-bold text-white block">Navy Slate</span>
+              <span className="text-[#93c0d2] block text-[11px]">#0E2534</span>
+              <span className="text-[#d3dde2]/50 text-[10px] block">Card Surface / UI</span>
+            </div>
+          </div>
+
+          {/* Swatch 3: Soft Ash Silver */}
+          <div className="rounded-2xl border border-[#d3dde2]/15 overflow-hidden bg-[#0b1f2b] p-4 flex flex-col justify-between min-h-[190px] shadow-[0_12px_28px_-8px_rgba(0,0,0,0.6)]">
+            <div className="w-full h-16 rounded-xl bg-[#d3dde2] border border-white/10 shadow-inner mb-3" />
+            <div className="font-mono text-xs space-y-1">
+              <span className="font-bold text-white block">Ash Silver</span>
+              <span className="text-[#93c0d2] block text-[11px]">#D3DDE2</span>
+              <span className="text-[#d3dde2]/50 text-[10px] block">Hairline / Borders</span>
+            </div>
+          </div>
+
+          {/* Swatch 4: Cerulean Blue */}
+          <div className="rounded-2xl border border-[#d3dde2]/15 overflow-hidden bg-[#0b1f2b] p-4 flex flex-col justify-between min-h-[190px] shadow-[0_12px_28px_-8px_rgba(0,0,0,0.6)]">
+            <div className="w-full h-16 rounded-xl bg-[#2d7a9c] border border-white/10 shadow-inner mb-3" />
+            <div className="font-mono text-xs space-y-1">
+              <span className="font-bold text-white block">Cerulean Blue</span>
+              <span className="text-[#93c0d2] block text-[11px]">#2D7A9C</span>
+              <span className="text-[#d3dde2]/50 text-[10px] block">Interactive / Focus</span>
+            </div>
+          </div>
+
+          {/* Swatch 5: Ice Mist Horizon */}
+          <div className="rounded-2xl border border-[#d3dde2]/15 overflow-hidden bg-[#0b1f2b] p-4 flex flex-col justify-between min-h-[190px] shadow-[0_12px_28px_-8px_rgba(0,0,0,0.6)]">
+            <div className="w-full h-16 rounded-xl bg-[#8eb9cb] border border-white/10 shadow-inner mb-3" />
+            <div className="font-mono text-xs space-y-1">
+              <span className="font-bold text-white block">Ice Horizon</span>
+              <span className="text-[#93c0d2] block text-[11px]">#8EB9CB</span>
+              <span className="text-[#d3dde2]/50 text-[10px] block">Gradient Accent</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 4: PROTOCOL TELEMETRY RIBBON
+          ========================================================================= */}
+      <section className="py-12 border-y border-[#d3dde2]/10 bg-[#0b1f2b]/70 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center sm:text-left">
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-blue-200/60 block font-light">
+            <div className="space-y-1 border-l-2 border-[#3c9bc3] pl-4">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#93c0d2] block">
                 TOKEN STANDARD
               </span>
-              <span className="text-2xl sm:text-3xl font-mono font-light text-white block">
-                SPL (0-Decimals)
+              <span className="font-display text-2xl sm:text-3xl font-bold text-white block">
+                SPL 0-Decimals
               </span>
-              <span className="text-xs text-blue-100/70 font-light">Zero fractional point rounding</span>
+              <span className="text-xs text-[#d3dde2]/70 font-normal">Zero fractional rounding errors</span>
             </div>
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-blue-200/60 block font-light">
+
+            <div className="space-y-1 border-l-2 border-[#3c9bc3] pl-4">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#93c0d2] block">
                 CONFIRMATION TIME
               </span>
-              <span className="text-2xl sm:text-3xl font-mono font-light text-white block">
+              <span className="font-display text-2xl sm:text-3xl font-bold text-white block">
                 ~400 ms
               </span>
-              <span className="text-xs text-blue-100/70 font-light">Sub-second reward settlement</span>
+              <span className="text-xs text-[#d3dde2]/70 font-normal">Sub-second reward settlement</span>
             </div>
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-blue-200/60 block font-light">
+
+            <div className="space-y-1 border-l-2 border-[#3c9bc3] pl-4">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#93c0d2] block">
                 NETWORK GAS FEE
               </span>
-              <span className="text-2xl sm:text-3xl font-mono font-light text-white block">
+              <span className="font-display text-2xl sm:text-3xl font-bold text-white block">
                 &lt; $0.0001
               </span>
-              <span className="text-xs text-blue-100/70 font-light">Fractional cent store scale</span>
+              <span className="text-xs text-[#d3dde2]/70 font-normal">Micro-fractional store scale</span>
             </div>
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-blue-200/60 block font-light">
+
+            <div className="space-y-1 border-l-2 border-[#3c9bc3] pl-4">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#93c0d2] block">
                 SECURITY INVARIANT
               </span>
-              <span className="text-2xl sm:text-3xl font-mono font-light text-white block">
+              <span className="font-display text-2xl sm:text-3xl font-bold text-white block">
                 PDA Seeds
               </span>
-              <span className="text-xs text-blue-100/70 font-light">No private keys in mint path</span>
+              <span className="text-xs text-[#d3dde2]/70 font-normal">No private keys in mint path</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: CORE CAPABILITIES (BLACK CONTAINER + EXACT IMAGE 2 GLASS FRACTAL CARDS) */}
-      <section className="relative w-full py-24 bg-[#050814] border-y border-white/[0.08] my-8">
+      {/* =========================================================================
+          SECTION 5: CORE PROTOCOL CAPABILITIES (6 ARCHITECTURAL DARK SLATE CARDS)
+          ========================================================================= */}
+      <section className="relative w-full py-24 bg-[#07131b] border-y border-[#d3dde2]/10 my-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
           
           <div className="space-y-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
-              CORE CAPABILITIES
+            <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
+              CORE PROTOCOL CAPABILITIES
             </span>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
-              Engineered for high-throughput merchant scale
+            <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+              Engineered for high-throughput retail commerce
             </h2>
-            <p className="text-sm sm:text-base text-blue-100/70 max-w-2xl font-light">
-              Designed from mathematical foundations to eliminate the vulnerabilities and database lock-in of legacy loyalty programs.
+            <p className="text-sm sm:text-base text-[#d3dde2]/80 max-w-2xl font-normal">
+              Eliminating centralized database vulnerabilities, locked-in vendor silos, and fractional rounding discrepancies.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             
             {/* Capability Card 1 */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  CAP-01 // TOKEN
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/50">
+                  SPL STANDARD
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    01 / Token Architecture
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    SPL Standard
-                  </span>
-                </div>
+              <div className="my-auto py-6">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                  Zero decimals,<br />
+                  zero slippage,<br />
+                  pure integers.
+                </h3>
+                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
+                  1 point is strictly 1 token. Zero decimals prevents floating point truncation, sub-unit rounding exploits, and ledger discrepancies.
+                </p>
+              </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Zero decimals,<br />
-                    zero slippage,<br />
-                    true ownership.
-                  </h3>
-                </div>
-
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Pure integer arithmetic standard
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
+                Non-divisible integer tokens
               </div>
             </div>
 
             {/* Capability Card 2 */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  CAP-02 // AUTHORITY
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/50">
+                  PROGRAM SIGNER
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    02 / Authority Control
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    Program Signer
-                  </span>
-                </div>
+              <div className="my-auto py-6">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                  Non-custodial,<br />
+                  signer-gated,<br />
+                  deterministic state.
+                </h3>
+                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
+                  Mint authority is controlled strictly by the LoyaltyProgram PDA. The merchant cannot unilaterally siphon or confiscate customer tokens.
+                </p>
+              </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Non-custodial,<br />
-                    signer-gated,<br />
-                    sovereign state.
-                  </h3>
-                </div>
-
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Cryptographic signer verification
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
+                Cross-program signer authorization
               </div>
             </div>
 
             {/* Capability Card 3 */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  CAP-03 // AUDIT
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/50">
+                  PROOF-OF-BURN
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    03 / Fraud Protection
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    Proof-of-Burn
-                  </span>
-                </div>
+              <div className="my-auto py-6">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                  Cryptographic burn,<br />
+                  immutable receipts,<br />
+                  permanent audit.
+                </h3>
+                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
+                  Redeeming rewards invokes atomic SPL burn instruction. Points are eradicated permanently while an on-chain receipt PDA is minted.
+                </p>
+              </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Proof-of-burn,<br />
-                    atomic execution,<br />
-                    zero fraud.
-                  </h3>
-                </div>
-
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Deterministic receipt stamps
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
+                Solana Clock timestamp verification
               </div>
             </div>
 
             {/* Capability Card 4 */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  CAP-04 // THROUGHPUT
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/50">
+                  SEALEVEL RUNTIME
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    04 / Arithmetic Invariants
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    Checked Math
-                  </span>
-                </div>
+              <div className="my-auto py-6">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                  Parallel execution,<br />
+                  sub-second speed,<br />
+                  scale to millions.
+                </h3>
+                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
+                  Because merchant programs reside in independent PDA addresses, transactions execute across parallel Sealevel cores without contention.
+                </p>
+              </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Checked math,<br />
-                    safe counters,<br />
-                    provable state.
-                  </h3>
-                </div>
-
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    PointPassError invariant guarantees
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
+                ~400ms finality confirmation
               </div>
             </div>
 
             {/* Capability Card 5 */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  CAP-05 // WALLET
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/50">
+                  ECOSYSTEM READY
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    05 / Multi-Tenancy
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    Isolated Seeds
-                  </span>
-                </div>
+              <div className="my-auto py-6">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                  Phantom &amp; Solflare,<br />
+                  native display,<br />
+                  zero mobile app.
+                </h3>
+                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
+                  Customers hold their loyalty passes directly in Phantom, Solflare, or Backpack wallets. No proprietary app store download required.
+                </p>
+              </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Isolated state,<br />
-                    merchant seeds,<br />
-                    infinite scale.
-                  </h3>
-                </div>
-
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Zero cross-program state contention
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
+                Universal SPL wallet compatibility
               </div>
             </div>
 
             {/* Capability Card 6 */}
-            <div className="card-glass-fractal p-8 sm:p-9 flex flex-col justify-between min-h-[460px] group relative">
-              <div 
-                className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url('/card-glass-fractal-bg.jpg')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
+            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[440px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0e2534] hover:-translate-y-1 group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
+                  CAP-06 // ECONOMY
+                </span>
+                <span className="text-xs font-mono text-[#d3dde2]/50">
+                  CIRCULATION CAP
+                </span>
+              </div>
 
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-                {/* Top Row */}
-                <div className="flex items-center justify-between">
-                  <span className="px-4 py-1.5 rounded-full border border-white/40 bg-white/[0.08] backdrop-blur-md text-xs sm:text-[13px] font-normal text-white/95 shadow-sm">
-                    06 / Ecosystem CPI
-                  </span>
-                  <span className="text-xs sm:text-[13px] font-normal text-white/75 tracking-wide">
-                    Solana Primitives
-                  </span>
-                </div>
+              <div className="my-auto py-6">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                  Bounded liabilities,<br />
+                  predictable costs,<br />
+                  zero inflation.
+                </h3>
+                <p className="mt-3 text-xs sm:text-sm text-[#d3dde2]/70 font-normal leading-relaxed">
+                  Merchants set explicit maximum token caps and reward ratios. Mathematical safeguards protect businesses against runaway point liabilities.
+                </p>
+              </div>
 
-                {/* Middle Headline */}
-                <div className="my-auto py-8">
-                  <h3 className="text-3xl sm:text-4xl lg:text-[36px] font-light text-white tracking-tight leading-[1.18] max-w-sm">
-                    Composable dApps,<br />
-                    wallet native,<br />
-                    ecosystem wide.
-                  </h3>
-                </div>
-
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between pt-6 border-t border-transparent">
-                  <span className="text-xs sm:text-[13px] font-light text-white/70">
-                    Instant wallet & explorer indexing
-                  </span>
-                  <div className="w-24 sm:w-36 h-[1px] bg-white/40 shrink-0" />
-                </div>
+              <div className="pt-4 border-t border-[#d3dde2]/10 text-xs font-mono text-[#d3dde2]/60">
+                Checked arithmetic math invariants
               </div>
             </div>
 
@@ -491,217 +554,134 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 4: HOW IT WORKS / 4-STEP TIMELINE (BLACK CONTAINER + INNER GLASS FRACTAL CARDS) */}
-      <section className="relative w-full py-24 bg-[#050814] border-y border-white/[0.08] my-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-          
-          <div className="space-y-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
-              WORKFLOW
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
-              The four-step lifecycle of a PointPass token
-            </h2>
-            <p className="text-sm sm:text-base text-blue-100/70 max-w-2xl font-light">
-              From store initialization to verifiable burn receipts, every transition is executed on-chain.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            {/* Step 1 Card: Initialize */}
-            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
-              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-
-              {/* Top Row */}
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
-                  01 / Initialize
-                </span>
-                <span className="text-[11px] font-normal text-white/70">
-                  Merchant Seed
-                </span>
-              </div>
-
-              {/* Middle Headline */}
-              <div className="my-auto py-6">
-                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
-                  Deploy store<br />
-                  PDA points mint<br />
-                  Zero Decimals
-                </h3>
-              </div>
-
-              {/* Bottom Row */}
-              <div className="flex items-center justify-between pt-4 border-t border-transparent">
-                <span className="text-[11px] font-light text-white/65">
-                  Deterministic seeds
-                </span>
-                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
-              </div>
-              </div>
-            </div>
-
-            {/* Step 2 Card: Award */}
-            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
-              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-
-              {/* Top Row */}
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
-                  02 / Award Points
-                </span>
-                <span className="text-[11px] font-normal text-white/70">
-                  Signer Gated
-                </span>
-              </div>
-
-              {/* Middle Headline */}
-              <div className="my-auto py-6">
-                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
-                  Mint points<br />
-                  via program CPI<br />
-                  Direct to Wallet
-                </h3>
-              </div>
-
-              {/* Bottom Row */}
-              <div className="flex items-center justify-between pt-4 border-t border-transparent">
-                <span className="text-[11px] font-light text-white/65">
-                  Customer custody
-                </span>
-                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
-              </div>
-              </div>
-            </div>
-
-            {/* Step 3 Card: Redeem */}
-            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
-              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-
-              {/* Top Row */}
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
-                  03 / Redeem Reward
-                </span>
-                <span className="text-[11px] font-normal text-white/70">
-                  Atomic Burn
-                </span>
-              </div>
-
-              {/* Middle Headline */}
-              <div className="my-auto py-6">
-                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
-                  Burn tokens<br />
-                  for store rewards<br />
-                  Zero Fraud
-                </h3>
-              </div>
-
-              {/* Bottom Row */}
-              <div className="flex items-center justify-between pt-4 border-t border-transparent">
-                <span className="text-[11px] font-light text-white/65">
-                  Atomic instruction
-                </span>
-                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
-              </div>
-              </div>
-            </div>
-
-            {/* Step 4 Card: Stamp Receipt */}
-            <div className="card-glass-fractal p-7 flex flex-col justify-between min-h-[440px] group relative">
-              <div className="absolute inset-0 bg-cover bg-right pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(\'/card-glass-fractal-bg.jpg\')` }} />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#050814]/92 via-[#050814]/65 to-[#050814]/20 pointer-events-none" />
-              <div className="relative z-10 flex flex-col justify-between h-full flex-1">
-
-              {/* Top Row */}
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full border border-white/40 bg-white/[0.06] backdrop-blur-md text-[11px] font-normal text-white/95">
-                  04 / Stamp Receipt
-                </span>
-                <span className="text-[11px] font-normal text-white/70">
-                  Clock Time
-                </span>
-              </div>
-
-              {/* Middle Headline */}
-              <div className="my-auto py-6">
-                <h3 className="text-2xl sm:text-[28px] font-light text-white tracking-tight leading-[1.2]">
-                  Immutable<br />
-                  receipt PDA stamp<br />
-                  Proof-of-Burn
-                </h3>
-              </div>
-
-              {/* Bottom Row */}
-              <div className="flex items-center justify-between pt-4 border-t border-transparent">
-                <span className="text-[11px] font-light text-white/65">
-                  Permanent audit
-                </span>
-                <div className="w-16 h-[1px] bg-white/40 shrink-0" />
-              </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5: COMPARATIVE ANALYSIS MATRIX */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+      {/* =========================================================================
+          SECTION 6: 4-STEP PROTOCOL LIFECYCLE (ARCHITECTURAL BLUEPRINT GRID)
+          ========================================================================= */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
         <div className="space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
-            COMPARATIVE ANALYSIS
+          <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
+            PROTOCOL LIFECYCLE // 4-STEP PIPELINE
           </span>
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
-            PointPass on Solana vs Legacy Web2 Loyalty
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+            How PointPass executes on-chain
           </h2>
-          <p className="text-sm sm:text-base text-blue-100/70 max-w-2xl font-light">
-            Compare architectural differences between siloed centralized loyalty databases and decentralized on-chain SPL tokens.
+          <p className="text-sm sm:text-base text-[#d3dde2]/80 max-w-2xl font-normal">
+            From initial merchant registry to cryptographic receipt stamp, every phase executes via verifiable Solana Anchor instructions.
           </p>
         </div>
 
-        <div className="glass-card overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          {/* Step 1 */}
+          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
+            <div>
+              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 01</span>
+              <h4 className="font-display text-xl font-bold text-white mb-2">Program Init</h4>
+              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
+                Merchant initializes their loyalty configuration PDA, establishing token name, symbol, reward threshold, and program-controlled SPL mint.
+              </p>
+            </div>
+            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
+              instr: initialize_loyalty_program
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
+            <div>
+              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 02</span>
+              <h4 className="font-display text-xl font-bold text-white mb-2">Pass Derivation</h4>
+              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
+                Customer connects their Solana wallet. Their Associated Token Account (ATA) is verified or lazily initialized to receive points.
+              </p>
+            </div>
+            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
+              instr: get_or_create_ata
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
+            <div>
+              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 03</span>
+              <h4 className="font-display text-xl font-bold text-white mb-2">Point Accrual</h4>
+              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
+                On store checkout, merchant triggers atomic point award. Program signs via CPI with PDA seeds to mint zero-decimal tokens.
+              </p>
+            </div>
+            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
+              instr: award_points (CPI mint_to)
+            </div>
+          </div>
+
+          {/* Step 4 */}
+          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
+            <div>
+              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 04</span>
+              <h4 className="font-display text-xl font-bold text-white mb-2">Proof-of-Burn</h4>
+              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
+                Customer burns points to redeem perk. Tokens are eradicated permanently, and an on-chain RedemptionReceipt PDA is recorded.
+              </p>
+            </div>
+            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
+              instr: redeem (CPI burn)
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 7: COMPARATIVE ANALYSIS MATRIX
+          ========================================================================= */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
+        <div className="space-y-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
+            COMPARATIVE ANALYSIS MATRIX
+          </span>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
+            PointPass on Solana vs Legacy Web2 Loyalty
+          </h2>
+          <p className="text-sm sm:text-base text-[#d3dde2]/80 max-w-2xl font-normal">
+            Compare architectural differences between siloed centralized databases and sovereign on-chain SPL tokens.
+          </p>
+        </div>
+
+        <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] overflow-hidden shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)]">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-mono">
               <thead>
-                <tr className="border-b border-white/10 text-blue-200/70 uppercase bg-white/[0.03]">
-                  <th className="py-4 px-6 font-normal">Architectural Dimension</th>
-                  <th className="py-4 px-6 text-white/50 font-light">Legacy Web2 Loyalty (Shopify / Square)</th>
-                  <th className="py-4 px-6 text-[#67baf4] font-normal">PointPass Solana Protocol</th>
+                <tr className="border-b border-[#d3dde2]/15 text-[#93c0d2] uppercase bg-white/[0.02]">
+                  <th className="py-4 px-6 font-semibold">Architectural Dimension</th>
+                  <th className="py-4 px-6 text-[#d3dde2]/60 font-normal">Legacy Web2 Loyalty (Shopify / Square)</th>
+                  <th className="py-4 px-6 text-white font-bold bg-[#3c9bc3]/15">PointPass Solana Protocol</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.06]">
+              <tbody className="divide-y divide-[#d3dde2]/10">
                 <tr className="hover:bg-white/[0.02] transition-colors">
-                  <td className="py-4 px-6 font-light text-white">Point Custody</td>
-                  <td className="py-4 px-6 text-white/60 font-sans font-light">Siloed in private database table; merchant can delete or modify at will</td>
-                  <td className="py-4 px-6 text-blue-200 font-sans font-light">Self-custodied in customer wallet as SPL tokens; mathematically sovereign</td>
+                  <td className="py-4 px-6 font-semibold text-white">Point Custody</td>
+                  <td className="py-4 px-6 text-[#d3dde2]/70 font-sans font-normal">Siloed in private database table; merchant can delete or modify at will</td>
+                  <td className="py-4 px-6 text-[#93c0d2] font-sans font-medium bg-[#3c9bc3]/5">Self-custodied in customer wallet as SPL tokens; mathematically sovereign</td>
                 </tr>
                 <tr className="hover:bg-white/[0.02] transition-colors">
-                  <td className="py-4 px-6 font-light text-white">Redemption Proof</td>
-                  <td className="py-4 px-6 text-white/60 font-sans font-light">Database decrement flag; easily disputed or replayed during chargebacks</td>
-                  <td className="py-4 px-6 text-blue-200 font-sans font-light">Immutable on-chain RedemptionReceipt PDA with Solana Clock timestamp</td>
+                  <td className="py-4 px-6 font-semibold text-white">Redemption Proof</td>
+                  <td className="py-4 px-6 text-[#d3dde2]/70 font-sans font-normal">Database decrement flag; easily disputed or replayed during chargebacks</td>
+                  <td className="py-4 px-6 text-[#93c0d2] font-sans font-medium bg-[#3c9bc3]/5">Immutable on-chain RedemptionReceipt PDA with Solana Clock timestamp</td>
                 </tr>
                 <tr className="hover:bg-white/[0.02] transition-colors">
-                  <td className="py-4 px-6 font-light text-white">Ecosystem Composability</td>
-                  <td className="py-4 px-6 text-white/60 font-sans font-light">Zero composability; locked into proprietary vendor APIs and closed portals</td>
-                  <td className="py-4 px-6 text-blue-200 font-sans font-light">Standard SPL token; composable with DEXes, NFT gateways, and dApps</td>
+                  <td className="py-4 px-6 font-semibold text-white">Ecosystem Composability</td>
+                  <td className="py-4 px-6 text-[#d3dde2]/70 font-sans font-normal">Zero composability; locked into proprietary vendor APIs and closed portals</td>
+                  <td className="py-4 px-6 text-[#93c0d2] font-sans font-medium bg-[#3c9bc3]/5">Standard SPL token; composable with DEXes, NFT gateways, and dApps</td>
                 </tr>
                 <tr className="hover:bg-white/[0.02] transition-colors">
-                  <td className="py-4 px-6 font-light text-white">Account Isolation</td>
-                  <td className="py-4 px-6 text-white/60 font-sans font-light">Multi-tenant shared SQL table; schema migration risks &amp; single point of failure</td>
-                  <td className="py-4 px-6 text-blue-200 font-sans font-light">Dedicated PDA accounts per merchant authority; zero shared state vulnerability</td>
+                  <td className="py-4 px-6 font-semibold text-white">Account Isolation</td>
+                  <td className="py-4 px-6 text-[#d3dde2]/70 font-sans font-normal">Multi-tenant shared SQL table; schema migration risks &amp; single point of failure</td>
+                  <td className="py-4 px-6 text-[#93c0d2] font-sans font-medium bg-[#3c9bc3]/5">Dedicated PDA accounts per merchant authority; zero shared state vulnerability</td>
                 </tr>
                 <tr className="hover:bg-white/[0.02] transition-colors">
-                  <td className="py-4 px-6 font-light text-white">Auditability</td>
-                  <td className="py-4 px-6 text-white/60 font-sans font-light">Internal audit logs accessible only to engineers and platform admins</td>
-                  <td className="py-4 px-6 text-blue-200 font-sans font-light">Publicly auditable by any explorer, RPC node, or third-party indexer</td>
+                  <td className="py-4 px-6 font-semibold text-white">Auditability</td>
+                  <td className="py-4 px-6 text-[#d3dde2]/70 font-sans font-normal">Internal audit logs accessible only to engineers and platform admins</td>
+                  <td className="py-4 px-6 text-[#93c0d2] font-sans font-medium bg-[#3c9bc3]/5">Publicly auditable by any explorer, RPC node, or third-party indexer</td>
                 </tr>
               </tbody>
             </table>
@@ -709,110 +689,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 6: DETERMINISTIC PDA SPECIFICATIONS TABLE */}
-      <section className="py-24 border-y border-white/[0.08] bg-[#070e24]/30 backdrop-blur-xl">
+      {/* =========================================================================
+          SECTION 8: INTERACTIVE CODE TERMINAL
+          ========================================================================= */}
+      <section className="py-20 border-y border-[#d3dde2]/10 bg-[#07131b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
-          <div className="space-y-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
-              SPECIFICATION
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
-              Deterministic Solana PDA standard
-            </h2>
-            <p className="text-sm sm:text-base text-blue-100/70 max-w-2xl font-light">
-              Every merchant, points mint, and redemption receipt is derived deterministically on-chain without human private key management.
-            </p>
-          </div>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="space-y-2">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
+                DEVELOPER SDK &amp; ON-CHAIN PROGRAM
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+                Anchor Rust &amp; Client SDK
+              </h2>
+            </div>
 
-          <div className="glass-card overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs font-mono">
-                <thead>
-                  <tr className="border-b border-white/10 text-blue-200/70 uppercase bg-white/[0.03]">
-                    <th className="py-4 px-6 font-normal">Component</th>
-                    <th className="py-4 px-6 font-light">Type</th>
-                    <th className="py-4 px-6 font-normal">Seeds Formula</th>
-                    <th className="py-4 px-6 font-sans font-light">Authority Model</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/[0.06]">
-                  <tr className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-4 px-6 font-light text-white">LoyaltyProgram</td>
-                    <td className="py-4 px-6 text-blue-200/70 font-light">PDA Account</td>
-                    <td className="py-4 px-6 text-[#93c5fd] font-light">[&quot;loyalty&quot;, merchant_pubkey]</td>
-                    <td className="py-4 px-6 text-white/80 font-sans font-light">Controlled strictly by merchant wallet signer</td>
-                  </tr>
-                  <tr className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-4 px-6 font-light text-white">PointsMint</td>
-                    <td className="py-4 px-6 text-blue-200/70 font-light">SPL Token Mint (0-Decimals)</td>
-                    <td className="py-4 px-6 text-[#93c5fd] font-light">[&quot;mint&quot;, loyalty_program_pda]</td>
-                    <td className="py-4 px-6 text-white/80 font-sans font-light">Mint authority is the LoyaltyProgram PDA itself</td>
-                  </tr>
-                  <tr className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-4 px-6 font-light text-white">RedemptionReceipt</td>
-                    <td className="py-4 px-6 text-blue-200/70 font-light">Proof-of-Burn PDA</td>
-                    <td className="py-4 px-6 text-[#93c5fd] font-light">[&quot;redemption&quot;, loyalty_pda, customer, index]</td>
-                    <td className="py-4 px-6 text-white/80 font-sans font-light">Immutable on-chain timestamp and cryptographic burn proof</td>
-                  </tr>
-                </tbody>
-              </table>
+            {/* Tab Buttons */}
+            <div className="flex items-center gap-2 p-1.5 rounded-full bg-[#0b1f2b] border border-[#d3dde2]/15 text-xs font-mono">
+              <button
+                type="button"
+                onClick={() => setActiveCodeTab("anchor")}
+                className={`px-4 py-1.5 rounded-full transition-all cursor-pointer ${
+                  activeCodeTab === "anchor"
+                    ? "bg-[#ffffff] text-[#07131b] font-medium shadow-sm"
+                    : "text-[#d3dde2]/70 hover:text-white"
+                }`}
+              >
+                Anchor Rust
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveCodeTab("sdk")}
+                className={`px-4 py-1.5 rounded-full transition-all cursor-pointer ${
+                  activeCodeTab === "sdk"
+                    ? "bg-[#ffffff] text-[#07131b] font-medium shadow-sm"
+                    : "text-[#d3dde2]/70 hover:text-white"
+                }`}
+              >
+                TypeScript SDK
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveCodeTab("cli")}
+                className={`px-4 py-1.5 rounded-full transition-all cursor-pointer ${
+                  activeCodeTab === "cli"
+                    ? "bg-[#ffffff] text-[#07131b] font-medium shadow-sm"
+                    : "text-[#d3dde2]/70 hover:text-white"
+                }`}
+              >
+                CLI &amp; Test Suite
+              </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* SECTION 7: DEVELOPER CODE PLAYGROUND */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-8 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
-              DEVELOPER TOOLING
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white">
-              Engineered for TypeScript and Rust
-            </h2>
-            <p className="text-sm text-blue-100/70 font-light">
-              Inspect how instructions and client calls are structured under the hood.
-            </p>
-          </div>
-          
-          <div className="flex gap-2">
-            <button
-              onClick={() => setActiveCodeTab("anchor")}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors cursor-pointer ${
-                activeCodeTab === "anchor"
-                  ? "bg-white text-[#050814] font-normal shadow-[0_0_16px_rgba(255,255,255,0.4)]"
-                  : "bg-white/5 text-blue-100/70 hover:text-white border border-white/10 font-light"
-              }`}
-            >
-              Anchor Instruction
-            </button>
-            <button
-              onClick={() => setActiveCodeTab("sdk")}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors cursor-pointer ${
-                activeCodeTab === "sdk"
-                  ? "bg-white text-[#050814] font-normal shadow-[0_0_16px_rgba(255,255,255,0.4)]"
-                  : "bg-white/5 text-blue-100/70 hover:text-white border border-white/10 font-light"
-              }`}
-            >
-              TypeScript Client
-            </button>
-            <button
-              onClick={() => setActiveCodeTab("cli")}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors cursor-pointer ${
-                activeCodeTab === "cli"
-                  ? "bg-white text-[#050814] font-normal shadow-[0_0_16px_rgba(255,255,255,0.4)]"
-                  : "bg-white/5 text-blue-100/70 hover:text-white border border-white/10 font-light"
-              }`}
-            >
-              CLI &amp; Test Suite
-            </button>
-          </div>
-        </div>
-
-        <div className="glass-card overflow-hidden p-6 font-mono text-xs leading-relaxed text-[#d4d4d8] border border-white/15">
-          {activeCodeTab === "anchor" && (
-            <pre className="overflow-x-auto text-[#d4d4d8] font-light">
+          <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] overflow-hidden p-6 font-mono text-xs leading-relaxed text-[#d4d4d8] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)]">
+            {activeCodeTab === "anchor" && (
+              <pre className="overflow-x-auto text-[#d4d4d8] font-normal">
 {`// Burn points and stamp an immutable on-chain receipt PDA
 pub fn handle_redeem(ctx: Context<Redeem>) -> Result<()> {
     let loyalty_program = &mut ctx.accounts.loyalty_program;
@@ -843,11 +775,11 @@ pub fn handle_redeem(ctx: Context<Redeem>) -> Result<()> {
 
     Ok(())
 }`}
-            </pre>
-          )}
+              </pre>
+            )}
 
-          {activeCodeTab === "sdk" && (
-            <pre className="overflow-x-auto text-[#d4d4d8] font-light">
+            {activeCodeTab === "sdk" && (
+              <pre className="overflow-x-auto text-[#d4d4d8] font-normal">
 {`// Client-side execution with automatic PDA resolution
 import { redeemPoints, getProgram } from "@/lib";
 
@@ -858,11 +790,11 @@ const txSignature = await redeemPoints(
 );
 
 console.log("Redemption confirmed on Solana Devnet:", txSignature);`}
-            </pre>
-          )}
+              </pre>
+            )}
 
-          {activeCodeTab === "cli" && (
-            <pre className="overflow-x-auto text-[#d4d4d8] font-light">
+            {activeCodeTab === "cli" && (
+              <pre className="overflow-x-auto text-[#d4d4d8] font-normal">
 {`# Run comprehensive Anchor integration test suite against Solana test validator
 $ anchor test --skip-build
 
@@ -874,55 +806,59 @@ $ anchor test --skip-build
     [PASS] prevents math overflow in total_awarded counters (184ms)
 
   5 passing (1.4s)`}
-            </pre>
-          )}
+              </pre>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* SECTION 8: CALL TO ACTION BANNER */}
+      {/* =========================================================================
+          SECTION 9: CALL TO ACTION BANNER (SIGNATURE HORIZON GRADIENT)
+          ========================================================================= */}
       <section className="py-24 max-w-5xl mx-auto px-4 sm:px-8">
-        <div className="glass-card p-8 sm:p-14 text-center space-y-6 relative overflow-hidden border border-white/20 shadow-[0_20px_60px_rgba(29,78,216,0.25)]">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-blue-600/15 to-transparent pointer-events-none" />
-          <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-normal block">
+        <div className="rounded-[28px] border border-[#d3dde2]/25 bg-gradient-to-b from-[#092231] via-[#164b66] to-[#7faec4] p-8 sm:p-14 text-center space-y-6 shadow-[0_24px_70px_-15px_rgba(0,0,0,0.9)] relative overflow-hidden">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#d3dde2] font-semibold block">
             GET STARTED TODAY
           </span>
-          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white max-w-2xl mx-auto">
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white max-w-2xl mx-auto drop-shadow-sm">
             Ready to deploy sovereign loyalty on Solana?
           </h2>
-          <p className="text-sm sm:text-base text-blue-100/80 max-w-xl mx-auto font-light">
+          <p className="text-sm sm:text-base text-white/95 max-w-xl mx-auto font-normal leading-relaxed">
             Experience zero-decimal SPL loyalty tokens on Solana Devnet. Test the customer flow or launch your own store terminal.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link href={`/customer?merchant=${DEMO_MERCHANT}`} className="btn-glass-primary">
-              Launch Customer Demo &gt;
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-3">
+            <Link href={`/customer?merchant=${DEMO_MERCHANT}`} className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-medium text-sm bg-white text-[#07131b] hover:bg-[#d3dde2] transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 cursor-pointer">
+              Launch Customer Demo
             </Link>
-            <Link href="/merchant" className="btn-glass-secondary">
+            <Link href="/merchant" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-normal text-sm bg-black/25 text-white hover:bg-black/35 border border-white/30 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer">
               Open Merchant Console
             </Link>
-            <Link href="/docs" className="btn-glass-secondary">
+            <Link href="/docs" className="inline-flex items-center justify-center px-8 py-3.5 rounded-full font-normal text-sm bg-black/25 text-white hover:bg-black/35 border border-white/30 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer">
               Read Documentation
             </Link>
           </div>
         </div>
       </section>
 
-      {/* SECTION 9: GLASSMORPHIC FOOTER */}
-      <footer className="py-16 border-t border-white/[0.08] bg-[#050814]/80 backdrop-blur-2xl">
+      {/* =========================================================================
+          SECTION 10: ARCHITECTURAL FOOTER
+          ========================================================================= */}
+      <footer className="py-16 border-t border-[#d3dde2]/10 bg-[#07131b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12 border-b border-white/[0.08] text-xs">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12 border-b border-[#d3dde2]/10 text-xs">
             <div className="space-y-3">
-              <span className="font-light text-white text-sm block">PointPass</span>
-              <p className="text-blue-100/60 font-light leading-relaxed">
+              <span className="font-display font-bold text-white text-base block">POINTPASS</span>
+              <p className="text-[#d3dde2]/70 font-normal leading-relaxed">
                 Non-custodial loyalty token infrastructure for the Solana ecosystem.
               </p>
-              <span className="text-[11px] font-mono text-blue-200/50 block font-light">Apache-2.0 License</span>
+              <span className="text-[11px] font-mono text-[#d3dde2]/50 block">Apache-2.0 License</span>
             </div>
 
             <div className="space-y-2">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-blue-200/60 block font-normal">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[#93c0d2] block font-semibold">
                 APPLICATIONS
               </span>
-              <ul className="space-y-2 text-blue-100/70 font-light">
+              <ul className="space-y-2 text-[#d3dde2]/80 font-normal">
                 <li><Link href="/customer" className="hover:text-white transition-colors">Customer Portal</Link></li>
                 <li><Link href="/merchant" className="hover:text-white transition-colors">Merchant Dashboard</Link></li>
                 <li><Link href={`/customer?merchant=${DEMO_MERCHANT}`} className="hover:text-white transition-colors">Demo Store (Bean There Cafe)</Link></li>
@@ -930,10 +866,10 @@ $ anchor test --skip-build
             </div>
 
             <div className="space-y-2">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-blue-200/60 block font-normal">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[#93c0d2] block font-semibold">
                 DOCUMENTATION
               </span>
-              <ul className="space-y-2 text-blue-100/70 font-light">
+              <ul className="space-y-2 text-[#d3dde2]/80 font-normal">
                 <li><Link href="/docs" className="hover:text-white transition-colors">Protocol Overview</Link></li>
                 <li><Link href="/docs/pda" className="hover:text-white transition-colors">PDA Seed Derivations</Link></li>
                 <li><Link href="/docs/cpi" className="hover:text-white transition-colors">CPI &amp; Token Minting</Link></li>
@@ -944,29 +880,29 @@ $ anchor test --skip-build
             </div>
 
             <div className="space-y-2">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-blue-200/60 block font-normal">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[#93c0d2] block font-semibold">
                 NETWORK &amp; RESOURCES
               </span>
-              <ul className="space-y-2 text-blue-100/70 font-light">
+              <ul className="space-y-2 text-[#d3dde2]/80 font-normal">
                 <li>
                   <a href="https://github.com/meet987654/pointpass-solana" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     GitHub Repository
                   </a>
                 </li>
                 <li>
-                  <a href={`https://explorer.solana.com/address/${PROGRAM_ID.toBase58()}?cluster=devnet`} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors font-mono font-light">
+                  <a href={`https://explorer.solana.com/address/${PROGRAM_ID.toBase58()}?cluster=devnet`} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors font-mono">
                     Program Explorer
                   </a>
                 </li>
                 <li>
-                  <span className="text-blue-200/60 font-light">Cluster: Solana Devnet</span>
+                  <span className="text-[#d3dde2]/60">Cluster: Solana Devnet</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-blue-200/50 font-light">
-            <span>(c) 2026 PointPass Solana Infrastructure. All rights reserved.</span>
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#d3dde2]/50">
+            <span>&copy; 2026 PointPass Solana Infrastructure. All rights reserved.</span>
             <span>Program ID: {PROGRAM_ID.toBase58()}</span>
           </div>
         </div>

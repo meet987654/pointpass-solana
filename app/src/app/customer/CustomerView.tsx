@@ -112,7 +112,7 @@ export function CustomerView() {
       {/* Top Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.08] pb-5">
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-semibold block mb-1">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block mb-1">
             CUSTOMER TERMINAL
           </span>
           <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
@@ -144,7 +144,7 @@ export function CustomerView() {
                 setAddressError(null);
                 router.push(`/customer?merchant=${DEMO_MERCHANT}`);
               }}
-              className="text-xs text-[#67baf4] hover:text-blue-300 font-mono transition-colors text-left"
+              className="text-xs text-[#3c9bc3] hover:text-blue-300 font-mono transition-colors text-left"
             >
               [ Use Demo Store: Bean There Cafe ]
             </button>
@@ -159,7 +159,7 @@ export function CustomerView() {
                 setAddressError(null);
               }}
               placeholder="Paste merchant public key..."
-              className="flex-1 px-4 py-2.5 text-xs rounded-xl border border-white/15 bg-[#08122a]/60 text-white font-mono focus:outline-none focus:border-[#67baf4] focus:ring-1 focus:ring-[#67baf4] backdrop-blur-md"
+              className="flex-1 px-4 py-2.5 text-xs rounded-xl border border-[#d3dde2]/15 bg-[#07131b]/60 text-white font-mono focus:outline-none focus:border-[#3c9bc3] focus:ring-1 focus:ring-[#3c9bc3] backdrop-blur-md"
             />
             <button
               type="submit"
@@ -204,7 +204,7 @@ export function CustomerView() {
         ) : !merchantPubkey ? (
           <p className="text-xs font-mono text-blue-200/60">Enter a valid Solana public key above.</p>
         ) : !programData ? (
-          <div className="p-8 rounded-2xl bg-[#08122a]/40 text-center border border-dashed border-white/15 space-y-1">
+          <div className="p-8 rounded-2xl bg-[#07131b]/40 text-center border border-dashed border-[#d3dde2]/15 space-y-1">
             <p className="text-xs font-mono text-white/80">
               No loyalty program found for this merchant address.
             </p>
@@ -225,7 +225,7 @@ export function CustomerView() {
 
             {/* 3 Metrics Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="glass-card-subtle p-4 space-y-1 bg-[#08122a]/50">
+              <div className="glass-card-subtle p-4 space-y-1 bg-[#07131b]/50">
                 <span className="text-[11px] font-mono text-blue-200/60 uppercase tracking-wider block">
                   Lifetime Issued
                 </span>
@@ -233,7 +233,7 @@ export function CustomerView() {
                   {programData.totalAwarded} pts
                 </span>
               </div>
-              <div className="glass-card-subtle p-4 space-y-1 bg-[#08122a]/50">
+              <div className="glass-card-subtle p-4 space-y-1 bg-[#07131b]/50">
                 <span className="text-[11px] font-mono text-blue-200/60 uppercase tracking-wider block">
                   Total Burned
                 </span>
@@ -241,7 +241,7 @@ export function CustomerView() {
                   {programData.totalRedeemed} pts
                 </span>
               </div>
-              <div className="glass-card-subtle p-4 space-y-1 bg-[#08122a]/50">
+              <div className="glass-card-subtle p-4 space-y-1 bg-[#07131b]/50">
                 <span className="text-[11px] font-mono text-blue-200/60 uppercase tracking-wider block">
                   Proof-of-Burn Receipts
                 </span>
@@ -293,7 +293,7 @@ export function CustomerView() {
         )}
 
         {!connected ? (
-          <div className="p-8 rounded-2xl bg-[#08122a]/40 text-center border border-dashed border-white/15 space-y-2">
+          <div className="p-8 rounded-2xl bg-[#07131b]/40 text-center border border-dashed border-[#d3dde2]/15 space-y-2">
             <p className="text-xs font-mono text-blue-100/80">
               Connect your Solana wallet to view balance and redeem rewards.
             </p>
@@ -328,7 +328,7 @@ export function CustomerView() {
                 className={
                   canRedeem
                     ? "btn-glass-primary cursor-pointer font-medium"
-                    : "px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/40 text-xs font-mono cursor-not-allowed"
+                    : "px-5 py-2.5 rounded-full bg-white/5 border border-[#d3dde2]/10 text-white/40 text-xs font-mono cursor-not-allowed"
                 }
               >
                 {isRedeeming
@@ -345,9 +345,9 @@ export function CustomerView() {
                 <span>Reward Threshold</span>
                 <span>{progressPercent}%</span>
               </div>
-              <div className="h-2.5 w-full bg-[#08122a] rounded-full overflow-hidden border border-white/10 p-[1px]">
+              <div className="h-2.5 w-full bg-[#07131b] rounded-full overflow-hidden border border-[#d3dde2]/10 p-[1px]">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-600 via-[#67baf4] to-blue-400 rounded-full transition-all duration-500 shadow-[0_0_12px_#67baf4]"
+                  className="h-full bg-gradient-to-r from-blue-600 via-[#3c9bc3] to-blue-400 rounded-full transition-all duration-500 shadow-[0_0_12px_#3c9bc3]"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -386,7 +386,7 @@ export function CustomerView() {
             <div className="h-10 bg-white/10 rounded" />
           </div>
         ) : !receipts || receipts.length === 0 ? (
-          <div className="p-8 rounded-2xl bg-[#08122a]/40 text-center border border-dashed border-white/15">
+          <div className="p-8 rounded-2xl bg-[#07131b]/40 text-center border border-dashed border-[#d3dde2]/15">
             <p className="text-xs font-mono text-blue-200/60">
               No redemptions found. Burning points mints an immutable on-chain proof-of-burn receipt.
             </p>
@@ -399,7 +399,7 @@ export function CustomerView() {
                 className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono"
               >
                 <div className="flex items-center gap-3">
-                  <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/90">
+                  <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-[#d3dde2]/10 text-white/90">
                     #{r.receiptNumber}
                   </span>
                   <span className="text-white font-medium">
@@ -414,7 +414,7 @@ export function CustomerView() {
                   href={getExplorerAddressUrl(r.pubkey, "devnet")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#67baf4] hover:text-blue-300 underline underline-offset-2"
+                  className="text-[#3c9bc3] hover:text-blue-300 underline underline-offset-2"
                 >
                   Receipt: {r.pubkey.toBase58().slice(0, 6)}...{r.pubkey.toBase58().slice(-4)} [Explorer]
                 </a>

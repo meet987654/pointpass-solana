@@ -132,7 +132,7 @@ export function MerchantView() {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="glass-card p-8 sm:p-14 text-center max-w-lg mx-auto space-y-6">
-          <div className="inline-block px-4 py-1.5 rounded-full glass-pill text-xs font-mono text-[#67baf4]">
+          <div className="inline-block px-4 py-1.5 rounded-full glass-pill text-xs font-mono text-[#3c9bc3]">
             MERCHANT CONSOLE
           </div>
           <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-white">Merchant Authority Terminal</h1>
@@ -152,7 +152,7 @@ export function MerchantView() {
       {/* Merchant Header Bar */}
       <div className="glass-card p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-semibold block">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
             CONNECTED MERCHANT WALLET
           </span>
           <span className="text-xs font-mono text-white/90 break-all">
@@ -203,7 +203,7 @@ export function MerchantView() {
                 maxLength={32}
                 onChange={(e) => setInitName(e.target.value)}
                 placeholder="e.g. Bean There Cafe"
-                className="w-full px-4 py-2.5 text-xs rounded-xl border border-white/15 bg-[#08122a]/60 text-white font-mono focus:outline-none focus:border-[#67baf4] focus:ring-1 focus:ring-[#67baf4] backdrop-blur-md"
+                className="w-full px-4 py-2.5 text-xs rounded-xl border border-[#d3dde2]/15 bg-[#07131b]/60 text-white font-mono focus:outline-none focus:border-[#3c9bc3] focus:ring-1 focus:ring-[#3c9bc3] backdrop-blur-md"
                 required
               />
               <span className="text-[11px] font-mono text-blue-200/50 mt-1 block">Maximum 32 bytes UTF-8 string.</span>
@@ -220,7 +220,7 @@ export function MerchantView() {
                 value={initRewardCost}
                 onChange={(e) => setInitRewardCost(e.target.value)}
                 placeholder="10"
-                className="w-full px-4 py-2.5 text-xs rounded-xl border border-white/15 bg-[#08122a]/60 text-white font-mono focus:outline-none focus:border-[#67baf4] focus:ring-1 focus:ring-[#67baf4] backdrop-blur-md"
+                className="w-full px-4 py-2.5 text-xs rounded-xl border border-[#d3dde2]/15 bg-[#07131b]/60 text-white font-mono focus:outline-none focus:border-[#3c9bc3] focus:ring-1 focus:ring-[#3c9bc3] backdrop-blur-md"
                 required
               />
               <span className="text-[11px] font-mono text-blue-200/50 mt-1 block">Number of points required for customer to claim a reward.</span>
@@ -248,13 +248,13 @@ export function MerchantView() {
                   {programData.name}
                 </h1>
               </div>
-              <span className="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/20 border border-blue-400/30 text-[#67baf4] self-start sm:self-auto shadow-[0_0_12px_rgba(103,186,244,0.2)]">
+              <span className="px-3 py-1 rounded-full text-xs font-mono bg-blue-500/20 border border-blue-400/30 text-[#3c9bc3] self-start sm:self-auto shadow-[0_0_12px_rgba(103,186,244,0.2)]">
                 Threshold: {programData.rewardCost} Points
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="glass-card-subtle p-4 space-y-1 bg-[#08122a]/50">
+              <div className="glass-card-subtle p-4 space-y-1 bg-[#07131b]/50">
                 <span className="text-[11px] font-mono text-blue-200/60 uppercase tracking-wider block">
                   Total Points Awarded
                 </span>
@@ -262,7 +262,7 @@ export function MerchantView() {
                   {programData.totalAwarded} pts
                 </span>
               </div>
-              <div className="glass-card-subtle p-4 space-y-1 bg-[#08122a]/50">
+              <div className="glass-card-subtle p-4 space-y-1 bg-[#07131b]/50">
                 <span className="text-[11px] font-mono text-blue-200/60 uppercase tracking-wider block">
                   Total Points Burned
                 </span>
@@ -270,7 +270,7 @@ export function MerchantView() {
                   {programData.totalRedeemed} pts
                 </span>
               </div>
-              <div className="glass-card-subtle p-4 space-y-1 bg-[#08122a]/50">
+              <div className="glass-card-subtle p-4 space-y-1 bg-[#07131b]/50">
                 <span className="text-[11px] font-mono text-blue-200/60 uppercase tracking-wider block">
                   Redemption Receipts
                 </span>
@@ -287,7 +287,7 @@ export function MerchantView() {
                   href={getExplorerAddressUrl(programData.programPda, "devnet")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#67baf4] hover:underline"
+                  className="text-[#3c9bc3] hover:underline"
                 >
                   {programData.programPda.toBase58()} [Explorer]
                 </a>
@@ -298,7 +298,7 @@ export function MerchantView() {
                   href={getExplorerAddressUrl(programData.mintPda, "devnet")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#67baf4] hover:underline"
+                  className="text-[#3c9bc3] hover:underline"
                 >
                   {programData.mintPda.toBase58()} [Explorer]
                 </a>
@@ -309,7 +309,7 @@ export function MerchantView() {
           {/* Award Points Form */}
           <div className="glass-card p-6 sm:p-8 space-y-6">
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[#67baf4] font-semibold block mb-1">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block mb-1">
                 ISSUE REWARDS
               </span>
               <h2 className="text-xl font-light tracking-tight text-white">
@@ -333,7 +333,7 @@ export function MerchantView() {
                     if (awardAddressError) setAwardAddressError(null);
                   }}
                   placeholder="Paste customer public key..."
-                  className="w-full px-4 py-2.5 text-xs rounded-xl border border-white/15 bg-[#08122a]/60 text-white font-mono focus:outline-none focus:border-[#67baf4] focus:ring-1 focus:ring-[#67baf4] backdrop-blur-md"
+                  className="w-full px-4 py-2.5 text-xs rounded-xl border border-[#d3dde2]/15 bg-[#07131b]/60 text-white font-mono focus:outline-none focus:border-[#3c9bc3] focus:ring-1 focus:ring-[#3c9bc3] backdrop-blur-md"
                   required
                 />
                 {awardAddressError && (
@@ -352,7 +352,7 @@ export function MerchantView() {
                   value={awardAmount}
                   onChange={(e) => setAwardAmount(e.target.value)}
                   placeholder="10"
-                  className="w-full px-4 py-2.5 text-xs rounded-xl border border-white/15 bg-[#08122a]/60 text-white font-mono focus:outline-none focus:border-[#67baf4] focus:ring-1 focus:ring-[#67baf4] backdrop-blur-md"
+                  className="w-full px-4 py-2.5 text-xs rounded-xl border border-[#d3dde2]/15 bg-[#07131b]/60 text-white font-mono focus:outline-none focus:border-[#3c9bc3] focus:ring-1 focus:ring-[#3c9bc3] backdrop-blur-md"
                   required
                 />
               </div>
@@ -392,14 +392,14 @@ export function MerchantView() {
                 Error loading receipts: {receiptsError}
               </div>
             ) : !receipts || receipts.length === 0 ? (
-              <div className="py-8 text-center rounded-2xl bg-[#08122a]/40 border border-dashed border-white/15 text-xs font-mono text-blue-200/60">
+              <div className="py-8 text-center rounded-2xl bg-[#07131b]/40 border border-dashed border-[#d3dde2]/15 text-xs font-mono text-blue-200/60">
                 No redemptions recorded yet for this store.
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs font-mono">
                   <thead>
-                    <tr className="border-b border-white/10 text-blue-200/70 uppercase bg-white/[0.03]">
+                    <tr className="border-b border-[#d3dde2]/10 text-blue-200/70 uppercase bg-white/[0.03]">
                       <th className="py-3 px-4">#</th>
                       <th className="py-3 px-4">Customer</th>
                       <th className="py-3 px-4">Burned</th>
@@ -418,7 +418,7 @@ export function MerchantView() {
                             href={getExplorerAddressUrl(r.customer, "devnet")}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#67baf4] hover:underline"
+                            className="text-[#3c9bc3] hover:underline"
                           >
                             {r.customer.toBase58().slice(0, 4)}...{r.customer.toBase58().slice(-4)}
                           </a>
@@ -434,7 +434,7 @@ export function MerchantView() {
                             href={getExplorerAddressUrl(r.pubkey, "devnet")}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#67baf4] hover:underline"
+                            className="text-[#3c9bc3] hover:underline"
                           >
                             {r.pubkey.toBase58().slice(0, 6)}...{r.pubkey.toBase58().slice(-4)}
                           </a>

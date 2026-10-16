@@ -28,19 +28,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Stack+Sans+Notch:wght@200..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Stack+Sans+Notch:wght@200..700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#050814] text-[#fafafa] font-sans selection:bg-blue-600 selection:text-white relative">
-        {/* WHOLE-SCREEN FIXED GLASSMORPHIC CAUSTIC BACKGROUND */}
+      <body className="min-h-full flex flex-col bg-[#07131b] text-[#ffffff] font-sans selection:bg-[#2d7a9c] selection:text-white relative">
+        {/* Architectural Petrol Atmosphere Horizon Layer (Rescue Partners Theme) */}
         <div className="fixed inset-0 -z-50 pointer-events-none overflow-hidden" aria-hidden="true">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-[1.02]"
-            style={{ backgroundImage: `url('/hero-glass-caustic-bg.jpg')` }}
-          />
-          <div className="absolute inset-0 backdrop-blur-[14px] bg-[#050814]/45" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(103,186,244,0.18)_0%,rgba(29,78,216,0.15)_35%,rgba(5,8,20,0.6)_80%)]" />
+          <div className="absolute inset-0 bg-[#07131b]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(45,122,156,0.22)_0%,rgba(14,37,52,0.18)_50%,transparent_90%)]" />
         </div>
 
         <SolanaProvider>

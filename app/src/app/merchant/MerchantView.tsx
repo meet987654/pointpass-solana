@@ -135,7 +135,7 @@ export function MerchantView() {
   if (!connected || !publicKey) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200 dark:border-neutral-800 p-10 text-center max-w-lg mx-auto shadow-sm">
+        <div className="glass-panel rounded-3xl border border-white/[0.08] p-10 text-center max-w-lg mx-auto shadow-sm">
           <div className="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-950 flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl font-bold mx-auto mb-5">
             🏪
           </div>
@@ -154,7 +154,7 @@ export function MerchantView() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
       {/* Merchant Header Bar */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <span className="text-xs uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold block mb-1">
             Connected Merchant Wallet
@@ -172,7 +172,7 @@ export function MerchantView() {
       </div>
 
       {programLoading ? (
-        <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-8 animate-pulse space-y-4">
+        <div className="glass-panel rounded-2xl border border-white/[0.08] p-8 animate-pulse space-y-4">
           <div className="h-6 bg-neutral-200 dark:bg-neutral-800 rounded w-1/3" />
           <div className="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-1/2" />
         </div>
@@ -183,7 +183,7 @@ export function MerchantView() {
         </div>
       ) : !programData ? (
         /* Uninitialized State: Initialize Form */
-        <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-8 shadow-sm space-y-6">
+        <div className="glass-panel rounded-2xl border border-white/[0.08] p-8 shadow-sm space-y-6">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-1">
               No Program Initialized Yet
@@ -241,7 +241,7 @@ export function MerchantView() {
         /* Initialized State: Program Stats & Award Points Form */
         <>
           {/* Program Overview Card */}
-          <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 sm:p-8 shadow-sm space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 dark:border-neutral-800 pb-4">
               <div>
                 <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">
@@ -258,19 +258,19 @@ export function MerchantView() {
 
             {/* Stat Counters Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="bg-neutral-50 dark:bg-neutral-800/50 rounded-xl p-4 border border-neutral-100 dark:border-neutral-800">
+              <div className="rounded-xl p-4 bg-white/[0.02] border border-white/[0.06]">
                 <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">Total Points Awarded</span>
                 <span className="text-2xl font-bold font-mono text-neutral-900 dark:text-white">
                   {programData.totalAwarded}
                 </span>
               </div>
-              <div className="bg-neutral-50 dark:bg-neutral-800/50 rounded-xl p-4 border border-neutral-100 dark:border-neutral-800">
+              <div className="rounded-xl p-4 bg-white/[0.02] border border-white/[0.06]">
                 <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">Total Points Redeemed</span>
                 <span className="text-2xl font-bold font-mono text-neutral-900 dark:text-white">
                   {programData.totalRedeemed}
                 </span>
               </div>
-              <div className="bg-neutral-50 dark:bg-neutral-800/50 rounded-xl p-4 border border-neutral-100 dark:border-neutral-800">
+              <div className="rounded-xl p-4 bg-white/[0.02] border border-white/[0.06]">
                 <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">Redemption Receipts</span>
                 <span className="text-2xl font-bold font-mono text-neutral-900 dark:text-white">
                   {programData.redemptionCount}
@@ -306,7 +306,7 @@ export function MerchantView() {
           </div>
 
           {/* Award Points Form */}
-          <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 sm:p-8 shadow-sm space-y-6">
             <div>
               <span className="text-xs uppercase tracking-wider text-purple-600 dark:text-purple-400 font-semibold block mb-1">
                 Issue Rewards
@@ -365,7 +365,7 @@ export function MerchantView() {
           </div>
 
           {/* Store Redemption Audit History */}
-          <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 sm:p-8 shadow-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-xs uppercase tracking-wider text-neutral-500 block mb-1">
@@ -387,7 +387,7 @@ export function MerchantView() {
                 Error loading receipts: {receiptsError}
               </div>
             ) : !receipts || receipts.length === 0 ? (
-              <div className="py-10 text-center rounded-xl bg-neutral-50 dark:bg-neutral-800/40 border border-neutral-100 dark:border-neutral-800">
+              <div className="py-10 text-center rounded-xl rounded-xl bg-white/[0.02] border border-white/[0.06]">
                 <span className="text-2xl block mb-2">🧾</span>
                 <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 block">
                   No redemptions recorded yet for this store.

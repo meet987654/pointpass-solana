@@ -110,7 +110,7 @@ export function CustomerView() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
       {/* Merchant Address Search Bar */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 shadow-sm">
+      <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 shadow-sm">
         <form onSubmit={handleMerchantSubmit} className="space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <label htmlFor="merchantInput" className="text-sm font-semibold">
@@ -164,7 +164,7 @@ export function CustomerView() {
       </div>
 
       {/* Program Details Card */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 shadow-sm">
+      <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-bold">Loyalty Program</h2>
           {programData && (
@@ -248,7 +248,7 @@ export function CustomerView() {
       </div>
 
       {/* Customer Points & Redeem Card */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 shadow-sm">
+      <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 shadow-sm">
         <h2 className="text-lg font-bold mb-4">Your Points & Rewards</h2>
 
         {balanceError && (
@@ -328,7 +328,7 @@ export function CustomerView() {
       </div>
 
       {/* Redemption History */}
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 shadow-sm">
+      <div className="glass-panel rounded-2xl border border-white/[0.08] p-6 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-bold">Redemption History</h2>
           {receipts && receipts.length > 0 && (

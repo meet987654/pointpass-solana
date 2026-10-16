@@ -492,77 +492,116 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          SECTION 6: 4-STEP PROTOCOL LIFECYCLE (ARCHITECTURAL BLUEPRINT GRID)
+          SECTION 6: 4-STEP PROTOCOL LIFECYCLE (EXACT SPLIT 2x2 REFERENCE LAYOUT)
           ========================================================================= */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-        <div className="space-y-3">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
-            PROTOCOL LIFECYCLE // 4-STEP PIPELINE
-          </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
-            How PointPass executes on-chain
-          </h2>
-          <p className="text-sm sm:text-base text-[#d3dde2]/80 max-w-2xl font-normal">
-            From initial merchant registry to cryptographic receipt stamp, every phase executes via verifiable Solana Anchor instructions.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-stretch">
           
-          {/* Step 1 */}
-          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
+          {/* Left Column: Pill + Display Headline + Multi-line Narrative */}
+          <div className="lg:col-span-5 flex flex-col justify-between py-2">
             <div>
-              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 01</span>
-              <h4 className="font-display text-xl font-bold text-white mb-2">Program Init</h4>
-              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
-                Merchant initializes their loyalty configuration PDA, establishing token name, symbol, reward threshold, and program-controlled SPL mint.
-              </p>
+              {/* Pill Badge matching [ Problem 01 ] in reference image */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/[0.05] text-xs font-mono text-white/90 mb-7 shadow-sm">
+                <span className="text-[#93c0d2]">Pipeline</span>
+                <span className="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px] text-white font-medium">04</span>
+              </div>
+
+              {/* Multi-line Display Headline with colored emphasis accent */}
+              <h2 className="font-display text-4xl sm:text-5xl md:text-[52px] font-medium tracking-tight text-white leading-[1.12]">
+                How PointPass <br />
+                executes on-chain, <br />
+                <span className="bg-gradient-to-r from-[#2d7a9c] via-[#4ba2c7] to-[#93c0d2] bg-clip-text text-transparent">
+                  step by step
+                </span>
+              </h2>
             </div>
-            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
-              instr: initialize_loyalty_program
+
+            {/* Bottom Narrative Block matching reference image bottom-left paragraph */}
+            <div className="space-y-3 font-mono text-xs text-[#d3dde2]/80 leading-relaxed max-w-sm mt-10 lg:mt-0 pt-6 border-t border-white/10 lg:border-t-0">
+              <p>
+                From initial merchant registry to cryptographic receipt stamp, every phase executes via verifiable Solana Anchor instructions.
+              </p>
+              <p className="text-[11px] text-[#d3dde2]/50">
+                Deterministic PDA seeds guarantee zero merchant private key exposure across all lifecycle operations.
+              </p>
             </div>
           </div>
 
-          {/* Step 2 */}
-          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
-            <div>
-              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 02</span>
-              <h4 className="font-display text-xl font-bold text-white mb-2">Pass Derivation</h4>
-              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
-                Customer connects their Solana wallet. Their Associated Token Account (ATA) is verified or lazily initialized to receive points.
-              </p>
+          {/* Right Column: 2x2 Grid with 3 Dark Horizon Cards + 1 Light Ash Card */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            {/* Card 1: Top-Left Dark Horizon Card */}
+            <div className="rounded-[22px] border border-[#d3dde2]/15 bg-gradient-to-b from-[#0b1f2b] via-[#0d2737] to-[#12364c] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] group hover:border-[#3c9bc3]/40 transition-all duration-300">
+              <span className="text-xs font-mono text-[#d3dde2]/70 block font-normal">
+                01 // Program Init
+              </span>
+              <div className="space-y-1.5 pt-6">
+                <div className="font-display text-3xl sm:text-4xl font-medium text-white tracking-tight">
+                  1 PDA
+                </div>
+                <p className="text-xs font-mono text-[#93c0d2] leading-snug">
+                  initialize_loyalty_program
+                </p>
+                <p className="text-[11px] text-[#d3dde2]/60 font-sans leading-normal">
+                  Merchant configuration and zero-decimal SPL mint genesis
+                </p>
+              </div>
             </div>
-            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
-              instr: get_or_create_ata
-            </div>
-          </div>
 
-          {/* Step 3 */}
-          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
-            <div>
-              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 03</span>
-              <h4 className="font-display text-xl font-bold text-white mb-2">Point Accrual</h4>
-              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
-                On store checkout, merchant triggers atomic point award. Program signs via CPI with PDA seeds to mint zero-decimal tokens.
-              </p>
+            {/* Card 2: Top-Right Dark Horizon Card */}
+            <div className="rounded-[22px] border border-[#d3dde2]/15 bg-gradient-to-b from-[#0b1f2b] via-[#0d2737] to-[#12364c] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] group hover:border-[#3c9bc3]/40 transition-all duration-300">
+              <span className="text-xs font-mono text-[#d3dde2]/70 block font-normal">
+                02 // Pass Derivation
+              </span>
+              <div className="space-y-1.5 pt-6">
+                <div className="font-display text-3xl sm:text-4xl font-medium text-white tracking-tight">
+                  0 Rent
+                </div>
+                <p className="text-xs font-mono text-[#93c0d2] leading-snug">
+                  get_or_create_ata
+                </p>
+                <p className="text-[11px] text-[#d3dde2]/60 font-sans leading-normal">
+                  Customer pass derived deterministically; zero custodial liability
+                </p>
+              </div>
             </div>
-            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
-              instr: award_points (CPI mint_to)
-            </div>
-          </div>
 
-          {/* Step 4 */}
-          <div className="rounded-[20px] border border-[#d3dde2]/15 bg-[#081824] p-6 flex flex-col justify-between min-h-[300px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#3c9bc3]/40 hover:bg-[#0b1f2b] bg-[radial-gradient(rgba(211,221,226,0.08)_1px,transparent_1px)] [background-size:16px_16px]">
-            <div>
-              <span className="text-xs font-mono text-[#93c0d2] block mb-2 font-semibold">STEP 04</span>
-              <h4 className="font-display text-xl font-bold text-white mb-2">Proof-of-Burn</h4>
-              <p className="text-xs text-[#d3dde2]/75 font-normal leading-relaxed">
-                Customer burns points to redeem perk. Tokens are eradicated permanently, and an on-chain RedemptionReceipt PDA is recorded.
-              </p>
+            {/* Card 3: Bottom-Left Dark Horizon Card */}
+            <div className="rounded-[22px] border border-[#d3dde2]/15 bg-gradient-to-b from-[#0b1f2b] via-[#0d2737] to-[#12364c] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_12px_32px_-8px_rgba(0,0,0,0.7)] group hover:border-[#3c9bc3]/40 transition-all duration-300">
+              <span className="text-xs font-mono text-[#d3dde2]/70 block font-normal">
+                03 // Point Accrual
+              </span>
+              <div className="space-y-1.5 pt-6">
+                <div className="font-display text-3xl sm:text-4xl font-medium text-white tracking-tight">
+                  ~400ms
+                </div>
+                <p className="text-xs font-mono text-[#93c0d2] leading-snug">
+                  award_points (CPI)
+                </p>
+                <p className="text-[11px] text-[#d3dde2]/60 font-sans leading-normal">
+                  Program signer mints integer tokens to customer ATA atomically
+                </p>
+              </div>
             </div>
-            <div className="pt-4 border-t border-[#d3dde2]/10 font-mono text-[10px] text-[#3c9bc3]">
-              instr: redeem (CPI burn)
+
+            {/* Card 4: Bottom-Right HIGH-CONTRAST LIGHT CARD (Exact match to Card 4 in reference) */}
+            <div className="rounded-[22px] border border-white/40 bg-[#e5ecef] text-[#07131b] p-6 sm:p-7 flex flex-col justify-between min-h-[220px] shadow-[0_16px_40px_-8px_rgba(0,0,0,0.5)] group hover:bg-[#d9e4e8] transition-all duration-300">
+              <span className="text-xs font-mono text-[#07131b]/70 font-medium block">
+                04 // Proof-of-Burn
+              </span>
+              <div className="space-y-1.5 pt-6">
+                <div className="font-display text-3xl sm:text-4xl font-bold text-[#07131b] tracking-tight">
+                  100%
+                </div>
+                <p className="text-xs font-mono text-[#07131b] font-medium leading-snug">
+                  redeem (Receipt PDA)
+                </p>
+                <p className="text-[11px] text-[#07131b]/75 font-sans leading-normal">
+                  Tokens burned permanently; Clock timestamp audit receipt stamped
+                </p>
+              </div>
             </div>
+
           </div>
 
         </div>

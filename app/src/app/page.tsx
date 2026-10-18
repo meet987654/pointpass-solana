@@ -2,9 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { useLoyaltyProgram } from "@/hooks/useLoyaltyProgram";
 import { PROGRAM_ID, DEMO_MERCHANT } from "@/lib/constants";
-import { PublicKey } from "@solana/web3.js";
 
 function AsteriskIcon({ size = 26 }: { size?: number }) {
   return (
@@ -28,8 +26,6 @@ function ArrowCircle() {
 }
 
 export default function Home() {
-  const demoMerchantPubkey = new PublicKey(DEMO_MERCHANT);
-  const { data: programData, loading: programLoading } = useLoyaltyProgram(demoMerchantPubkey);
   const [activeCodeTab, setActiveCodeTab] = useState<"anchor" | "sdk" | "cli">("anchor");
 
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -100,184 +96,7 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-          SECTION 2: SIGNATURE CARDS SHOWCASE (RESCUE PARTNERS BRAND GUIDELINES)
-          Card 1: Horizon Gradient Card
-          Card 2: Architectural Blueprint Construction Card
-          Card 3: Typographic Spec Matrix Card
-          ========================================================================= */}
-      <section className="relative w-full py-20 bg-[#07131b] border-y border-[#d3dde2]/10 my-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          
-          <div className="mb-12 space-y-2">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#3c9bc3] font-semibold block">
-              DESIGN SYSTEM SPECIFICATION // IDENTITY ARCHETYPE
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Architectural Card Formats
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            
-            {/* Card 1: Exact Fractal Glassmorphic Card (Reference Image Design) */}
-            <div className="card-fractal-glass p-8 sm:p-9 flex flex-col justify-between min-h-[480px] relative overflow-hidden group">
-              {/* Top Row: Description + Tag */}
-              <div className="flex items-start justify-between z-10">
-                <p className="text-[11px] font-sans text-white/75 max-w-[210px] leading-relaxed">
-                  High-end aesthetics—featuring fully editable layers to optimize workflow and enhance visual quality by 100%.
-                </p>
-                <span className="text-[11px] font-mono text-white/60 tracking-wider">
-                  [4K resolution]
-                </span>
-              </div>
-
-              {/* Middle Headline */}
-              <div className="my-auto py-8 z-10 space-y-2">
-                <h3 className="font-display text-3xl sm:text-4xl lg:text-[40px] font-semibold text-white tracking-tight leading-[1.1] drop-shadow-sm">
-                  Design deep,<br />
-                  build better,<br />
-                  refine quicker.
-                </h3>
-                <p className="text-sm font-sans italic text-[#93c0d2]">
-                  Modern glassmorphism style.
-                </p>
-              </div>
-
-              {/* Bottom Row */}
-              <div className="flex items-center justify-between pt-6 border-t border-white/10 z-10">
-                <div className="flex items-center gap-3">
-                  <ArrowCircle />
-                  <div>
-                    <span className="text-[11px] font-mono tracking-wider text-white font-semibold block">SOCIAL MEDIA USE</span>
-                    <span className="text-[10px] font-mono text-white/60 block">2500×3200</span>
-                  </div>
-                </div>
-                <div className="text-white/80 group-hover:text-white transition-colors">
-                  <AsteriskIcon size={28} />
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: Architectural Blueprint Construction Card (Slide 4 in sheet) */}
-            <div className="rounded-[24px] border border-[#d3dde2]/20 bg-[#081824] p-8 sm:p-9 flex flex-col justify-between min-h-[480px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] relative overflow-hidden transition-all duration-300 hover:border-[#3c9bc3]/45 bg-[radial-gradient(rgba(211,221,226,0.1)_1px,transparent_1px)] [background-size:24px_24px] group">
-              {/* Top Row */}
-              <div className="flex items-center justify-between z-10">
-                <span className="px-3.5 py-1.5 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  02 / BLUEPRINT MATRIX
-                </span>
-                <span className="text-xs font-mono text-[#d3dde2]/60 tracking-wider">
-                  PDA GEOMETRY
-                </span>
-              </div>
-
-              {/* Center: Blueprint Construction Grid Representation */}
-              <div className="my-auto py-6 z-10 space-y-4">
-                <div className="border border-dashed border-[#3c9bc3]/40 p-4 rounded-xl bg-[#07131b]/80 font-mono text-xs space-y-2.5">
-                  <div className="flex items-center justify-between text-[#d3dde2]/50 text-[10px]">
-                    <span>{"// DETERMINISTIC SEEDS"}</span>
-                    <span className="text-[#3c9bc3]">SEALEVEL PDA</span>
-                  </div>
-                  <div className="text-white font-mono text-[11px] bg-black/40 p-2 rounded border border-white/5">
-                    <span className="text-[#3c9bc3]">seeds</span> = [&quot;loyalty&quot;, merchant_pubkey]
-                  </div>
-                  <div className="text-white font-mono text-[11px] bg-black/40 p-2 rounded border border-white/5">
-                    <span className="text-[#3c9bc3]">seeds</span> = [&quot;mint&quot;, loyalty_pda]
-                  </div>
-                  <div className="text-white font-mono text-[11px] bg-black/40 p-2 rounded border border-white/5">
-                    <span className="text-[#3c9bc3]">seeds</span> = [&quot;receipt&quot;, customer, seq]
-                  </div>
-                </div>
-
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-                  Cryptographic Authority Lockup
-                </h3>
-                <p className="text-xs text-[#d3dde2]/70 font-normal leading-relaxed">
-                  No private keys exist in the mint or burn pipelines. PDA seeds derive authority on-chain deterministically.
-                </p>
-              </div>
-
-              {/* Bottom Row */}
-              <div className="flex items-center justify-between pt-6 border-t border-[#d3dde2]/10 z-10 text-xs font-mono text-[#d3dde2]/70">
-                <span>Ed25519 Signer Validation</span>
-                <span className="text-[#3c9bc3]">Non-Custodial</span>
-              </div>
-            </div>
-
-            {/* Card 3: Typographic Hierarchy Spec Table Card (Slide 8 in sheet) */}
-            <div className="rounded-[24px] border border-[#d3dde2]/15 bg-[#0b1f2b] p-8 sm:p-9 flex flex-col justify-between min-h-[480px] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.8)] relative overflow-hidden transition-all duration-300 hover:border-[#3c9bc3]/40 group">
-              {/* Top Row */}
-              <div className="flex items-center justify-between z-10">
-                <span className="px-3.5 py-1.5 rounded-full border border-[#d3dde2]/20 bg-[#0e2534] text-xs font-mono text-[#93c0d2]">
-                  03 / TYPOGRAPHIC SPEC
-                </span>
-                <span className="text-xs font-mono text-[#d3dde2]/60 tracking-wider">
-                  ODDVAL HIERARCHY
-                </span>
-              </div>
-
-              {/* Middle: Typographic Spec Table matching Slide 8 */}
-              <div className="my-auto py-6 z-10 space-y-4">
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                  Rigorous Typographic Standards
-                </h3>
-                
-                <div className="overflow-hidden rounded-lg border border-[#d3dde2]/15 bg-[#07131b]/90">
-                  <table className="w-full text-left text-[11px] font-mono">
-                    <thead>
-                      <tr className="border-b border-[#d3dde2]/10 text-[#93c0d2] bg-white/[0.02]">
-                        <th className="py-2 px-3">Level</th>
-                        <th className="py-2 px-3">Typeface</th>
-                        <th className="py-2 px-3">Weight</th>
-                        <th className="py-2 px-3">Tracking</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-[#d3dde2]/5 text-[#d3dde2]/80">
-                      <tr>
-                        <td className="py-2 px-3 font-bold text-white">Заголовок 1</td>
-                        <td className="py-2 px-3 font-display">Oddval / Bricolage</td>
-                        <td className="py-2 px-3">Bold 700</td>
-                        <td className="py-2 px-3 text-[#3c9bc3]">-0.035em</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 px-3 font-semibold text-white">Заголовок 2</td>
-                        <td className="py-2 px-3 font-display">Oddval / Bricolage</td>
-                        <td className="py-2 px-3">SemiBold 600</td>
-                        <td className="py-2 px-3 text-[#3c9bc3]">-0.025em</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 px-3 text-white">Body Copy</td>
-                        <td className="py-2 px-3">Google Sans</td>
-                        <td className="py-2 px-3">Regular 400</td>
-                        <td className="py-2 px-3">-0.012em</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 px-3 text-white">Monospace</td>
-                        <td className="py-2 px-3">JetBrains Mono</td>
-                        <td className="py-2 px-3">Medium 500</td>
-                        <td className="py-2 px-3">0.000em</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p className="text-xs text-[#d3dde2]/70 font-normal leading-relaxed">
-                  Geometric ink traps and display weights inspired directly by Swiss corporate identity manuals.
-                </p>
-              </div>
-
-              {/* Bottom Row */}
-              <div className="flex items-center justify-between pt-6 border-t border-[#d3dde2]/10 z-10 text-xs font-mono text-[#d3dde2]/70">
-                <span>Specimen Verified</span>
-                <span className="text-[#93c0d2]">{programLoading ? "..." : `${programData?.totalAwarded ?? 55} pts issued`}</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 4: PROTOCOL TELEMETRY RIBBON
+          SECTION 2: PROTOCOL TELEMETRY RIBBON
           ========================================================================= */}
       <section className="py-12 border-y border-[#d3dde2]/10 bg-[#0b1f2b]/70 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">

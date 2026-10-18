@@ -74,14 +74,17 @@ export default function Home() {
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(45,122,180,0.22)_0%,transparent_75%)] z-0" />
 
         {/* Only Text: PointPass with 8-ray asterisk logo replacing letter 'o' */}
-        <h1 className="relative z-10 font-display text-8xl sm:text-[130px] md:text-[180px] lg:text-[220px] xl:text-[250px] font-light text-white tracking-[-0.035em] leading-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] text-center px-4 select-none inline-flex items-center justify-center">
+        <h1
+          className="relative z-10 font-display text-8xl sm:text-[130px] md:text-[180px] lg:text-[220px] xl:text-[250px] font-extralight text-white tracking-[-0.03em] leading-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] text-center px-4 select-none inline-flex items-center justify-center"
+          style={{ fontWeight: 200 }}
+        >
           <span>P</span>
           <span className="inline-flex items-center justify-center mx-[0.03em] relative top-[0.03em]">
             <svg
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="3.2"
+              strokeWidth="2.0"
               strokeLinecap="square"
               className="w-[0.54em] h-[0.54em] text-white drop-shadow-[0_0_24px_rgba(142,185,203,0.95)] transition-transform duration-700 hover:rotate-90 hover:scale-110 cursor-pointer"
             >
